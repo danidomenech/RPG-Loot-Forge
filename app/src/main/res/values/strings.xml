@@ -1,0 +1,1596 @@
+<resources>
+    <string name="app_name">DnD Loot Forge</string>
+
+    <string name="main_menu_title">Menú principal</string>
+    <string name="all_items_screen_title">Todos los objetos mágicos</string>
+    <string name="loot_tables_screen_title">Tablas de botín de objetos mágicos</string>
+    <string name="narrative_loot_list_screen_title">Botín narrativo</string>
+    <string name="vendor_screen_title">Objetos de mercader</string>
+    <string name="catalog_screen_title">Catálogo</string>
+
+    <string name="magic_item">Objeto mágico</string>
+    <string name="type">Tipo</string>
+
+    <string name="player_level_recommended">Nivel recomendado</string>
+
+    <string name="show_only_gear">Garantizar equipo</string>
+
+    <string name="item_rarity_common">Común</string>
+    <string name="item_rarity_uncommon">Infrecuente</string>
+    <string name="item_rarity_rare">Raro</string>
+    <string name="item_rarity_very_rare">Muy raro</string>
+    <string name="item_rarity_legendary">Legendario</string>
+
+    <string name="item_type_clothing">Ropa</string>
+    <string name="item_type_armor">Armadura</string>
+    <string name="item_type_light_armor">Armadura ligera</string>
+    <string name="item_type_medium_armor">Armadura media</string>
+    <string name="item_type_heavy_armor">Armadura pesada</string>
+    <string name="item_type_shield">Escudo</string>
+    <string name="item_type_weapon">Arma</string>
+    <string name="item_type_javelin">Arma (jabalina)</string>
+    <string name="item_type_dagger">Arma (daga)</string>
+    <string name="item_type_short_sword">Arma (espada corta)</string>
+    <string name="item_type_long_sword">Arma (espada larga)</string>
+    <string name="item_type_greatsword">Arma (espadón)</string>
+    <string name="item_type_hand_axe">Arma (hacha de mano)</string>
+    <string name="item_type_battle_axe">Arma (hacha de guerra)</string>
+    <string name="item_type_greataxe">Arma (hacha a dos manos)</string>
+    <string name="item_type_warhammer">Arma (martillo de guerra)</string>
+    <string name="item_type_maul">Arma (maza a dos manos)</string>
+    <string name="item_type_short_bow">Arma (arco corto)</string>
+    <string name="item_type_long_bow">Arma (arco largo)</string>
+    <string name="item_type_hand_crossbow">Arma (ballesta de mano)</string>
+    <string name="item_type_light_crossbow">Arma (ballesta ligera)</string>
+    <string name="item_type_heavy_crossbow">Arma (ballesta pesada)</string>
+    <string name="item_type_trident">Arma (tridente)</string>
+    <string name="item_type_staff">Bastón</string>
+    <string name="item_type_rod">Vara</string>
+    <string name="item_type_accessory">Accesorio</string>
+    <string name="item_type_helmet">Equipo (cabeza)</string>
+    <string name="item_type_gloves">Equipo (brazos)</string>
+    <string name="item_type_boots">Botas</string>
+    <string name="item_type_necklace">Collar</string>
+    <string name="item_type_cloak">Capa</string>
+    <string name="item_type_ring">Anillo</string>
+    <string name="item_type_wand">Varita</string>
+    <string name="item_type_potion">Poción</string>
+    <string name="item_type_consumable">Consumible</string>
+    <string name="item_type_ammunition">Munición</string>
+    <string name="item_type_scroll">Pergamino</string>
+    <string name="item_type_magical_tool">Herramienta mágica</string>
+    <string name="item_type_misc">Otros</string>
+
+    <string name="requires_attunement">Requiere sintonización</string>
+    <string name="item_value">Valor: %1$s po</string>
+    <string name="generate_random_catalog">Generar catálogo aleatorio</string>
+
+    <string name="loot_table_title">Tabla %1$s</string>
+    <string name="loot_table_player_level">(Niveles %1$s)</string>
+    <string name="d100_title">d100</string>
+
+    <string name="player_level">Nivel del jugador: %1$s</string>
+    <string name="vendor_stock_modifier">Disponibilidad del vendedor: %1$s%%</string>
+    <string name="vendor_price_modifier">Modificador de precio: %1$s%%</string>
+    <string name="generate_catalog">Generar catálogo</string>
+    <string name="reroll_catalog">Repetir catálogo</string>
+    <string name="edit_modifiers">Editar</string>
+
+
+    <!--    ALL ITEMS    -->
+    <string name="healing_potion">Poción de curación</string>
+    <string name="healing_potion_description">Cuando bebes esta poción recuperas 2d4 + 2 puntos de golpe.</string>
+    <string name="healing_potion_description_extra">El rojo líquido de la poción destella cuando es agitado.</string>
+
+    <string name="greater_healing_potion">Poción de curación Mayor</string>
+    <string name="greater_healing_potion_description">Cuando bebes esta poción recuperas 4d4 + 4 puntos de golpe.</string>
+
+    <string name="superior_healing_potion">Poción de curación Superior</string>
+    <string name="superior_healing_potion_description">Cuando bebes esta poción recuperas 8d4 + 8 puntos de golpe.</string>
+
+    <string name="supreme_healing_potion">Poción de curación Suprema</string>
+    <string name="supreme_healing_potion_description">Cuando bebes esta poción recuperas 10d4 + 20 puntos de golpe.</string>
+
+    <string name="cantrip_scroll">Pergamino de conjuro (truco)</string>
+    <string name="cantrip_scroll_description">Contiene un truco de la lista de trucos del manual de jugador.\n\n
+    CD de salvación: 13\n\n
+    Bonificador de ataque: +5\n\n
+    Puede tratarse de cualquier truco del libro oficial, pero esta es una lista de trucos recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Taumaturgia\n
+        2 - Llama sagrada\n
+        3 - Guía\n
+        4 - Mano de mago\n
+        5 - Descarga de fuego\n
+        6 - Descarga sobrenatural (Eldritch blast)\n
+    </string>
+    <string name="spell_scroll_description_extra">Un pergamino de conjuro contiene las palabras de un único
+conjuro, escritas usando un código mágico. Puedes gastar una acción para leer el pergamino y lanzar el conjuro.
+        Una vez lanzado, las palabras escritas en el pergamino desaparecen y el propio pergamino se deshace, convertido en polvo.
+        Si el lanzamiento queda interrumpido, el pergamino no se pierde.</string>
+
+    <string name="spell_scroll_lvl_1">Pergamino de conjuro (Nivel 1)</string>
+    <string name="spell_scroll_lvl_1_description">Contiene un conjuro de nivel 1 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 13\n\n
+    Bonificador de ataque: +5\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Armadura de mago\n
+        2 - Orbe cromático\n
+        3 - Curar heridas\n
+        4 - Proyectil mágico\n
+        5 - Detectar magia\n
+        6 - Escudo\n
+    </string>
+
+    <string name="spell_scroll_lvl_2">Pergamino de conjuro (Nivel 2)</string>
+    <string name="spell_scroll_lvl_2_description">Contiene un conjuro de nivel 2 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 13\n\n
+    Bonificador de ataque: +5\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Rayo abrasador\n
+        2 - Restablecimiento menor\n
+        3 - Inmovilizar persona\n
+        4 - Imagen múltiple\n
+        5 - Paso brumoso\n
+        6 - Invisibilidad\n
+    </string>
+
+    <string name="spell_scroll_lvl_3">Pergamino de conjuro (Nivel 3)</string>
+    <string name="spell_scroll_lvl_3_description">Contiene un conjuro de nivel 3 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 15\n\n
+    Bonificador de ataque: +7\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Relámpago\n
+        2 - Hablar con los muertos\n
+        3 - Volar\n
+        4 - Bola de fuego\n
+        5 - Contrahechizo\n
+        6 - Revivir\n
+    </string>
+
+    <string name="spell_scroll_lvl_4">Pergamino de conjuro (Nivel 4)</string>
+    <string name="spell_scroll_lvl_4_description">Contiene un conjuro de nivel 4 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 15\n\n
+    Bonificador de ataque: +7\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Tormenta de hielo\n
+        2 - Piel pétrea\n
+        3 - Libertad de movimiento\n
+        4 - Polimorfar\n
+        5 - Invisibilidad mejorada\n
+        6 - Puerta dimensional\n
+    </string>
+
+    <string name="spell_scroll_lvl_5">Pergamino de conjuro (Nivel 5)</string>
+    <string name="spell_scroll_lvl_5_description">Contiene un conjuro de nivel 5 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 17\n\n
+    Bonificador de ataque: +9\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Círculo de poder\n
+        2 - Conjurar elemental\n
+        3 - Inmobilizar monstruo\n
+        4 - Curar heridas en masa\n
+        5 - Nube aniquiladora\n
+        6 - Muro de fuerza\n
+    </string>
+
+    <string name="spell_scroll_lvl_6">Pergamino de conjuro (Nivel 6)</string>
+    <string name="spell_scroll_lvl_6_description">Contiene un conjuro de nivel 6 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 17\n\n
+    Bonificador de ataque: +9\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Visión veraz\n
+        2 - Relámpago en cadena\n
+        3 - Rayo solar\n
+        4 - Curar\n
+        5 - Globo de invulnerabilidad\n
+        6 - Desintegrar\n
+    </string>
+
+    <string name="spell_scroll_lvl_7">Pergamino de conjuro (Nivel 7)</string>
+    <string name="spell_scroll_lvl_7_description">Contiene un conjuro de nivel 7 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 18\n\n
+    Bonificador de ataque: +10\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Bola de fuego de explosión retardada\n
+        2 - Conjurar celestial\n
+        3 - Espada de Mordenkainen\n
+        4 - Invertir la gravedad\n
+        5 - Dedo de la muerte\n
+        6 - Regenerar\n
+    </string>
+
+    <string name="spell_scroll_lvl_8">Pergamino de conjuro (Nivel 8)</string>
+    <string name="spell_scroll_lvl_8_description">Contiene un conjuro de nivel 8 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 18\n\n
+    Bonificador de ataque: +10\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Terremoto\n
+        2 - Palabra de poder: aturdir\n
+        3 - Campo antimagia\n
+        4 - Explosión solar\n
+        5 - Mente en blanco\n
+        6 - Dominar monstruo\n
+    </string>
+
+    <string name="spell_scroll_lvl_9">Pergamino de conjuro (Nivel 9)</string>
+    <string name="spell_scroll_lvl_9_description">Contiene un conjuro de nivel 9 de la lista de conjuros del manual de jugador.\n\n
+    CD de salvación: 19\n\n
+    Bonificador de ataque: +11\n\n
+    Puede tratarse de cualquier conjuro del libro oficial, pero esta es una lista de conjuros recomendados que se puede usar a elección o tirando 1d6:\n\n
+        1 - Curar en masa\n
+        2 - Palabra de poder: matar\n
+        3 - Parar el tiempo\n
+        4 - Tormenta de meteoritos\n
+        5 - Presagio\n
+        6 - Deseo\n
+    </string>
+
+    <string name="driftglove">Globo flotante</string>
+    <string name="driftglove_description">Si estás a 60 pies o menos de esta esfera, puedes pronunciar su palabra de
+activación y hacer que emane luz como con los conjuros \'luz\' o \'luz del día\'. Esta propiedad no puede volver a usarse hasta el
+siguiente amanecer.\n
+Puedes utilizar una acción para pronunciar otra palabra de activación y conseguir que el globo iluminado se eleve en
+el aire y flote a como mucho 1 pie del suelo. Levitará de esta manera hasta que tú u otra criatura lo agarréis. Si te alejas
+más de 60 pies del globo, te seguirá para permanecer a esa distancia. Lo hará siguiendo el camino más directo.
+        Si se le impide moverse, el globo descenderá suavemente hasta el suelo, quedando inactivo y apagándose su luz.</string>
+
+    <string name="potion_of_fire_breath">Poción de aliento de fuego</string>
+    <string name="potion_of_fire_breath_description">Después de beber esta poción, puedes usar una acción adicional
+para exhalar un aliento de fuego contra un objetivo que se encuentre a 30 pies o menos de ti. El objetivo deberá
+hacer una tirada de salvación de Destreza CD 13, sufriendo 4d6 de daño de fuego si la falla, o la mitad de ese daño si la
+supera. El efecto termina cuando emplees el aliento de fuego tres veces o pase una hora.</string>
+    <string name="potion_of_fire_breath_description_extra">El frasco de la poción contiene un líquido naranja titilante
+y un poco de humo, que flota cada vez que se abre el frasco.</string>
+
+    <string name="potion_of_resistance">Poción de resistencia</string>
+    <string name="potion_of_resistance_description">Cuando bebes esta poción, ganas resistencia a un tipo de
+daño durante 1 hora. El DM elige el tipo o lo determina al azar de entre las opciones siguientes tirando 1d10:\n\n
+    1 - Ácido\n
+    2 - Frío\n
+    3 - Fuego\n
+    4 - Fuerza\n
+    5 - Relámpago\n
+    6 - Necrótico\n
+    7 - Veneno\n
+    8 - Psíquico\n
+    9 - Radiante\n
+    10 - Trueno\n
+    </string>
+
+    <string name="ammunition_1">Munición +1</string>
+    <string name="ammunition_description">Puede ser usado como flecha o birote.\nTienes un bonificador a las tiradas de ataque y de daño que
+hagas con esta unidad de munición mágica. El bonificador depende de la rareza de la munición y es el que
+        aparece en el nombre. Una vez usada, la munición dejará de ser mágica.
+    </string>
+
+    <string name="ammunition_2">Munición +2</string>
+    <string name="ammunition_3">Munición +3</string>
+
+    <string name="arrow_of_acid">Munición de ácido</string>
+    <string name="arrow_of_acid_description">Puede usarse como flecha o virote.\nAl impactar, explota en una lluvia de ácido,
+infligiendo el daño de tu arma a distancia + 2d4 de daño por ácido. El objetivo deberá hacer una tirada de salvación de Constitución (CD 12).
+Si falla, sufrirá un penalizador de -2 a la CA durante un turno.\nAlternativamente, puede usarse como un ataque
+en área, realizando una tirada con dificultad CD 10. En caso de éxito, el ácido cubre una superficie de 7 pies de radio,
+y todo el que se encuentre dentro sufrirá un penalizador de -2 a la CA hasta que salga de la zona afectada.
+    </string>
+    <string name="arrow_of_acid_description_extra">Corroe y desfigura todo lo que toca.</string>
+
+    <string name="arrow_of_fire">Munición de fuego</string>
+    <string name="arrow_of_fire_description">Puede usarse como flecha o virote.\nAl impactar, libera una explosión de fuego,
+infligiendo el daño de tu arma a distancia + 2d4 de daño por fuego. El objetivo deberá hacer una tirada de salvación de Constitución (CD 12).
+Si falla, comenzará a arder y recibirá 1d4 de daño por fuego al inicio de cada uno de sus turnos hasta que las llamas se extingan.\n
+Alternativamente, se puede usar disparando a una superficie inflamable, realizando una tirada con dificultad CD 10. En caso de éxito, dicha superficie
+y todo el que se encuentre dentro comenzará a arder, recibiendo 1d4 de daño por fuego al inicio de cada uno de sus turnos hasta que el fuego se extinga.
+        Una criatura puede usar su acción para hacer una prueba de Destreza CD 10 y extinguir las llamas. Si tiene éxito, el daño desaparece.
+    </string>
+    <string name="arrow_of_fire_description_extra">Aunque no irradia calor, la punta de esta flecha chamuscará cualquier carne que toque.</string>
+
+    <string name="arrow_of_ice">Munición de hielo</string>
+    <string name="arrow_of_ice_description">
+Puede usarse como flecha o virote.\nAl impactar, libera una explosión de hielo,
+infligiendo el daño de tu arma a distancia + 2d4 de daño por hielo. El objetivo deberá hacer una tirada de salvación de Constitución (CD 12).
+Si falla, sufrirá un penalizador de -2 en sus tiradas de ataque y su velocidad se reducirá a la mitad durante un turno.\n
+Alternativamente, puede usarse como un ataque en área, realizando una tirada con dificultad CD 10. En caso de éxito, el hielo cubre una superficie de 7 pies de radio.
+Dicho hielo actuará como terreno difícil, y los que caminen sobre él deberán hacer una tirada de salvación de Destreza (CD 12) o caerán al suelo (derribados).
+</string>
+    <string name="arrow_of_ice_description_extra">Vapor se arremolina en la punta de la flecha como el aliento en un día de invierno.</string>
+
+    <string name="arrow_of_lightning">Munición de relámpago</string>
+    <string name="arrow_of_lightning_description">
+Puede usarse como flecha o virote.\nAl impactar, libera una explosión de relámpago,
+infligiendo el daño de tu arma a distancia + 2d4 de daño por relámpago. Este daño adicional provocará un efecto en cadena
+a los objetivos que se encuentren a 7 pies o menos de distancia entre sí.
+</string>
+    <string name="arrow_of_lightning_description_extra">Pequeños hilos de electricidad recorren la punta de la flecha en cuanto se coloca en la cuerda del arco.</string>
+
+    <string name="stunning_ammunition">Munición aturdidora</string>
+    <string name="stunning_ammunition_description">
+        Puede usarse como flecha o virote.\nEste tipo de munición está equipada con una punta redondeada y pesada que inflige daño contundente en lugar de perforante.
+    Está diseñada para derribar a los enemigos sin matarlos. Si una criatura es reducida a 0 puntos de golpe por esta munición, queda inconsciente en vez de morir.\n
+    Los no \'muertos\' y \'constructos\' son inmunes a este efecto (pero aún reciben el daño).\nEsta munición tiende a romperse al usarse.
+</string>
+    <string name="stunning_ammunition_description_extra">Cada proyectil termina en una punta redondeada, con un núcleo de plomo recubierto en cuero endurecido.
+        El acabado es opaco y pesado, sin filo alguno, y el vástago muestra marcas de uso y una ligera pátina aceitosa.
+        Al impactar, la punta aplasta y aturde en lugar de perforar: un golpe destinado a derribar, no a matar.\n
+    Es una versión mejorada de la munición usada en campos de entrenamiento, que suele hacer la mitad del daño.</string>
+
+    <string name="alchemist_fire">Fuego de alquimista</string>
+    <string name="alchemist_fire_description">Como acción, puedes lanzar este frasco hasta una distancia de 30 pies, o hasta 60 con desventaja, haciendo que se rompa en el impacto.\n
+        En caso de lanzar el objeto contra un objetivo específico, haz una tirada de ataque a distancia contra la criatura
+        considerando el fuego de alquimista un arma improvisada. En caso de éxito, el objetivo recibe 2d6 puntos de daño de fuego al impactar y 1d6 adicional
+        al principio de cada uno de sus turnos hasta que el fuego se haya extinguido.\nEn caso de usarlo como un ataque en area, haz una tirada de CD 10.
+        En caso de éxito, el fuego cubre una superficie de 10 pies de radio. Los objetivos afectados tienen que hacer una tirada de salvación de Destreza CD 13,
+        si no la superan reciben 1d4 de daño de fuego. Independientemente de si han pasado la tirada, los objetivos empezarán a arder y recibirán
+        1d4 de daño de fuego al principio de cada uno de sus turnos hasta que el fuego sea extinguido.\n
+        Una criatura puede usar su acción para hacer una prueba de Destreza CD 10 y extinguir las llamas. Si tiene éxito, el daño desaparece.</string>
+    <string name="alchemist_fire_description_extra">Formas giran y brillan tras el cristal, ascuas líquidas que se pliegan unas dentro de otras.\n
+    Este fluido pegajoso y adhesivo arde cuando está expuesto al aire.</string>
+
+    <string name="potion_of_animal_friendship">Poción de amistad animal</string>
+    <string name="potion_of_animal_friendship_description">Después de beber esta poción podrás lanzar el conjuro
+encantar animal (tirada de salvación CD 13) a voluntad durante 1 hora.</string>
+    <string name="potion_of_animal_friendship_description_extra">Agitar este líquido turbio permite ver diferentes
+trocitos: una escama de pez, una lengua de colibrí, una garra de gato o un pelo de ardilla.</string>
+
+    <string name="potion_of_hill_giant_strength">Poción de fuerza de gigante de las colinas</string>
+    <string name="potion_of_hill_giant_strength_description">Cuando bebes esta poción, tu puntuación de Fuerza cambia a 21
+durante 1 hora. No tendrá ningún efecto si tu Fuerza es igual o superior a la que proporciona la poción.</string>
+    <string name="potion_of_giant_strength_description_extra">El líquido de esta poción es transparente, con un pequeño
+trocito de uña de un gigante del tipo adecuado.</string>
+
+    <string name="potion_of_frost_stone_giant_strength">Poción de fuerza de gigante de escarcha/piedra</string>
+    <string name="potion_of_frost_stone_giant_strength_description">Cuando bebes esta poción, tu puntuación de Fuerza cambia a 23
+durante 1 hora. No tendrá ningún efecto si tu Fuerza es igual o superior a la que proporciona la poción.</string>
+
+    <string name="potion_of_fire_giant_strength">Poción de fuerza de gigante de fuego</string>
+    <string name="potion_of_fire_giant_strength_description">Cuando bebes esta poción, tu puntuación de Fuerza cambia a 25
+durante 1 hora. No tendrá ningún efecto si tu Fuerza es igual o superior a la que proporciona la poción.</string>
+
+    <string name="potion_of_cloud_giant_strength">Poción de fuerza de gigante de las nubes</string>
+    <string name="potion_of_cloud_giant_strength_description">Cuando bebes esta poción, tu puntuación de Fuerza cambia a 27
+durante 1 hora. No tendrá ningún efecto si tu Fuerza es igual o superior a la que proporciona la poción.</string>
+
+    <string name="potion_of_storm_giant_strength">Poción de fuerza de gigante de las tormentas</string>
+    <string name="potion_of_storm_giant_strength_description">Cuando bebes esta poción, tu puntuación de Fuerza cambia a 29
+durante 1 hora. No tendrá ningún efecto si tu Fuerza es igual o superior a la que proporciona la poción.</string>
+
+    <string name="potion_of_growth">Poción de crecimiento</string>
+    <string name="potion_of_growth_description">Cuando bebes esta poción obtienes el efecto de "agrandar"
+del conjuro \'agrandar/reducir\' durante ld4 horas (no requiere concentración).</string>
+    <string name="potion_of_growth_description_extra">En el recipiente, el rojo de la poción se
+expande continuamente para teñir el líquido a su alrededor, contrayéndose después hasta una pequeña gota. Agitar la
+botella no perturba este proceso.</string>
+
+    <string name="potion_of_water_breathing">Poción de respirar bajo el agua</string>
+    <string name="potion_of_water_breathing_description">Puedes respirar debajo del agua durante 1 hora tras beber esta poción.</string>
+    <string name="potion_of_water_breathing_description_extra">Se trata de un fluido verde turbio que huele a
+mar y en el que flota una burbuja en forma de medusa.</string>
+
+    <string name="oil_of_slipperiness">Aceite escurridizo</string>
+    <string name="oil_of_slipperiness_description">
+    El aceite puede cubrir completamente a una criatura Mediana o más
+    pequeña, así como el equipo que vista y cargue. Es necesario un vial adicional por cada categoría de tamaño por encima
+    de Mediano. Se tarda 10 minutos en aplicarlo. La criatura afectada gana los efectos del conjuro \'libertad de movimiento\'
+    durante 8 horas.\nDe forma alternativa, puede utilizarse una acción para derramar el contenido del frasco, cubriendo una zona de
+    10 por 10 pies de aceite y replicando los efectos del conjuro \'grasa\' durante 8 horas.</string>
+<!--    <string name="oil_of_slipperiness_description"><![CDATA[-->
+<!--    El aceite puede cubrir completamente a una criatura Mediana o más-->
+<!--    pequeña, así como el equipo que vista y cargue. Es necesario un vial adicional por cada categoría de tamaño por encima-->
+<!--    de Mediano. Se tarda 10 minutos en aplicarlo. La criatura afectada gana los efectos del conjuro <i>libertad de movimiento</i>-->
+<!--    durante 8 horas.\nDe forma alternativa, puede utilizarse una acción para derramar el contenido del frasco, cubriendo una zona de-->
+<!--    10 por 10 pies de aceite y replicando los efectos del conjuro <i>grasa</i> durante 8 horas.-->
+<!--    ]]>-->
+<!--    </string>-->
+    <string name="oil_of_slipperiness_description_extra">Este ungüento negro y pegajoso parece denso y pesado dentro
+del recipiente, pero fluye rápidamente al verterlo.</string>
+
+    <string name="dust_of_disappearance">Polvo de desaparición</string>
+    <string name="dust_of_disappearance_description">Hay suficiente para un solo uso. Cuando empleas una acción para esparcir el polvo, tú y cada criatura
+y objeto que se encuentre a 10 pies o menos de ti os volvéis invisibles durante 2d4 minutos. La duración es la misma para todos los afectados, y el polvo es consumido
+cuando la magia tiene efecto.\nSi una criatura afectada por el polvo ataca o lanza un conjuro, la invisibilidad termina para esa criatura.</string>
+    <string name="dust_of_disappearance_description_extra">Este polvo, que se encuentra en pequeños paquetes, parece
+arena muy fina.</string>
+
+    <string name="dust_of_sneezing_and_choking">Polvo de estornudar y atragantarse</string>
+    <string name="dust_of_sneezing_and_choking_description">Hay suficiente para un solo uso. Cuando uses tu acción para esparcir un puñado de polvo,
+todas las criaturas que necesiten respirar que se encuentren a 30 pies o menos, incluyéndote a ti, deberéis tener
+éxito en una tirada de salvación de Constitución CD 15 o seréis incapaces de respirar mientras estornudáis incontrolablemente.
+Una criatura afectada de esta manera estará incapacitada y ahogándose. Mientras permanezca consciente, podrá repetir la tirada de salvación al final de cada
+uno de sus turnos, terminando el efecto si tiene éxito. El conjuro \'restablecimiento menor\' también es capaz de terminar con este efecto.\n
+    Aparentemente, se trata de \'polvo de desaparición\', y un conjuro de \'identificar\' así lo señalará.</string>
+    <string name="dust_of_sneezing_and_choking_description_extra">Este polvo, que se encuentra en un pequeño recipiente,
+parece arena muy fina.</string>
+
+    <string name="elemental_gem_red_corundum">Gema elemental - Corindón rojo</string>
+    <string name="elemental_gem_red_corundum_description">Cuando usas una acción para romperla, un elemental de fuego es invocado
+como si hubieras lanzado \'conjurar elemental\', y la magia de la gema se pierde.</string>
+    <string name="elemental_gem_red_corundum_description_extra">Esta gema contiene una mota de energía elemental de fuego.</string>
+
+    <string name="elemental_gem_yellow_diamond">Gema elemental - Diamante amarillo</string>
+    <string name="elemental_gem_yellow_diamond_description">Cuando usas una acción para romperla, un elemental de tierra es invocado
+como si hubieras lanzado \'conjurar elemental\', y la magia de la gema se pierde.</string>
+    <string name="elemental_gem_yellow_diamond_description_extra">Esta gema contiene una mota de energía elemental de tierra.</string>
+
+    <string name="elemental_gem_blue_sapphire">Gema elemental - Zafiro azul</string>
+    <string name="elemental_gem_blue_sapphire_description">Cuando usas una acción para romperla, un elemental de aire es invocado
+como si hubieras lanzado \'conjurar elemental\', y la magia de la gema se pierde.</string>
+    <string name="elemental_gem_blue_sapphire_description_extra">Esta gema contiene una mota de energía elemental de aire.</string>
+
+    <string name="elemental_gem_emerald">Gema elemental - Esmeralda</string>
+    <string name="elemental_gem_emerald_description">Cuando usas una acción para romperla, un elemental de agua es invocado
+como si hubieras lanzado \'conjurar elemental\', y la magia de la gema se pierde.</string>
+    <string name="elemental_gem_emerald_description_extra">Esta gema contiene una mota de energía elemental de agua.</string>
+
+    <string name="philter_of_love">Filtro de amor</string>
+    <string name="philter_of_love_description">Quedas hechizado durante una hora de la próxima criatura que veas en los 10 minutos posteriores a beber este filtro.
+Si la criatura es de un género y especie que normalmente te atraería, la considerarás tu amor verdadero mientras permanezcas hechizado.</string>
+    <string name="philter_of_love_description_extra">El líquido efervescente y de tonalidad rosa de esta poción contiene una burbuja, difícil de encontrar, con
+forma de corazón.</string>
+
+    <string name="cap_of_water_breathing">Gorro de respirar bajo el agua</string>
+    <string name="cap_of_water_breathing_description">Si estás bajo el agua y llevas puesto este gorro, puedes
+emplear una acción para pronunciar su palabra de activación y crear una burbuja de aire alrededor de tu cabeza. Te permitirá
+respirar bajo el agua de forma normal. La burbuja se mantendrá contigo hasta que vuelvas a pronunciar la palabra de
+activación, te quites el gorro o ya no te encuentres bajo el agua.</string>
+
+    <string name="cloak_of_the_manta_ray">Capa de la mantarraya</string>
+    <string name="cloak_of_the_manta_ray_description">Siempre que lleves esta capa con la capucha puesta podrás
+respirar bajo el agua y poseerás una velocidad nadando de 60 pies. Es necesaria una acción para ponerte o quitarte la capucha.</string>
+
+    <string name="goggles_of_night">Anteojos de la noche</string>
+    <string name="goggles_of_night_description">Mientras lleves estas lentes oscuras, tienes visión en la oscuridad hasta 60 pies. Si ya posees visión en la oscuridad,
+estos anteojos aumentan su alcance en 60 pies.</string>
+
+    <string name="helm_of_comprehending_languages">Yelmo de entender idiomas</string>
+    <string name="helm_of_comprehending_languages_description">Mientras lleves este yelmo, puedes utilizar una acción para
+lanzar a voluntad el conjuro \'entender idiomas\'.</string>
+
+    <string name="mithral_armor">Armadura de mithral</string>
+    <string name="mithral_armor_description">Cualquier armadura media (menos la de pieles) o pesada puede ser de mithral.\n
+        Si la armadura normalmente causaba desventaja en pruebas de Destreza (Sigilo) o tenía un requisito de Fuerza, la versión de
+mithral no lo hace.\nEl valor de la armadura es el de la armadura normal en cuestión + 800 po.</string>
+    <string name="mithral_armor_description_extra">El mithral es un metal flexible y ligero.</string>
+
+    <string name="potion_of_poison">Poción de veneno</string>
+    <string name="potion_of_poison_description">Si la bebes, recibirás 3d6 de daño de veneno y deberás
+tener éxito en una tirada de salvación de Constitución CD 18 o quedarás envenenado. Mientras estés envenenado
+de esta forma, sufrirás 3d6 de daño de veneno al principio de cada uno de tus turnos. Puedes hacer una tirada de salvación
+de Constitución CD 13 al final de cada uno de tus turnos. Si tienes éxito, el daño de
+veneno que recibes en los próximos turnos se reduce en 1d6. El veneno acaba cuando el daño se reduce a O.</string>
+    <string name="potion_of_poison_description_extra">Este mejunje parece, huele y sabe como una poción de
+curación o cualquier otra poción beneficiosa. No obstante, en realidad es un veneno enmascarado con magia
+de ilusionismo. El conjuro \'identificar\' revelará su verdadera naturaleza.</string>
+
+    <string name="antidote">Antídoto</string>
+    <string name="antidote_description">Si lo bebes, neutraliza todos los venenos.</string>
+    <string name="antidote_description_extra">Esta mezcla parece más bien masticable, de lo espesa que es con hierbas y raíces.</string>
+
+    <string name="ring_of_swimming">Anillo de natación</string>
+    <string name="ring_of_swimming_description">Posees una velocidad nadando de 40 pies mientras lleves
+este anillo puesto.</string>
+
+    <string name="saddle_of_the_cavalier">Silla de monta del cavallero</string>
+    <string name="saddle_of_the_cavalier_description">Mientras estés subido a esta silla en una montura, no puedes
+ser desmontado contra tu voluntad si estás consciente y, además, los ataques realizados contra la montura tienen
+desventaja.</string>
+
+    <string name="wand_of_magic_detection">Varita de detección mágica</string>
+    <string name="wand_of_magic_detection_description">Mientras la empuñes, una vez al día puedes utilizar una acción y lanzar el conjuro
+\'detectar magia\' desde ella. La varita se puede volver a usar al amanecer.</string>
+
+    <string name="wand_of_secrets">Varita de secretos</string>
+    <string name="wand_of_secrets_description">Mientras la empuñes, una vez al día, puedes usar una acción y, si hay alguna
+trampa o puerta secreta situada a 30 pies o menos de ti, la varita vibrará y apuntará a la más cercana. La varita se puede volver a usar al amanecer.</string>
+
+    <string name="potion_of_diminution">Poción de encoger</string>
+    <string name="potion_of_diminution_description">Cuando bebes esta poción obtienes el efecto de "reducir" del
+conjuro \'agrandar/reducir\' durante 1d4 horas (no requiere concentración).</string>
+    <string name="potion_of_diminution_description_extra">En el recipiente, el rojo de la poción se contrae continuamente hasta una pequeña gota, expandiéndose después
+para teñir el líquido a su alrededor. Agitar la botella no perturba este proceso.</string>
+
+    <string name="potion_of_gaseous_form">Poción de forma gaseosa</string>
+    <string name="potion_of_gaseous_form_description">Cuando bebes esta poción obtienes el efecto del conjuro
+\'forma gaseosa\' durante 1 hora (no requiere concentración) o hasta que lo des por terminado utilizando una acción adicional.</string>
+    <string name="potion_of_gaseous_form_description_extra">El frasco parece contener una niebla que se mueve y
+derrama como si fuera agua.</string>
+
+    <string name="potion_of_heroism">Poción de heroismo</string>
+    <string name="potion_of_heroism_description">Cuando bebes esta poción obtienes 10 puntos de golpe temporales que duran 1 hora. Durante ese
+periodo también estarás bajo los efectos del conjuro \'bendición\' (no requiere concentración).</string>
+    <string name="potion_of_heroism_description_extra">Esta poción azul burbujea y se evapora como si estuviera hirviendo.</string>
+
+    <string name="potion_of_invulnerability">Poción de invulnerabilidad</string>
+    <string name="potion_of_invulnerability_description">Durante 1 minuto después de beber esta poción, tienes resistencia
+a todos los tipos de daño.</string>
+    <string name="potion_of_invulnerability_description_extra">El líquido espeso, como sirope, de esta poción parece hierro líquido.</string>
+
+    <string name="potion_of_mind_reading">Poción de leer mentes</string>
+    <string name="potion_of_mind_reading_description">Cuando bebes esta poción, ganas el efecto del conjuro \'detectar
+pensamientos\' (tirada de salvación CD 13) durante 1 hora.</string>
+    <string name="potion_of_mind_reading_description_extra">El líquido denso y púrpura de esta poción tiene una nube rosa ovoide flotando encima.</string>
+
+    <string name="elixir_of_health">Elixir de salud</string>
+    <string name="elixir_of_health_description">Cuando bebes esta poción, te curas de cualquier enfermedad
+que te aflija y dejas de sufrir los estados \"cegado\", \"ensordecido\", \"envenenado\" y \"paralizado\".</string>
+    <string name="elixir_of_health_description_extra">En el líquido rojo claro albergado en el frasco pueden verse pequeñas burbujas de luz.</string>
+
+    <string name="bead_of_force">Canica de fuerza</string>
+    <string name="bead_of_force_description">Puedes usar una acción para tirar la canica a un punto a 60 pies o menos de distancia, haciendo una tirada de Destreza CD 10. Explota al impactar y
+queda destruida.\nCada criatura que se encuentre en un radio de 10 pies del lugar de impacto deberá tener éxito en una prueba de salvación
+de Destreza CD 15 o recibirá 5d4 de daño de fuerza. Las criaturas que hayan superado la tirada de salvación, reciben la mitad del daño y son empujadas en dirección contraria al centro
+hasta que queden completamente fuera del área.\nCualquier criatura que haya fallado la tirada y esté totalmente dentro del área, sufrirá una reducción en su velocidad de movimiento
+        a la mitad durante 1 minuto.</string>
+    <string name="bead_of_force_description_extra">Esta pequeña esfera negra mide 3\/4 de pulgada de diámetro y pesa una onza.</string>
+
+    <string name="eyes_of_minute_seeing">Anteojos de visión minuciosa</string>
+    <string name="eyes_of_minute_seeing_description">Mientras los lleves puestos, puedes ver mucho mejor de lo normal hasta una
+distancia de 1 pie. Tienes ventaja en las pruebas de Inteligencia (Investigación) que dependan de la vista si buscas en
+un área o estudias un objeto que se encuentren a esa distancia o menos.</string>
+    <string name="eyes_of_minute_seeing_description_extra">Estas lentes de cristal cubren los ojos.</string>
+
+    <string name="horseshoes_of_speed">Herraduras de velocidad</string>
+    <string name="horseshoes_of_speed_description">Mientras cuatro de ellas estén fijadas a los cascos de un
+caballo o criatura similar, su velocidad de movimiento incrementará en 30 pies.</string>
+    <string name="horseshoes_of_speed_description_extra">Estas herraduras de hierro vienen de cuatro en cuatro.</string>
+
+    <string name="periapt_of_health">Talismán de salud</string>
+    <string name="periapt_of_health_description">Mientras llevas este colgante, eres inmune a enfermedades comunes y a ciertas enfermedades mágicas menores,
+        como la fiebre del pantano, la peste de las alcantarillas o la fiebre de la risa. Este objeto no ofrece protección contra maldiciones poderosas ni
+        aflicciones de origen divino.</string>
+
+    <string name="sending_stones">Piedras mensajeras</string>
+    <string name="sending_stones_description">Una piedra mensajera siempre está vinculada a otra. Cuando tocas una piedra, puedes usar una acción para lanzar el conjuro \'recado\' desde ella. El objetivo es el portador
+de la otra piedra. Si no hay nadie portando la otra piedra, lo sabes en cuanto empleas la piedra y no llegas a lanzar
+el conjuro.\nUna vez se ha lanzado \'recado\', el par no podrá volver a utilizarse
+hasta la mañana siguiente. Si una de las piedras de la pareja es destruida, la otra deja de ser mágica.</string>
+    <string name="sending_stones_description_extra">Estas piedras pulidas vienen en parejas, cada una de ella
+grabada de manera que su pareja es fácilmente identificable.</string>
+
+    <string name="potion_of_invisibility">Poción de invisibilidad</string>
+    <string name="potion_of_invisibility_description">Al beberla te vuelves invisible durante 1 hora. Mientras estés en ese estado, cualquier
+cosa que vistas o lleves encima será también invisible.\nEl efecto termina si atacas o lanzas un conjuro.</string>
+    <string name="potion_of_invisibility_description_extra">El frasco de esta poción parece vacío, pero al mismo tiempo
+da la impresión de tener líquido dentro.</string>
+
+    <string name="potion_of_speed">Poción de velocidad</string>
+    <string name="potion_of_speed_description">Cuando bebes esta poción obtienes el efecto del conjuro
+\'acelerar\' durante 1 minuto (no requiere concentración).</string>
+    <string name="potion_of_speed_description_extra">El líquido amarillo de este brebaje tiene vetas negras y
+forma remolinos.</string>
+
+    <string name="oil_of_sharpness">Aceite de afilado</string>
+    <string name="oil_of_sharpness_description">Puedes cubrir un arma cortante o perforante o hasta 5 unidades de munición
+cortante o perforante. Se tarda 1 minuto en aplicar este aceite. Durante 1 hora, el arma recubierta se considera
+mágica y tiene un bonificador de +3 a las tiradas de ataque y daño.</string>
+    <string name="oil_of_sharpness_description_extra">Este aceite transparente y gelatinoso brilla debido a las
+minúsculas esquirlas de plata que contiene.</string>
+
+    <string name="potion_of_flying">Poción de vuelo</string>
+    <string name="potion_of_flying_description">Beber esta poción te dota durante 1 hora de una velocidad
+volando igual a tu velocidad caminando.\nSi estás en el aire cuando el efecto de la poción termina,
+caerás a menos que tengas algún otro método para permanecer a flote.</string>
+    <string name="potion_of_flying_description_extra">El líquido de esta poción flota en la parte
+superior del frasco, surcado por impurezas blancas con forma de nubes.</string>
+
+    <string name="potion_of_vitality">Poción de vitalidad</string>
+    <string name="potion_of_vitality_description">Cuando la bebes, esta poción elimina todo el cansancio que
+sufras y te cura de cualquier enfermedad menor o veneno que te afecte. Durante las próximas 24 horas, recuperas el máximo
+    número de puntos de golpe de cualquier Dado de Golpe que utilices.</string>
+    <string name="potion_of_vitality_description_extra">El líquido carmesí de este brebaje late regularmente
+con una luz apagada, recordando a un corazón.</string>
+
+    <string name="horseshoes_of_a_zephyr">Herraduras del céfiro</string>
+    <string name="horseshoes_of_a_zephyr_description">Mientras cuatro de ellas estén fijadas a los cascos de un caballo o
+criatura similar, permitirán a esta moverse con normalidad, pero flotando 4 pulgadas sobre el suelo. Este efecto implica
+que la criatura puede cruzar o permanecer sobre superficies no sólidas o inestables, como agua o lava. Además, no deja
+huellas e ignora terreno difícil. Por último, podrá moverse a velocidad normal hasta 12 horas al día sin sufrir el cansancio
+por hacer marchas forzadas.</string>
+    <string name="horseshoes_of_a_zephyr_description_extra">Estas herraduras de hierro vienen de cuatro en cuatro.</string>
+
+    <string name="arrow_of_slaying">Flecha asesina</string>
+    <string name="arrow_of_slaying_description">Una flecha asesina es un arma mágica pensada para matar
+a un tipo concreto de criatura. Por ejemplo, hay tanto flechas asesinas de dragones como de gigantes, azotamentes, etc.\n
+Si la criatura perteneciente al tipo, raza o grupo asociado con una flecha asesina recibe daño de ella, deberá hacer una tirada
+de salvación de Constitución CD 17. Recibirá 6d10 de daño perforante adicional si falla la tirada o la mitad de ese daño
+si tiene éxito.\nEn cuanto una flecha asesina inflige su daño adicional a una criatura, se convierte en una flecha no mágica.</string>
+    <string name="arrow_of_slaying_description_extra">Existen otros tipos de municiones similares, como los
+virotes asesinos para ballestas, aunque las flechas son las más comunes.</string>
+
+    <string name="weapon_plus_1">Arma +1</string>
+    <string name="weapon_plus_1_description">Recibes un bonificador de +1 a las tiradas de ataque y de daño que
+hagas con esta arma. Cada arma tiene su propio valor (po):\n\n
+        - Alabarda +1: 700\n
+        - Cimitarra +1: 600\n
+        - Daga +1: 550\n
+        - Espada corta +1: 600\n
+        - Espada larga +1: 650\n
+        - Espadón +1: 850\n
+        - Estoque +1: 700\n
+        - Flagelo +1: 600\n
+        - Guja +1: 700\n
+        - Hacha de dos manos +1: 750\n
+        - Hacha de guerra +1: 600\n
+        - Lanza de caballería +1: 800\n
+        - Látigo +1: 600\n
+        - Lucero del alba +1: 650\n
+        - Martillo de guerra +1: 650\n
+        - Maza a dos manos +1: 800\n
+        - Pica +1: 650\n
+        - Pico de guerra +1: 650\n
+        - Tridente +1: 650\n\n
+        - Arco corto +1: 600\n
+        - Arco largo +1: 800\n
+        - Ballesta de mano +1: 650\n
+        - Ballesta ligera +1: 600\n
+        - Ballesta pesada +1: 850
+    </string>
+
+    <string name="weapon_plus_2">Arma +2</string>
+    <string name="weapon_plus_2_description">Recibes un bonificador de +2 a las tiradas de ataque y de daño que
+hagas con esta arma. Cada arma tiene su propio valor (po):\n\n
+        - Alabarda +2: 4600\n
+        - Cimitarra +2: 4300\n
+        - Daga +2: 4000\n
+        - Espada corta +2: 4300\n
+        - Espada larga +2: 4500\n
+        - Espadón +2: 5400\n
+        - Estoque +2: 4600\n
+        - Flagelo +2: 4300\n
+        - Guja +2: 4600\n
+        - Hacha de dos manos +2: 5000\n
+        - Hacha de guerra +2: 4300\n
+        - Lanza de caballería +2: 4900\n
+        - Látigo +2: 4300\n
+        - Lucero del alba +2: 4500\n
+        - Martillo de guerra +2: 5200\n
+        - Maza a dos manos +2: 4900\n
+        - Pica +2: 4500\n
+        - Pico de guerra +2: 4500\n
+        - Tridente +2: 4500\n\n
+        - Arco corto +2: 4300\n
+        - Arco largo +2: 5000\n
+        - Ballesta de mano +2: 4800\n
+        - Ballesta ligera +2: 4300\n
+        - Ballesta pesada +2: 5400
+    </string>
+
+    <string name="weapon_plus_3">Arma +3</string>
+    <string name="weapon_plus_3_description">Recibes un bonificador de +3 a las tiradas de ataque y de daño que
+hagas con esta arma. Cada arma tiene su propio valor (po):\n\n
+        - Alabarda +3: 17500\n
+        - Cimitarra +3: 16000\n
+        - Daga +3: 15000\n
+        - Espada corta +3: 16000\n
+        - Espada larga +3: 17000\n
+        - Espadón +3: 20000\n
+        - Estoque +3: 17000\n
+        - Flagelo +3: 16000\n
+        - Guja +3: 17500\n
+        - Hacha de dos manos +3: 19000\n
+        - Hacha de guerra +3: 16000\n
+        - Lanza de caballería +3: 19500\n
+        - Látigo +3: 16000\n
+        - Lucero del alba +3: 17000\n
+        - Martillo de guerra +3: 17000\n
+        - Maza a dos manos +3: 19500\n
+        - Pica +3: 17000\n
+        - Pico de guerra +3: 17000\n
+        - Tridente +3: 17000\n\n
+        - Arco corto +3: 16000\n
+        - Arco largo +3: 19000\n
+        - Ballesta de mano +3: 18000\n
+        - Ballesta ligera +3: 16000\n
+        - Ballesta pesada +3: 20000
+    </string>
+
+    <string name="shield_plus_1">Escudo +1</string>
+    <string name="shield_plus_1_description">Mientras empuñes este escudo, tienes un bonificador de +1 a la
+CA. Este bonificador se añade al bonificador a la CA normal del escudo, siendo un total de CA 3.</string>
+
+    <string name="shield_plus_2">Escudo +2</string>
+    <string name="shield_plus_2_description">Mientras empuñes este escudo, tienes un bonificador de +2 a la
+CA. Este bonificador se añade al bonificador a la CA normal del escudo, siendo un total de CA 4.</string>
+
+    <string name="shield_plus_3">Escudo +3</string>
+    <string name="shield_plus_3_description">Mientras empuñes este escudo, tienes un bonificador de +3 a la
+CA. Este bonificador se añade al bonificador a la CA normal del escudo, siendo un total de CA 5.</string>
+
+    <string name="armor_padded_plus_1">Armadura, acolchada +1</string>
+    <string name="armor_padded_plus_1_description">Esta armadura acolchada ofrece un bonificador a la CA de +1,
+        dando un total de CA 12 + bonificador por Des.\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -1 de daño contundente.</string>
+
+    <string name="armor_padded_plus_2">Armadura, acolchada +2</string>
+    <string name="armor_padded_plus_2_description">Esta armadura acolchada ofrece un bonificador a la CA de +2,
+        dando un total de CA 13 + bonificador por Des.\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -2 de daño contundente.</string>
+
+    <string name="armor_padded_plus_3">Armadura, acolchada +3</string>
+    <string name="armor_padded_plus_3_description">Esta armadura acolchada ofrece un bonificador a la CA de +3,
+        dando un total de CA 14 + bonificador por Des.\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -3 de daño contundente.</string>
+
+    <string name="armor_leather_plus_1">Armadura, cuero +1</string>
+    <string name="armor_leather_plus_1_description">Esta armadura de cuero ofrece un bonificador a la CA de +1,
+        dando un total de CA 12 + bonificador por Des.\n\n
+    · Ganas +1 en tiradas de Sigilo.</string>
+
+    <string name="armor_leather_plus_2">Armadura, cuero +2</string>
+    <string name="armor_leather_plus_2_description">Esta armadura de cuero ofrece un bonificador a la CA de +2,
+        dando un total de CA 13 + bonificador por Des.\n\n
+    · Ganas +1 en tiradas de Sigilo.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.</string>
+
+    <string name="armor_leather_plus_3">Armadura, cuero +3</string>
+    <string name="armor_leather_plus_3_description">Esta armadura de cuero ofrece un bonificador a la CA de +3,
+        dando un total de CA 14 + bonificador por Des.\n\n
+    · Ganas +2 en tiradas de Sigilo.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.</string>
+
+    <string name="armor_studded_leather_plus_1">Armadura, cuero tachonado +1</string>
+    <string name="armor_studded_leather_plus_1_description">Esta armadura de cuero tachonado ofrece un bonificador a la CA de +1,
+        dando un total de CA 13 + bonificador por Des.\n\n
+    · Recibes -1 de daño contundente.</string>
+
+    <string name="armor_studded_leather_plus_2">Armadura, cuero tachonado +2</string>
+    <string name="armor_studded_leather_plus_2_description">Esta armadura de cuero tachonado ofrece un bonificador a la CA de +2,
+        dando un total de CA 14 + bonificador por Des.\n\n
+    · Recibes -1 de daño contundente.\n
+    · Ganas +1 en tiradas de Iniciativa.</string>
+
+    <string name="armor_studded_leather_plus_3">Armadura, cuero tachonado +3</string>
+    <string name="armor_studded_leather_plus_3_description">Esta armadura de cuero tachonado ofrece un bonificador a la CA de +3,
+        dando un total de CA 15 + bonificador por Des.\n\n
+    · Recibes -2 de daño contundente.\n
+    · Ganas +1 en tiradas de Iniciativa.</string>
+
+    <string name="armor_hide_plus_1">Armadura, pieles +1</string>
+    <string name="armor_hide_plus_1_description">Esta armadura de pieles ofrece un bonificador a la CA de +1,
+        dando un total de CA 13 + bonificador por Des (máx. 2).\n\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.</string>
+
+    <string name="armor_hide_plus_2">Armadura, pieles +2</string>
+    <string name="armor_hide_plus_2_description">Esta armadura de pieles ofrece un bonificador a la CA de +2,
+        dando un total de CA 14 + bonificador por Des (máx. 2).\n\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.\n
+    · Ganas +1 en tiradas de Iniciativa.</string>
+
+    <string name="armor_hide_plus_3">Armadura, pieles +3</string>
+    <string name="armor_hide_plus_3_description">Esta armadura de pieles ofrece un bonificador a la CA de +3,
+        dando un total de CA 15 + bonificador por Des (máx. 2).\n\n
+    · Ganas +2 en tiradas de habilidad y tiradas de salvación de Destreza.\n
+    · Ganas +1 en tiradas de Iniciativa.</string>
+
+    <string name="armor_chain_shirt_plus_1">Armadura, camisa de malla +1</string>
+    <string name="armor_chain_shirt_plus_1_description">Esta camisa de malla ofrece un bonificador a la CA de +1,
+        dando un total de CA 14 + bonificador por Des (máx. 2).\n\n
+    · Recibes -1 de daño cortante.</string>
+
+    <string name="armor_chain_shirt_plus_2">Armadura, camisa de malla +2</string>
+    <string name="armor_chain_shirt_plus_2_description">Esta camisa de malla ofrece un bonificador a la CA de +2,
+        dando un total de CA 15 + bonificador por Des (máx. 2).\n\n
+    · Recibes -1 de daño cortante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.</string>
+
+    <string name="armor_chain_shirt_plus_3">Armadura, camisa de malla +3</string>
+    <string name="armor_chain_shirt_plus_3_description">Esta camisa de malla ofrece un bonificador a la CA de +3,
+        dando un total de CA 16 + bonificador por Des (máx. 2).\n\n
+    · Recibes -2 de daño cortante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.</string>
+
+    <string name="armor_scale_mail_plus_1">Armadura, cota de escamas +1</string>
+    <string name="armor_scale_mail_plus_1_description">Esta cota de escamas ofrece un bonificador a la CA de +1,
+        dando un total de CA 15 + bonificador por Des (máx. 2).\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -1 de daño cortante.</string>
+
+    <string name="armor_scale_mail_plus_2">Armadura, cota de escamas +2</string>
+    <string name="armor_scale_mail_plus_2_description">Esta cota de escamas ofrece un bonificador a la CA de +2,
+        dando un total de CA 16 + bonificador por Des (máx. 2).\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -1 de daño cortante.\n
+    · Ganas +1 en tiradas de Iniciativa.</string>
+
+    <string name="armor_scale_mail_plus_3">Armadura, cota de escamas +3</string>
+    <string name="armor_scale_mail_plus_3_description">Esta cota de escamas ofrece un bonificador a la CA de +3,
+        dando un total de CA 17 + bonificador por Des (máx. 2).\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -2 de daño cortante.\n
+    · Ganas +1 en tiradas de Iniciativa.</string>
+
+    <string name="armor_breastplate_plus_1">Armadura, coraza +1</string>
+    <string name="armor_breastplate_plus_1_description">Esta coraza ofrece un bonificador a la CA de +1,
+        dando un total de CA 15 + bonificador por Des (máx. 2).\n\n
+    · Recibes -1 de daño perforante.</string>
+
+    <string name="armor_breastplate_plus_2">Armadura, coraza +2</string>
+    <string name="armor_breastplate_plus_2_description">Esta coraza ofrece un bonificador a la CA de +2,
+        dando un total de CA 16 + bonificador por Des (máx. 2).\n\n
+    · Recibes -1 de daño perforante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.</string>
+
+    <string name="armor_breastplate_plus_3">Armadura, coraza +3</string>
+    <string name="armor_breastplate_plus_3_description">Esta coraza ofrece un bonificador a la CA de +3,
+        dando un total de CA 17 + bonificador por Des (máx. 2).\n\n
+    · Recibes -2 de daño perforante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.</string>
+
+    <string name="armor_half_plate_plus_1">Armadura, media armadura +1</string>
+    <string name="armor_half_plate_plus_1_description">Esta media armadura ofrece un bonificador a la CA de +1,
+        dando un total de CA 16 + bonificador por Des (máx. 2).\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -1 de daño perforante.</string>
+
+    <string name="armor_half_plate_plus_2">Armadura, media armadura +2</string>
+    <string name="armor_half_plate_plus_2_description">Esta media armadura ofrece un bonificador a la CA de +2,
+        dando un total de CA 17 + bonificador por Des (máx. 2).\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -2 de daño perforante.</string>
+
+    <string name="armor_half_plate_plus_3">Armadura, media armadura +3</string>
+    <string name="armor_half_plate_plus_3_description">Esta media armadura ofrece un bonificador a la CA de +3,
+        dando un total de CA 18 + bonificador por Des (máx. 2).\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -3 de daño perforante.</string>
+
+    <string name="armor_ring_mail_plus_1">Armadura, cota guarnecida +1</string>
+    <string name="armor_ring_mail_plus_1_description">Esta cota guarnecida ofrece un bonificador a la CA de +1,
+        dando un total de CA 15.\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Fuerza.</string>
+
+    <string name="armor_ring_mail_plus_2">Armadura, cota guarnecida +2</string>
+    <string name="armor_ring_mail_plus_2_description">Esta cota guarnecida ofrece un bonificador a la CA de +2,
+        dando un total de CA 16.\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -1 de daño cortante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Fuerza.</string>
+
+    <string name="armor_ring_mail_plus_3">Armadura, cota guarnecida +3</string>
+    <string name="armor_ring_mail_plus_3_description">Esta cota guarnecida ofrece un bonificador a la CA de +3,
+        dando un total de CA 17.\nOtorga Desventaja en las tiradas de sigilo.\n\n
+    · Recibes -2 de daño cortante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Fuerza.</string>
+
+    <string name="armor_chain_mail_plus_1">Armadura, cota de malla +1</string>
+    <string name="armor_chain_mail_plus_1_description">Esta cota de malla ofrece un bonificador a la CA de +1,
+        dando un total de CA 17.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 13 para equiparla.\n\n
+    · Recibes -1 de daño cortante.</string>
+
+    <string name="armor_chain_mail_plus_2">Armadura, cota de malla +2</string>
+    <string name="armor_chain_mail_plus_2_description">Esta cota de malla ofrece un bonificador a la CA de +2,
+        dando un total de CA 18.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 13 para equiparla.\n\n
+    · Recibes -2 de daño cortante.</string>
+
+    <string name="armor_chain_mail_plus_3">Armadura, cota de malla +3</string>
+    <string name="armor_chain_mail_plus_3_description">Esta cota de malla ofrece un bonificador a la CA de +3,
+        dando un total de CA 19.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 13 para equiparla.\n\n
+    · Recibes -3 de daño cortante.</string>
+
+    <string name="armor_splint_plus_1">Armadura, bandas +1</string>
+    <string name="armor_splint_plus_1_description">Esta armadura de bandas ofrece un bonificador a la CA de +1,
+        dando un total de CA 18.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 15 para equiparla.\n\n
+    · Recibes -1 de daño perforante.</string>
+
+    <string name="armor_splint_plus_2">Armadura, bandas +2</string>
+    <string name="armor_splint_plus_2_description">Esta armadura de bandas ofrece un bonificador a la CA de +2,
+        dando un total de CA 19.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 15 para equiparla.\n\n
+    · Recibes -1 de daño perforante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Fuerza.</string>
+
+    <string name="armor_splint_plus_3">Armadura, bandas +3</string>
+    <string name="armor_splint_plus_3_description">Esta armadura de bandas ofrece un bonificador a la CA de +3,
+        dando un total de CA 20.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 15 para equiparla.\n\n
+    · Recibes -2 de daño perforante.\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Fuerza.</string>
+
+    <string name="armor_plate_plus_1">Armadura, placas +1</string>
+    <string name="armor_plate_plus_1_description">Esta armadura de placas ofrece un bonificador a la CA de +1,
+        dando un total de CA 19.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 15 para equiparla.\n\n
+    · Recibes -1 de daño perforante.</string>
+
+    <string name="armor_plate_plus_2">Armadura, placas +2</string>
+    <string name="armor_plate_plus_2_description">Esta armadura de placas ofrece un bonificador a la CA de +2,
+        dando un total de CA 20.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 15 para equiparla.\n\n
+    · Recibes -2 de daño cortante, perforante y contundente.</string>
+
+    <string name="armor_plate_plus_3">Armadura, placas +3</string>
+    <string name="armor_plate_plus_3_description">Esta armadura de placas ofrece un bonificador a la CA de +3,
+        dando un total de CA 21.\nOtorga Desventaja en las tiradas de sigilo.\nEs necesaria una Fuerza de 15 para equiparla.\n\n
+    · Recibes -3 de daño cortante, perforante y contundente.</string>
+
+    <string name="boots_of_elvenkind">Botas élficas</string>
+    <string name="boots_of_elvenkind_description">Mientras calces estas botas, tus pasos no harán ruido, independientemente de la superficie que pises. También tendrás
+ventaja en pruebas de Destreza (Sigilo) que requieran moverse silenciosamente.</string>
+
+    <string name="boots_of_striding_and_springing">Botas de zancadas y brincos</string>
+    <string name="boots_of_striding_and_springing_description">Tu velocidad caminando cuando llevas puestas estas botas
+es de 30 pies, salvo que normalmente fuera superior. Esta velocidad no se reduce por estar cargado o por vestir armadura
+pesada. Además, saltas tres veces la distancia normal, pero nunca más lejos que tu movimiento restante.</string>
+
+    <string name="bracers_of_archery">Brazales de arquería</string>
+    <string name="bracers_of_archery_description">Mientras lleves estos brazales, eres competente con todos los arcos y ballestas.\n
+        Además, obtienes un bonificador de +2 a las tiradas de daño en ataques a distancia con estas armas.</string>
+
+    <string name="brooch_of_shielding">Broche escudo</string>
+    <string name="brooch_of_shielding_description">Mientras lleves prendido este broche, tienes resistencia
+al daño de fuerza e inmunidad al daño del conjuro \'proyectil mágico\'.</string>
+
+    <string name="broom_of_flying">Escoba voladora</string>
+    <string name="broom_of_flying_description">Esta escoba de madera, que pesa 3 libras, funcionará como
+una escoba normal hasta que te montes en ella y pronuncies su palabra de activación. Después, levitará y podrás utilizarla
+para viajar por el aire. Tiene una velocidad volando de 50 pies. Puede llevar hasta 400 libras, pero su velocidad
+volando baja a 30 pies si lleva más de 200 libras. La escoba deja de levitar cuando aterrices.\n
+Puedes ordenar a la escoba que viaje por sí misma a una localización que se encuentre a 1 milla de distancia si pronuncias
+la palabra de activación, nombras el lugar y estás familiarizado con el sitio en cuestión. Si sigue estando a
+1 milla de distancia, la escoba volverá si pronuncias otra palabra de activación.</string>
+
+    <string name="cloak_of_elvenkind">Capa élfica</string>
+    <string name="cloak_of_elvenkind_description">Mientras lleves esta capa y tengas la capucha puesta, las
+pruebas de Sabiduría (Percepción) para verte sufrirán desventaja, mientras que tú tendrás ventaja en pruebas de
+Destreza (Sigilo) para esconderte, ya que el color de la capa varía para camuflarte. Es necesaria una acción para ponerte
+o quitarte la capucha.</string>
+
+    <string name="cloak_of_protection">Capa de protección</string>
+    <string name="cloak_of_protection_description">Obtienes un bonificador de +1 a la CA y a las tiradas
+de salvación mientras lleves puesta esta capa.</string>
+
+    <string name="gauntlets_of_ogre_power">Guanteletes de fuerza de ogro</string>
+    <string name="gauntlets_of_ogre_power_description">Tu Fuerza pasa a ser de 19 cuando llevas estos guanteletes.
+No tienen efecto si tu Fuerza ya era de 19 o mayor sin ellos.</string>
+
+    <string name="hat_of_disguise">Sombrero de disfraz</string>
+    <string name="hat_of_disguise_description">Mientras lleves este sombrero, puedes utilizar una acción
+para lanzar a voluntad el conjuro disfrazarse sobre ti mismo.\nEl conjuro termina si dejas de vestir el sombrero.</string>
+
+    <string name="javelin_of_lightning">Javalina del relámpago</string>
+    <string name="javelin_of_lightning_description">Esta jabalina es un arma mágica. Cuando la lanzas y pronuncias
+su palabra de activación, se convierte en relámpago, formando una línea de 5 pies de ancho que se extiende
+hasta su objetivo, que debe encontrarse a un máximo de 120 pies. Todas las criaturas situadas en dicha línea, excepto
+el objetivo y tú, deberán realizar una tirada de salvación de Destreza CD 13, sufriendo 4d6 de daño de relámpago si la
+fallan, o la mitad de ese daño si la superan. El relámpago se convierte de nuevo en jabalina al alcanzar el objetivo. Haz un
+ataque de arma a distancia contra el objetivo. Si impactas, recibirá el daño del ataque de la jabalina y 4d6 de daño de
+relámpago adicional.\n
+Esta propiedad de la jabalina no puede volver a usarse hasta el siguiente amanecer. Mientras tanto, sigue pudiendo
+emplearse como arma mágica.</string>
+
+    <string name="pearl_of_power">Perla de poder</string>
+    <string name="pearl_of_power_description">Mientras esta perla esté en tu poder, puedes usar una acción
+para pronunciar su palabra de activación y recuperar un
+espacio de conjuro empleado. Si el espacio era de nivel 4 o más, el que recuperas es de nivel 3. Esta propiedad no puede
+volver a utilizarse hasta el siguiente amanecer.</string>
+
+    <string name="pearl_of_power_cracked">Perla de poder (resquebrajada)</string>
+    <string name="pearl_of_power_cracked_description">Mientras esta perla esté en tu poder, puedes usar una acción
+para pronunciar su palabra de activación y recuperar un
+espacio de conjuro de nivel 1 empleado. Esta propiedad no puede
+volver a utilizarse hasta el siguiente amanecer.</string>
+    <string name="pearl_of_power_cracked_description_extra">Parece rota. Quizás se pueda reparar de alguna manera…</string>
+
+    <string name="rod_of_the_pact_keeper_plus_1">Vara del pacto +1</string>
+    <string name="rod_of_the_pact_keeper_plus_1_description">Compatible solo con brujos.\n\n
+        Mientras empuñes esta vara, obtienes, solo para tus conjuros
+de brujo, un bonificador de +1 a las tiradas de ataque de conjuros y a la CD de salvación de conjuros.\n
+Además, puedes usar una acción mientras empuñas la vara para recuperar un espacio de conjuro de brujo. Para volver a hacer esto tienes que finalizar primero un descanso largo.</string>
+
+    <string name="rod_of_the_pact_keeper_plus_2">Vara del pacto +2</string>
+    <string name="rod_of_the_pact_keeper_plus_2_description">Compatible solo con brujos.\n\n
+        Mientras empuñes esta vara, obtienes, solo para tus conjuros
+de brujo, un bonificador de +2 a las tiradas de ataque de conjuros y a la CD de salvación de conjuros.\n
+Además, puedes usar una acción mientras empuñas la vara para recuperar un espacio de conjuro de brujo. Para volver a hacer esto tienes que finalizar primero un descanso largo.</string>
+
+    <string name="rod_of_the_pact_keeper_plus_3">Vara del pacto +3</string>
+    <string name="rod_of_the_pact_keeper_plus_3_description">Compatible solo con brujos.\n\n
+        Mientras empuñes esta vara, obtienes, solo para tus conjuros
+de brujo, un bonificador de +3 a las tiradas de ataque de conjuros y a la CD de salvación de conjuros.\n
+Además, puedes usar una acción mientras empuñas la vara para recuperar un espacio de conjuro de brujo. Para volver a hacer esto tienes que finalizar primero un descanso largo.</string>
+
+    <string name="slippers_of_spider_climbing">Babuchas de trepar cual arácnido</string>
+    <string name="slippers_of_spider_climbing_description">Cuando lleves puesto este ligero calzado podrás moverte
+hacia arriba. hacia abajo y a través de superficies verticales, así como colgarte del techo. Todos estos movimientos
+te permiten mantener tus manos libres. Además, tendrás una velocidad trepando igual a tu velocidad caminando. Sin
+embargo, las babuchas no te permiten desplazarte de esta manera por una superficie resbaladiza, como, por ejemplo,
+una zona cubierta de hielo o aceite.</string>
+
+    <string name="staff_of_the_adder">Bastón de la víbora</string>
+    <string name="staff_of_the_adder_description">Compatible solo con brujos, clérigos o druidas.\n\n
+        Puedes usar una acción adicional para pronunciar la palabra
+de activación del bastón y hacer que su cabeza se convierta en la de una serpiente venenosa animada durante 1 minuto.
+Puedes emplear otra acción adicional para pronunciar de nuevo la palabra de activación y devolver el bastón a su forma
+normal inanimada.\n
+Puedes realizar un ataque cuerpo a cuerpo con la cabeza de serpiente, que tiene un alcance de 5 pies. Tu bonificador
+por competencia se aplica a la tirada de ataque. Si impactas, el objetivo recibe 1d6 de daño perforante y debe tener éxito
+en una tirada de salvación de Constitución CD 15 o recibirá también 3d6 de daño de veneno.\n
+La cabeza de serpiente puede ser atacada mientras esté animada. Posee Clase de Armadura 15 y 20 puntos de golpe.
+Si los puntos de golpe de la cabeza descienden a O, el bastón queda destruido. Mientras no sea destruido, el bastón
+recupera todos sus puntos de golpe perdidos cada vez que retorna a su forma inanimada.</string>
+
+    <string name="staff_of_the_python">Bastón de la pitón</string>
+    <string name="staff_of_the_python_description">Compatible solo con brujos, clérigos o druidas.\n\n
+        Puedes usar una acción para pronunciar la palabra de activación del bastón y lanzarlo al suelo, a
+un punto a 10 pies o menos de ti. El bastón se convierte en una serpiente constrictora gigante (ver perfil en
+el Monster Manual) bajo tu control, y actúa en su propio orden de iniciativa. Utilizando una acción adicional para
+pronunciar de nuevo la palabra de activación, devuelves el bastón a su forma normal en el espacio que antes ocupaba
+la serpiente.\n
+En tu turno, puedes dar órdenes mentales a la serpiente si esta se encuentra a 60 pies o menos de ti y no estás incapacitado.
+Decides qué acción tomará la serpiente y dónde se mueve, o puedes impartirle una orden general, como atacar a
+tus enemigos o proteger una localización. Si la serpiente queda reducida a O puntos de golpe, muere
+y retorna a la forma de bastón. En este caso, este objeto mágico se hace añicos y queda destruido. Si la serpiente
+vuelve a la forma de bastón antes de perder todos sus puntos de golpe, los recupera todos.</string>
+
+    <string name="sword_of_vengeance">Bastón de la pitón</string>
+    <string name="sword_of_vengeance_description">Compatible solo con brujos, clérigos o druidas.\n\n
+        Puedes usar una acción para pronunciar la palabra de activación del bastón y lanzarlo al suelo, a
+un punto a 10 pies o menos de ti. El bastón se convierte en una serpiente constrictora gigante (ver perfil en
+el Monster Manual) bajo tu control, y actúa en su propio orden de iniciativa. Utilizando una acción adicional para
+pronunciar de nuevo la palabra de activación, devuelves el bastón a su forma normal en el espacio que antes ocupaba
+la serpiente.\n
+En tu turno, puedes dar órdenes mentales a la serpiente si esta se encuentra a 60 pies o menos de ti y no estás incapacitado.
+Decides qué acción tomará la serpiente y dónde se mueve, o puedes impartirle una orden general, como atacar a
+tus enemigos o proteger una localización. Si la serpiente queda reducida a O puntos de golpe, muere
+y retorna a la forma de bastón. En este caso, este objeto mágico se hace añicos y queda destruido. Si la serpiente
+vuelve a la forma de bastón antes de perder todos sus puntos de golpe, los recupera todos.</string>
+
+    <string name="trident_of_fish_command">Tridente de comandar peces</string>
+    <string name="trident_of_fish_command_description">Este tridente es un arma mágica. Mientras
+lo lleves, puedes usar una acción para lanzar dominar bestia (tirada de salvación CD 15)
+desde él sobre una bestia que tenga una velocidad nadando innata.\n
+        Esta acción se puede realizar una vez por descanso corto.</string>
+
+    <string name="wand_of_magic_missiles">Varita de proyectiles mágicos</string>
+    <string name="wand_of_magic_missiles_description">Esta varita tiene 7 cargas. Mientras la empuñes, puedes usar
+una acción para gastar 1 o más de sus cargas en lanzar el conjuro \'proyectil mágico\' desde ella. Si utilizas 1 carga, se
+tratará de la versión de nivel 1 del conjuro. Puedes subir el nivel del espacio de conjuro en uno por cada carga adicional
+que emplees.\n
+La varita recupera 1d6 + 1 cargas usadas cada día, al amanecer.\n
+Si gastas la última carga, tira 1d20. Si obtienes un 1, la varita se convierte en cenizas y es destruida.</string>
+
+    <string name="wand_of_the_war_mage_plus_1">Varita del mago de guerra +1</string>
+    <string name="wand_of_the_war_mage_plus_1_description">Mientras empuñes esta varita, ganas un bonificador de +1 a tus
+tiradas de ataque con conjuros. \n
+        Además, ignoras la cobertura media cuando haces ataques de conjuros.</string>
+
+    <string name="wand_of_the_war_mage_plus_2">Varita del mago de guerra +2</string>
+    <string name="wand_of_the_war_mage_plus_2_description">Mientras empuñes esta varita, ganas un bonificador de +2 a tus
+tiradas de ataque con conjuros. \n
+        Además, ignoras la cobertura media cuando haces ataques de conjuros.</string>
+
+    <string name="wand_of_the_war_mage_plus_3">Varita del mago de guerra +3</string>
+    <string name="wand_of_the_war_mage_plus_3_description">Mientras empuñes esta varita, ganas un bonificador de +3 a tus
+tiradas de ataque con conjuros. \n
+        Además, ignoras la cobertura media cuando haces ataques de conjuros.</string>
+
+    <string name="wand_of_web">Varita de telaraña</string>
+    <string name="wand_of_web_description">Esta varita tiene 7 cargas. Mientras la empuñes, puedes usar
+una acción para gastar 1 o más de sus cargas en lanzar el conjuro \'telaraña\' desde ella, con salvación CD 15.\n
+    La varita recupera 1d6 + 1 cargas empleadas cada día, al amanecer.\n
+        Si gastas la última carga, tira 1d20. Si obtienes un 1, la varita se convierte en cenizas y es destruida.</string>
+
+    <string name="weapon_of_warning">Arma de advertencia</string>
+    <string name="weapon_of_warning_description">(Cualquier arma).\n
+        Esta arma mágica te advierte de peligros. Mientras la lleves
+encima, tienes ventaja en las tiradas de iniciativa. Además, tú y tus compañeros que se encuentren a 30 pies o menos
+de ti solo podéis ser sorprendidos cuando quedéis incapacitados por una causa distinta al sueño no mágico. El arma os
+despertará mágicamente, a ti y tus compañeros dentro del alcance, si alguno estáis durmiendo de forma natural cuando
+comienza el combate.</string>
+
+    <string name="armor_of_adamantine_scale_mail_uncommon">Armadura de adamantina (cota de escamas)</string>
+    <string name="armor_of_adamantine_scale_mail_uncommon_description">CA 14 + modificador por Des (máx. 2)\n
+        Desventaja en tiradas de sigilo.\n
+        Esta armadura está reforzada con adamantina, una de las sustancias más duras existentes. Mientras la lleves puesta,
+cualquier crítico contra ti se convierte en un impacto normal.\n
+    Esta armadura puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
+    <string name="armor_of_adamantine_description_extra">La armadura de adamantina se aferra a tu cuerpo como una segunda piel — una piel pesada, casi impenetrable.</string>
+
+    <string name="armor_of_adamantine_scale_mail_rare">Armadura de adamantina (cota de escamas)</string>
+    <string name="armor_of_adamantine_scale_mail_rare_description">CA 15 + modificador por Des (máx. 2)\n
+        Desventaja en tiradas de sigilo.\n
+        Esta armadura está reforzada con adamantina, una de las sustancias más duras existentes. Mientras la lleves puesta,
+cualquier crítico contra ti se convierte en un impacto normal.\n
+    Esta armadura puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.</string>
+
+    <string name="armor_of_adamantine_scale_mail_very_rare">Armadura de adamantina (cota de escamas)</string>
+    <string name="armor_of_adamantine_scale_mail_very_rare_description">CA 16 + modificador por Des (máx. 2)\n
+        Desventaja en tiradas de sigilo.\n
+        Esta armadura está reforzada con adamantina, una de las sustancias más duras existentes. Mientras la lleves puesta,
+cualquier crítico contra ti se convierte en un impacto normal.\n
+        Además, todo el daño recibido es reducido en 1.</string>
+
+    <string name="armor_of_adamantine_splint_armor_uncommon">Armadura de adamantina (bandas)</string>
+    <string name="armor_of_adamantine_splint_armor_uncommon_description">CA 17 (FUE 15)\n
+        Desventaja en tiradas de sigilo.\n
+        Esta armadura está reforzada con adamantina, una de las sustancias más duras existentes. Mientras la lleves puesta,
+cualquier crítico contra ti se convierte en un impacto normal.\n
+    Esta armadura puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
+
+    <string name="armor_of_adamantine_splint_armor_rare">Armadura de adamantina (bandas)</string>
+    <string name="armor_of_adamantine_splint_armor_rare_description">CA 18 (FUE 15)\n
+        Desventaja en tiradas de sigilo.\n
+        Esta armadura está reforzada con adamantina, una de las sustancias más duras existentes. Mientras la lleves puesta,
+cualquier crítico contra ti se convierte en un impacto normal.\n
+        Además, todo el daño recibido es reducido en 1.\n
+    Esta armadura puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.</string>
+
+    <string name="armor_of_adamantine_splint_armor_very_rare">Armadura de adamantina (bandas)</string>
+    <string name="armor_of_adamantine_splint_armor_very_rare_description">CA 19 (FUE 15)\n
+        Desventaja en tiradas de sigilo.\n
+        Esta armadura está reforzada con adamantina, una de las sustancias más duras existentes. Mientras la lleves puesta,
+cualquier crítico contra ti se convierte en un impacto normal.\n
+        Además, todo el daño recibido es reducido en 2.</string>
+
+    <string name="boots_of_the_winterlands">Botas de las tierras invernales</string>
+    <string name="boots_of_the_winterlands_description">Mientras las lleves puestas, obtendrás los siguientes beneficios:\n
+• Resistencia al daño de frío.\n
+• Ignoras el terreno difícil por nieve o hielo.\n
+• Puedes aguantar temperaturas de hasta -45 ºC sin más protección. Si llevas ropas pesadas, puedes soportar
+hasta - 75 ºC.</string>
+    <string name="boots_of_the_winterlands_description_extra">Estas botas forradas de pelaje son ceñidas y calentitas.</string>
+
+    <string name="circlet_of_blasting">Diadema de estallidos</string>
+    <string name="circlet_of_blasting_description">Mientras lleves puesta esta diadema, puedes usar una acción
+para lanzar el conjuro \'rayo abrasador\'. Cuando hagas los ataques de este conjuro, tu bonificador de ataque será de +5. La
+diadema no puede volver a emplearse de esta manera hasta el siguiente amanecer.</string>
+
+    <string name="eversmoking_bottle">Botella siemprehumeante</string>
+    <string name="eversmoking_bottle_description">Cuando usas una acción para quitar el tapón, una nube de denso humo sale de la botella,
+cubriendo un radio de 60 pies. Se extiende más allá de las esquinas y el área se considera muy oscura. Cada minuto
+que la botella permanezca abierta y dentro de la nube, este radio se incrementará en 10 pies, hasta que alcance su radio
+máximo de 120 pies.\n
+La nube permanece mientras la botella siga abierta.\n
+Cerrarla implica emplear una acción para pronunciar la palabra de activación. Una vez la botella está cerrada, la nube
+se disipará en 10 minutos. Un viento moderado (entre 11 y 20 millas por hora) dispersará el humo en 1 minuto, y uno
+        fuerte (más de 20 millas por hora) lo disipará en 1 asalto.</string>
+    <string name="eversmoking_bottle_description_extra">El humo se filtra a través del tapón de plomo de esta botella
+de latón, que pesa 1 libra.</string>
+
+    <string name="eyes_of_charming">Anteojos de encantamiento</string>
+    <string name="eyes_of_charming_description">Tienen 3 cargas.
+Mientras las lleves puestas, puedes usar una acción para lanzar el conjuro \'hechizar persona\' (tirada de salvación
+de Sabiduría CD 13) en un humanoide que se encuentre a 30 pies o menos de ti, pero solo si podéis veros el uno al otro.\n
+Las lentes recuperan todas las cargas empleadas cada día, al amanecer.</string>
+    <string name="eyes_of_charming_description_extra">Estas lentes de cristal cubren los ojos.</string>
+
+    <string name="eyes_of_the_eagle">Anteojos de vista de ágila</string>
+    <string name="eyes_of_the_eagle_description">Estas lentes de cristal cubren los ojos. Mientras las lleves,
+tienes ventaja en las pruebas de Sabiduría (Percepción) que dependan de la vista. En condiciones de buena visibilidad,
+puedes ver detalles de criaturas y objetos extremadamente distantes, siempre que estos midan al menos 2 pies.</string>
+    <string name="eyes_of_the_eagle_description_extra">Estas lentes de cristal cubren los ojos.</string>
+
+    <string name="gloves_of_missile_snaring">Guantes atrapaflechas</string>
+    <string name="gloves_of_missile_snaring_description">Cuando un ataque con arma a distancia te impacte
+llevándolos puestos, podrás usar tu reacción para reducir el daño en 1d10 + tu bonificador de Destreza, siempre y cuando
+tengas una mano libre. Si reduces el daño a 0, podrás atrapar el proyectil, aunque solo cuando este sea lo bastante pequeño
+como para que puedas sujetarlo con una mano.</string>
+    <string name="gloves_of_missile_snaring_description_extra">Estos guantes parecen fundirse con tus manos cuando los
+vistes.</string>
+
+    <string name="gloves_of_swimming_and_climbing">Guantes de natación y escalada</string>
+    <string name="gloves_of_swimming_and_climbing_description">Mientras lleves estos guantes, nadar y escalar no te cuesta
+movimiento adicional y, además, obtienes un bonificador de +5 a tus pruebas de Fuerza (Atletismo) para nadar o escalar.</string>
+
+    <string name="gloves_of_thievery">Guantes de ladrón</string>
+    <string name="gloves_of_thievery_description">Si los vistes, ganas un bonificaclor de +5 a pruebas de
+        Destreza (Juego de Manos) y pruebas de Destreza para forzar cerraduras.</string>
+    <string name="gloves_of_thievery_description_extra">Estos guantes son invisibles mientras los lleves puestos.</string>
+
+    <string name="headband_of_intellect">Diadema de intelecto</string>
+    <string name="headband_of_intellect_description">Tu puntuación de Inteligencia es 19 mientras lleves esta diadema.\n
+No tiene ningún efecto si tu Inteligencia era de 19 o más sin ella.</string>
+
+    <string name="helm_of_telepathy">Yelmo de telepatía</string>
+    <string name="helm_of_telepathy_description">Siempre que lleves este yelmo, puedes utilizar una acción
+para lanzar a voluntad el conjuro \'detectar pensamientos\' (tirada de salvación de Sabiduría CD 13) desde él. Mientras mantengas la
+concentración en el conjuro, puedes usar una acción adicional para mandar un mensaje telepático a la criatura en la que
+estás enfocado. Esta es capaz de contestar, utilizando una acción adicional, mientras sigas enfocado en ella.\n
+    Si estás manteniendo \'detectar pensamientos\' sobre una criatura, puedes usar una acción para lanzar el conjuro
+\'sugestión\' (tirada de salvación de Sabiduría CD 13). La propiedad de lanzar \'sugestión\' del yelmo no puede volver a emplearse hasta el
+siguiente amanecer.</string>
+
+    <string name="medallion_of_thoughts">Medallón de los pensamientos</string>
+    <string name="medallion_of_thoughts_description">Mientras lo lleves puesto, una vez por descanso corto o largo, podrás utilizar una acción para lanzar el conjuro
+\'detectar pensamientos\' (tirada de salvación de Sabiduría CD 13) desde él.</string>
+
+    <string name="necklace_of_adaptation">Collar de adaptación</string>
+    <string name="necklace_of_adaptation_description">Si llevas este collar, puedes respirar normalmente en cualquier
+entorno y tienes ventaja en tiradas de salvación contra gases y vapores (como los de los conjuros \'nube aniquiladora\'
+y \'nube apestosa\', venenos inhalados y los ataques de aliento de algunos dragones).</string>
+
+    <string name="periapt_of_wound_closure">Talismán de cerrar heridas</string>
+    <string name="periapt_of_wound_closure_description">Mientras lleves este talismán, te estabilizas automáticamente
+si al principio de tu turno estás agonizando (te ahorras las tiradas de salvación contra muerte). Además, cuando tires un Dado de Golpe para recuperar puntos de golpe,
+(como en un descanso corto) duplica el número de puntos de golpe que recuperas.</string>
+
+    <string name="pipes_of_haunting">Flauta de la aparición</string>
+    <string name="pipes_of_haunting_description">Debes ser competente con instrumentos de viento para
+poder usar esta flauta. Una vez por descanso corto o largo, puedes emplear una acción para tocarla, creando una melodía
+inquietante pero a la vez fascinante. Todas las criaturas que se encuentren a 30 pies o menos de ti y que te escuchen
+tocar deberán tener éxito en una tirada de salvación de Sabiduría CD 15 o quedarán asustadas durante 1 minuto. Si así
+lo deseas, todas las criaturas del área que no sean hostiles hacia ti tendrán éxito automáticamente en esta tirada. Una
+criatura que haya fallado puede repetir la tirada de salvación al final de cada uno de sus turnos, librándose del efecto si
+tiene éxito. Una criatura que supere la tirada de salvación es inmune al efecto de la flauta durante 24 horas.</string>
+
+    <string name="ring_of_jumping">Anillo de salto</string>
+    <string name="ring_of_jumping_description">Mientras lleves este anillo, puedes lanzar a voluntad el conjuro
+\'salto\' desde él usando una acción adicional, pero solo tú podrás ser el objetivo.</string>
+
+    <string name="ring_of_mind_shielding">Anillo de escudo mental</string>
+    <string name="ring_of_mind_shielding_description">Mientras lleves este anillo, eres inmune a la magia que permita
+a otras criaturas leer tus pensamientos, determinar si mientes, conocer tu alineamiento o averiguar tu tipo de criatura.
+Además, solo podrán comunicarse telepáticamente contigo si se lo permites.\n
+Puedes usar una acción para que el anillo se vuelva invisible hasta que emplees otra acción para hacerlo visible, te lo
+quites o mueras.\n
+Si falleces mientras llevas el anillo, tu alma entrará en él a menos que ya tenga otra dentro. Puedes permanecer en el
+anillo o partir al más allá. Mientras tu alma permanezca en este objeto, puedes comunicarte telepáticamente con cualquier
+criatura que lo lleve puesto. Esta última no puede evitar esta comunicación telepática.</string>
+
+    <string name="ring_of_warmth">Anillo de calidez</string>
+    <string name="ring_of_warmth_description">Tienes resistencia al daño de frío cuando llevas puesto
+este anillo. Además, tú y todo lo que lleves y vistas no se ve dañado por el frío provocado por temperaturas de hasta
+-45 ºC. Por debajo de esta temperatura os veréis a fectados normalmente.</string>
+
+    <string name="ring_of_water_walking">Anillo de caminar sobre las aguas</string>
+    <string name="ring_of_water_walking_description">Mientras lleves este anillo, puedes permanecer encima
+de cualquier líquido y avanzar sobre él como si fuera terreno sólido.</string>
+
+    <string name="stone_of_good_luck">Piedra de la buena fortuna</string>
+    <string name="stone_of_good_luck_description">Cuando tienes esta ágata pulida en tu poder, obtienes un +1 a
+las pruebas de característica y tiradas de salvación.</string>
+
+    <string name="winged_boots">Botas aladas</string>
+    <string name="winged_boots_description">Mientras lleves puestas estas botas, tendrás una velocidad
+volando igual a tu velocidad caminando. Puedes usar las botas para volar hasta 4 horas, todas seguidas o en varios
+vuelos más cortos. Cada uno de ellos gastará una duración mínima de 1 minuto. Si estás volando cuando la duración
+expira, desciendes a una velocidad de 30 pies por asalto hasta que aterrices.\n
+Las botas recupe ran 2 horas de vuelo por cada 12 horas que no se utilicen.</string>
+
+
+
+
+
+
+
+    <string name="ring_of_protection">Anillo de protección</string>
+    <string name="ring_of_protection_description">Obtienes un bonificador de +1 a la CA y a las tiradas de salvación
+mientras lleves puesto este anillo.</string>
+
+
+
+
+    <!--    BG3 items    -->
+    <string name="everburn_blade">Hoja de la llama eterna</string>
+    <string name="everburn_blade_description">Cada golpe con esta arma inflige 1d4 puntos de daño de fuego adicional, además del daño habitual del arma.</string>
+    <string name="everburn_blade_description_extra">Llamas silenciosas recorren la hoja en cuanto abandona la vaina.</string>
+
+    <string name="amulet_of_silvanus">Amuleto de Silvanus</string>
+    <string name="amulet_of_silvanus_description">Este amuleto permite al portador lanzar el conjuro \'Restauración Menor\' una vez por descanso corto, como si fuera de nivel 2.</string>
+    <string name="amulet_of_silvanus_description_extra">Este amuleto, grabado con una pequeña cascada, transmite una sensación de calma serena al llevarlo puesto.</string>
+
+    <string name="robe_of_summer">Túnica del verano</string>
+    <string name="robe_of_summer_description">Esta túnica otorga resistencia al daño de frío mientras se lleva puesta.</string>
+    <string name="robe_of_summer_description_extra">El fino tejido de esta túnica transmite un agradable calor al tacto.</string>
+
+    <string name="broodmothers_revenge">Venganza de la madre de la prole</string>
+    <string name="broodmothers_revenge_description">Cuando el portador recibe una curación mágica o bebe una poción de curación, su arma se impregna de veneno durante un breve instante.
+        El siguiente ataque que impacte, inflige 1d6 de daño por veneno adicional.</string>
+    <string name="broodmothers_revenge_description_extra">Cada una de las joyas de este amuleto brilla como los ojos de una víbora.</string>
+
+    <string name="the_whispering_promise">La promesa susurrante</string>
+    <string name="the_whispering_promise_description">Cuando el portador cura a una criatura, esta recibe un bonificador de +1d4 a las tiradas de ataque y a las tiradas de salvación hasta el final de su próximo turno.</string>
+    <string name="the_whispering_promise_description_extra">Una suave y reconfortante voz emana de este anillo, repitiendo una plegaria una y otra vez.</string>
+
+    <string name="cap_of_curing">Sombrero de curación</string>
+    <string name="cap_of_curing_description">Cuando el portador inspira a un aliado usando \'Inspiración Bárdica\', ese aliado recupera además 1d6 puntos de golpe.</string>
+    <string name="cap_of_curing_description_extra">Ponerse este sombrero basta para levantar el ánimo: su sola presencia parece insuflar esperanza.</string>
+
+    <string name="hellriders_pride">Orgullo del jinete infernal</string>
+    <string name="hellriders_pride_description">El portador obtiene +1 a las tiradas de salvación de Fuerza.\n
+        Además, cuando cura a otra criatura, esta obtiene Resistencia al daño contundente, perforante y cortante infligido por armas hasta el final de su próximo turno.</string>
+    <string name="hellriders_pride_description_extra">Un tenue olor a azufre emana de estas orgullosas manoplas.</string>
+
+    <string name="wapiras_crown">Corona de Wapira</string>
+    <string name="wapiras_crown_description">Siempre que cure a otra criatura, el portador recupera 1d6 puntos de golpe.</string>
+    <string name="wapiras_crown_description_extra">Las leyendas cuentan que un alce gigante y una druida forjaron una poderosa amistad.
+        Cuando el alce dio su vida por ella, la druida creó esta corona en honor a su amado amigo, para que su belleza y compasión vivieran por siempre.</string>
+
+    <string name="hunting_shortbow">Arco corto de caza</string>
+    <string name="hunting_shortbow_description">Daño: 1d6 + mod DES, perforante.\nAlcance: 80/320 pies.\n\n
+        · Verdugo de Monstruos: Ventaja en ataques contra enemigos de tipo Monstruosidad.\n
+        · Marca del Cazador: El portador puede lanzar \'Marca del Cazador\' (nivel 1) una vez por descanso largo sin consumir espacio de conjuro.</string>
+    <string name="hunting_shortbow_description_extra">Al pasar tus dedos por la madera pulida, sientes esa solemnidad como un fantasma en las vetas.</string>
+
+    <string name="dragons_grasp">Asimiento del dragón</string>
+    <string name="dragons_grasp_description">Daño: 1d6 + mod FUE/DES, cortante, arrojadiza (20/60 pies)\n\n
+        Cuando golpeas a una criatura que esté Ardiendo, infliges +1d4 de daño cortante adicional.</string>
+    <string name="dragons_grasp_description_extra">De alguna forma, esta hacha se siente perpetuamente cálida al tacto.</string>
+
+    <string name="rain_dancer">Bailarín de la lluvia</string>
+    <string name="rain_dancer_description">Daño: 1d6 + mod FUE, contundente, versátil (1d8 a dos manos)\n\n
+        Este báculo otorga al portador la capacidad de lanzar el conjuro \'Crear Agua\' sin consumir espacio de conjuro una vez por descanso corto.</string>
+    <string name="rain_dancer_description_extra">Un pálido báculo incrustado con un topacio en forma de gota. Al tacto, se siente frío y húmedo.</string>
+
+    <string name="spellthief">Robahechizos</string>
+    <string name="spellthief_description">Daño: 1d8 + mod DES, perforante.\nAlcance: 150/600 pies.\n\n
+        Este arco largo permite al portador recuperar 1 espacio de conjuro de nivel 1 al realizar un golpe crítico, una vez por descanso corto.</string>
+    <string name="spellthief_description_extra">Un estremecimiento de magia fluye desde este arco hasta tu mano, como una promesa.</string>
+
+    <string name="hedge_wanderer_armor">Armadura del errante de los setos</string>
+    <string name="hedge_wanderer_armor_description">Esta armadura de pieles ofrece un bonificador a la CA de 12 + bonificador por Des (máx. 2).\n\n
+    · Ganas +1 en tiradas de habilidad y tiradas de salvación de Destreza.\n
+    · Ganas +1 en tiradas de Naturaleza.</string>
+    <string name="hedge_wanderer_armor_description_extra">Esta sencilla piel de cabra curada fue encantada por una druida viajera.
+        Un cabrero la ayudó a atravesar un extraño laberinto de setos, así que bendijo a todas sus cabras en agradecimiento.</string>
+
+    <string name="ring_of_flinging">Anillo del lanzador</string>
+    <string name="ring_of_flinging_description">El portador de este anillo obtiene un bono de +1d4 al daño de ataques con armas arrojadizas (incluye hachas de mano, jabalinas, dagas u otros objetos lanzados).</string>
+    <string name="ring_of_flinging_description_extra">Organizaciones como los Arpistas no limitan sus actividades al combate directo;
+        muchas persecuciones bajo la luz de la luna han terminado gracias a una teja suelta y un buen brazo lanzador.</string>
+
+    <string name="silver_pendant">Colgante de plata</string>
+    <string name="silver_pendant_description">Este amuleto permite al portador lanzar el conjuro \'Guía\' a voluntad, como truco.\nSe necesita saber lanzar conjuros para usarlo.</string>
+    <string name="silver_pendant_description_extra">La suciedad cubre este collar, pero aún se distinguen vagamente delicados grabados de una luna y un arpa.</string>
+
+    <string name="the_oak_fathers_embrace">El abrazo del padre roble</string>
+    <string name="the_oak_fathers_embrace_description">Esta armadura de pieles ofrece un bonificador a la CA de 12 + bonificador por Des (máx. 2).\n\n
+    · Orden de la Naturaleza: cuando una criatura no muerta golpea al portador, recibe 1d6 de daño radiante. Cuando una bestia golpea al portador, el ataque inflige 1d6 de daño radiante adicional.</string>
+    <string name="the_oak_fathers_embrace_description_extra">Bordada con una simple máxima — «La Naturaleza es el Verdadero Estado del Mundo» — estas pieles irradian un leve poder divino.</string>
+
+    <string name="staff_of_crones">Bastón de las ancianas</string>
+    <string name="staff_of_crones_description">Daño: 1d6 + mod FUE, contundente, versátil (1d8 a dos manos)\n\n
+        Este báculo otorga al portador la capacidad de lanzar el conjuro \'Rayo nauseabundo\' (nivel 1) sin consumir espacio de conjuro una vez por descanso corto.</string>
+    <string name="staff_of_crones_description_extra">Gusanos vivos se retuercen bajo la superficie desmoronada de este bastón medio podrido.
+        Solo tocarlo te llena de una ola de náusea insoportable y una extraña ansia, como si llamara a los de su misma clase.</string>
+
+    <string name="safeguard_shield">Escudo guardián</string>
+    <string name="safeguard_shield_description">Mientras sostienes este escudo, tienes +1 a todas las tiradas de salvación.</string>
+    <string name="safeguard_shield_description_extra">Esta reliquia quedó impregnada de magia tras asistir a demasiadas cenas familiares de magos.</string>
+
+    <string name="glowing_shield">Escudo resplandeciente</string>
+    <string name="glowing_shield_description">Una vez por descanso corto, si tienes menos del 50% de tus Puntos de Golpe y recibes daño, ganas 8 puntos de golpe temporales.</string>
+    <string name="glowing_shield_description_extra">Susurra suaves y amorosas palabras, apenas audibles y en una lengua olvidada hace mucho tiempo, que te envuelven en una sensación de seguridad.</string>
+
+    <string name="moondrop_pendant">Colgante de gota lunar</string>
+    <string name="moondrop_pendant_description">Mientras lleves este colgante, si al inicio de tu turno tienes menos del 50% de tus Puntos de Golpe,
+        no provocas ataques de oportunidad.</string>
+    <string name="moondrop_pendant_description_extra">En el reverso, bajo una delicada luna creciente, hay una inscripción:\n
+«Ya no eres un aprendiz, Robin. Es justo que lleves contigo un poco de la luz de Nuestra Señora.»</string>
+
+    <string name="poisoners_robe">Túnica del envenenador</string>
+    <string name="poisoners_robe_description">Cuando el portador de esta túnica lanza un conjuro que inflige daño por veneno, inflige 1d4 de daño por veneno adicional.</string>
+    <string name="poisoners_robe_description_extra">Encontrada en el estómago de una Reina Araña, esta túnica emana un olor agrio y pica al tacto.</string>
+
+    <string name="tarnished_charm">Amuleto ajado</string>
+    <string name="tarnished_charm_description">Otorga un bonificador de +2 a las tiradas de salvación contra muerte del portador.</string>
+    <string name="tarnished_charm_description_extra">De este retorcido amuleto emana una risa siniestra. Susurra que muerdas, que mutiles, que mates…</string>
+
+    <string name="gandrels_aspiration">Aspiración de Gandrel</string>
+    <string name="gandrels_aspiration_description">Daño: 1d10 + mod DES, perforante.\nAlcance: 100/400 pies.\n\nEsta ballesta pesada otorga ventaja en las tiradas de ataque contra criaturas del tipo Monstruosidad.</string>
+    <string name="gandrels_aspiration_description_extra">Cuando Gandrel tenía siete años, un engendro vampírico le aterrorizó durante una quema pública.
+        Atrapada por las llamas, la criatura no se consumió: se hinchó y estalló. Desde entonces, juró perfeccionar su puntería contra las bestias más extrañas y terribles del mundo.</string>
+
+    <string name="gloves_of_heroism">Guantes del heroismo</string>
+    <string name="gloves_of_heroism_description">Cuando el portador de estos guantes usa un conjuro de Canalizar Divinidad, obtiene el efecto del conjuro \'Heroísmo\' hasta que este termine.</string>
+    <string name="gloves_of_heroism_description_extra">La gamuza cubre las palmas de estos guantes, asegurando un tacto suave y reconfortante para cualquiera que necesite ayuda.</string>
+
+    <string name="sword_of_justice">Espada de la justicia</string>
+    <string name="sword_of_justice_description">Daño: 1d8 + mod FUE, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n\n
+    Esta espada puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
+    <string name="sword_of_justice_description_extra">Las palabras “Liberación. Justicia. Venganza.” están grabadas en la base de esta espada, resonando en tu mente con cada golpe.</string>
+
+    <string name="sword_of_justice_rare">Espada de la justicia +1</string>
+    <string name="sword_of_justice_rare_description">Otorga +1 al daño y a las tiradas de ataque.\n
+        · Daño: 1d8 + mod FUE +1, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
+        · Aura de coraje menor: una vez por descanso largo, como acción adicional, proyectas un aura de 4,5 m (15 ft) que otorga a ti y aliados dentro, ventaja en tiradas de salvación contra miedo durante 1 minuto.\n\n
+        Esta espada puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.
+    </string>
+
+    <string name="sword_of_justice_very_rare">Espada de la justicia +2</string>
+    <string name="sword_of_justice_very_rare_description">Otorga +2 al daño y a las tiradas de ataque.\n
+        · Daño: 1d8 + mod FUE +2, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
+        · Aura de coraje: una vez por descanso largo, como acción adicional, proyectas un aura de 4,5 m (15 ft) que otorga a ti y aliados dentro, ventaja en tiradas de salvación contra miedo y encanto durante 1 minuto.\n
+        · Curación de la Justicia: una vez por descanso largo, como acción, curas a todos los aliados en 7,5 m (25 ft) 2d8 + tu modificador de Carisma.\n\n
+        Esta espada puede ser mejorada a \'legendaria\' de la manera que el DM considere más oportuna.
+    </string>
+
+    <string name="sword_of_justice_legendary">Espada de la justicia +3</string>
+    <string name="sword_of_justice_legendary_description">Otorga +3 al daño y a las tiradas de ataque.\n
+        · Daño: 1d8 + mod FUE +3, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
+        · Aura de coraje superior: una vez por descanso largo, como acción adicional, proyectas un aura de 4,5 m (15 ft) que otorga a ti y aliados dentro, ventaja en tiradas de salvación contra miedo y encanto
+        además de +1 CA durante 1 minuto.\n
+        · Curación de la Justicia: una vez por descanso largo, como acción, curas a todos los aliados en 9,5 m (30 ft) 3d8 + tu modificador de Carisma.\n
+        · Juicio de luz: al hacer \'Curación de la Justicia\', además, los enemigos que estén en el area, deberán hacer una tirada de salvación de Constitución,
+        si fallan, recibirán tantos puntos de daño como puntos de curación hayas aplicado a ti y a tus aliados, si la pasan, recibirán la mitad del daño.
+    </string>
+
+    <string name="sword_of_the_avenger">Espada del vengador</string>
+    <string name="sword_of_the_avenger_description">Daño: 2d6 + 1d4 radiante + mod FUE, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n\n
+    Esta espada puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
+    <string name="sword_of_the_avenger_description_extra">Las runas de Torm arden con justicia en la hoja, impulsándote a castigar a quienes viven sin honor.</string>
+
+    <string name="sword_of_the_avenger_rare">Espada del vengador +1</string>
+    <string name="sword_of_the_avenger_rare_description">Otorga +1 al daño y a las tiradas de ataque.\n
+        · Daño: 2d6 + 1d4 radiante + mod FUE +1, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
+        · Aura de ira divina menor: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 4,5 m (15 ft) que otorga a ti y a tus aliados 1d6 de daño adicional (requiere concentración).\n\n
+    Esta espada puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.</string>
+
+    <string name="sword_of_the_avenger_very_rare">Espada del vengador +2</string>
+    <string name="sword_of_the_avenger_very_rare_description">Otorga +2 al daño y a las tiradas de ataque.\n
+        · Daño: 2d6 + 1d4 radiante + mod FUE +2, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
+        · Aura de ira divina: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 6 m (20 ft) que otorga a ti y a tus aliados 1d6 de daño adicional
+        y 1d4 adicional en las tiradas de ataque (requiere concentración).\n
+        · Llamado del Vengador: una vez por descanso largo, como acción, apunta el espada hacia una criatura que esté a un máximo de 15 m (45 ft). Dicha criatura deberá hacer una tirada de salvación de Constitución
+        (tirada de salvación de tus conjuros), si falla, infliges 5d10 + tu modificador de Carisma de daño radiante, si pasa la tirada, recibe la mitad del daño. Los no-muertos tienen desventaja en dicha tirada de salvación.\n\n
+    Esta espada puede ser mejorada a \'legendaria\' de la manera que el DM considere más oportuna.</string>
+
+    <string name="sword_of_the_avenger_legendary">Espada del vengador +3</string>
+    <string name="sword_of_the_avenger_legendary_description">Otorga +3 al daño y a las tiradas de ataque.\n
+        · Daño: 2d6 + 1d4 radiante + mod FUE +3, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
+        · Aura de ira divina superior: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 9,5 m (30 ft) que otorga a ti y a tus aliados 1d6 de daño adicional,
+        1d4 adicional en las tiradas de ataque, además de ventaja en estas (requiere concentración).\n
+        · Juicio de Torm: una vez por descanso largo, como acción, genera un rallo de luz que cae del cielo sobre ti y cubre una area de 15 m (45 ft) de radio. Todas las criaturas enemigas que se encuentren dentro del area,
+        deberán hacer una tirada de salvación de Constitución (tirada de salvación de tus conjuros), si fallan, les infliges 8d10 + tu modificador de Carisma de daño radiante, si pasan la tirada, reciben la mitad del daño.
+    Los no-muertos tienen desventaja en dicha tirada de salvación.</string>
+
+
+
+    <!--    Home made items    -->
+    <string name="frostbite_blade">Hoja escarchada</string>
+    <string name="frostbite_blade_description">Cada golpe con esta arma inflige 1d4 puntos de daño de hielo adicional, además del daño habitual del arma.</string>
+    <string name="frostbite_blade_description_extra">Un velo de escarcha envuelve el filo, robando el calor de todo lo que toca.</string>
+
+    <string name="stormfang">Colmillo de tormenta</string>
+    <string name="stormfang_description">Cada golpe con esta arma inflige 1d4 puntos de daño eléctrico adicional, además del daño habitual del arma.</string>
+    <string name="stormfang_description_extra">Chispas crepitan a lo largo del acero, impacientes por descargar su furia.</string>
+
+    <string name="vipers_fang">Colmillo de víbora</string>
+    <string name="vipers_fang_description">Cada golpe con esta arma inflige 1d4 puntos de daño de veneno adicional, además del daño habitual del arma.</string>
+    <string name="vipers_fang_description_extra">Un brillo verdoso recorre el filo, impregnado con un veneno letal.</string>
+
+    <string name="corroding_edge">Filo corrosivo</string>
+    <string name="corroding_edge_description">Cada golpe con esta arma inflige 1d4 puntos de daño de ácido adicional, además del daño habitual del arma.</string>
+    <string name="corroding_edge_description_extra">Gotas ácidas chisporrotean sobre la hoja, devorando incluso el aire.</string>
+
+    <string name="thundermaul">Maza del trueno</string>
+    <string name="thundermaul_description">Cada golpe con esta arma inflige 1d4 puntos de daño de trueno adicional, además del daño habitual del arma.</string>
+    <string name="thundermaul_description_extra">Un retumbar grave acompaña cada movimiento, como si anunciara una tormenta inminente.</string>
+
+    <string name="reapers_cleaver">Hachuela del segador</string>
+    <string name="reapers_cleaver_description">Cada golpe con esta arma inflige 1d4 puntos de daño necrótico, además del daño habitual del arma.</string>
+    <string name="reapers_cleaver_description_extra">Sombras acechan su filo, drenando la vida de todo lo que hiere.</string>
+
+    <string name="hammer_of_the_rift">Martillo de la grieta</string>
+    <string name="hammer_of_the_rift_description">Cada golpe con esta arma inflige 1d4 puntos de daño de fuerza, además del daño habitual del arma.</string>
+    <string name="hammer_of_the_rift_description_extra">Ondas de energía pura recorren su cabeza, distorsionando el aire a su alrededor.</string>
+
+    <string name="collectors_dagger">Daga del recolector</string>
+    <string name="collectors_dagger_description">Si reduces a 0 puntos de golpe a una criatura con esta daga,
+        obtienes ventaja en la siguiente tirada de Investigación o Percepción para encontrar objetos ocultos en su cuerpo o pertenencias.</string>
+    <string name="collectors_dagger_description_extra">Pequeña pero afilada, su empuñadura parece vibrar al oler la presencia de botín cercano.</string>
+
+    <string name="steadyhand_gloves">Guantes de estabilización</string>
+    <string name="steadyhand_gloves_description">Una vez por descanso corto o largo, puedes repetir una tirada fallida de ataque con un arma a distancia.</string>
+    <string name="steadyhand_gloves_description_extra">De cuero flexible, impregnados con magia que relaja los músculos y afina la puntería.</string>
+
+    <string name="shield_of_distraction">Escudo de la distracción</string>
+    <string name="shield_of_distraction_description">Una vez por descanso corto o largo, cuando un enemigo falle un ataque contra ti,
+        puedes usar tu reacción para que otro aliado tenga ventaja en su próximo ataque contra ese enemigo.</string>
+    <string name="shield_of_distraction_description_extra">Su superficie pulida refleja la luz y los movimientos del portador para confundir al enemigo.</string>
+
+    <string name="gloves_of_monsters_bane">Guantes de la perdición del monstruo</string>
+    <string name="gloves_of_monsters_bane_description">Mientras lleves puestos estos guantes, cualquier criatura
+        con el tipo \'Monstruosidad\' que reciba daño de uno de tus ataques de arma debe superar una tirada
+        de salvación de Carisma CD 12 o sufrir el efecto de \'Perdición\' hasta el final de tu próximo turno.</string>
+    <string name="gloves_of_monsters_bane_description_extra">Las costuras rezuman un leve calor cada vez que una monstruosidad está cerca, como si los guantes compartieran tu instinto de cazarla.</string>
+
+    <string name="armor_of_the_rising_temper">Armadura del temple creciente</string>
+    <string name="armor_of_the_rising_temper_description">CA 14 + modificador por Des (máx. 2)\n
+        Desventaja en tiradas de sigilo.\n
+        Las placas de esta armadura se endurecen y se ajustan con cada impacto, como si recordaran el golpe para reforzarse contra el siguiente. Sin embargo, su magia es inestable,
+        y la resistencia acumulada no dura para siempre.\n\n
+        · Temple progresivo: Cada vez que recibas daño de un ataque cuerpo a cuerpo o a distancia, esta armadura gana +1 a la CA (acumulativo) hasta un máximo de +3.\n
+        tras unas horas sin recibir impactos, la armadura vuelve a CA base 14.\n\n
+        · Fragilidad bajo presión: En el final de tu siguiente turno tras alcanzar el +3, la armadura pierde todo el temple acumulado y vuelve a CA base 14.\n\n
+        · Desgaste acelerado: Si recibes un golpe crítico, la armadura pierde inmediatamente todo el temple acumulado.</string>
+    <string name="armor_of_the_rising_temper_description_extra">Con cada golpe, notas cómo la armadura se aprieta y endurece, como un escudo que aprende en combate… pero cuya fuerza es tan fugaz como el fragor de la batalla.</string>
+
+    <string name="scale_mail_armor_of_the_final_resistance">Cota de escamas de la resistencia final</string>
+    <string name="scale_mail_armor_of_the_final_resistance_description">CA 14 + modificador por Des (máx. 2)\n
+        Desventaja en tiradas de sigilo.\n
+        Cada vez que recibas daño de un ataque cuerpo a cuerpo o a distancia, la armadura gana +1 CA permanente.\n
+    El incremento máximo es de +5 CA sobre la base inicial. Cuando la armadura llega a 20 (+6), esta se fractura y queda inutilizable para siempre.</string>
+    <string name="scale_mail_armor_of_the_final_resistance_description_extra">Revestida con capas de acero encantado que absorben y endurecen con cada impacto,
+        esta armadura se convierte en una fortaleza impenetrable… hasta que la tensión mágica que la sostiene se quiebra.</string>
+
+    <string name="splint_armor_of_the_final_resistance">Armadura de bandas de la resistencia final</string>
+    <string name="splint_armor_of_the_final_resistance_description">CA 17 (FUE 15)\n
+        Desventaja en tiradas de sigilo.\n
+        Cada vez que recibas daño de un ataque cuerpo a cuerpo o a distancia, la armadura gana +1 CA permanente.\n
+    El incremento máximo es de +5 CA sobre la base inicial. Cuando la armadura llega a 23 (+6), esta se fractura y queda inutilizable para siempre.</string>
+    <string name="splint_armor_of_the_final_resistance_description_extra">Revestida con capas de acero encantado que absorben y endurecen con cada impacto,
+        esta armadura se convierte en una fortaleza impenetrable… hasta que la tensión mágica que la sostiene se quiebra.</string>
+
+    <string name="helm_of_martial_fortune">Yelmo de la fortuna marcial</string>
+    <string name="helm_of_martial_fortune_description">Un susurro arcano recorre tu mente al comenzar la batalla, afilando un aspecto de ti… al azar.\n
+    Al inicio de cada combate, tira 1d6:\n
+1 – Fuerza\n
+2 – Destreza\n
+3 – Constitución\n
+4 – Inteligencia\n
+5 – Sabiduría\n
+6 – Carisma\n
+Recibes +2 a esa característica (+1 en su modificador) hasta el final del combate.</string>
+    <string name="helm_of_martial_fortune_description_extra">Forjado con runas de cambio perpetuo, este yelmo canaliza energías caóticas
+        que potencian una faceta de tu ser en cada enfrentamiento. Sin embargo, nunca podrás saber de antemano cuál será la que despierte.</string>
+
+    <string name="ring_of_the_skewed_fortune">Anillo de la fortuna sesgada</string>
+    <string name="ring_of_the_skewed_fortune_description">Mientras lleves este anillo, cuando obtengas botín y el DM realice una tirada en una tabla de botín (1d100), suma +10 al resultado final.
+Si la tirada excede el valor máximo de la tabla (100), cuenta como un 100.
+    </string>
+    <string name="ring_of_the_skewed_fortune_description_extra">Forjado con un fino hilo de plata encantada, su sutil magia inclina el destino a tu favor… aunque solo un poco.</string>
+
+    <string name="ring_of_the_forager">Anillo del buscador</string>
+    <string name="ring_of_the_forager_description">Mientras lleves este anillo, cada vez que obtengas botín de un cofre, cadáver u otro contenedor determinado por el DM,
+        existe un 15% de probabilidad de encontrar un objeto adicional de la misma tabla de botín.\n
+    Esta probabilidad se tira por separado de cualquier otro efecto mágico que altere el botín.\n
+    </string>
+    <string name="ring_of_the_forager_description_extra">Forjado para cazadores de tesoros y carroñeros, su magia sutil parece guiar la mirada del portador hacia rincones ocultos y recompensas pasadas por alto.</string>
+
+    <string name="ring_of_precision">Anillo de precisión</string>
+    <string name="ring_of_precision_description">Obtienes un bonificador de +1 a todas las tiradas de ataque.</string>
+    <string name="ring_of_precision_description_extra">Cuando portas este anillo, incluso el viento parece corregir tu puntería.</string>
+
+    <string name="ring_of_the_blade">Anillo de la hoja ligera</string>
+    <string name="ring_of_the_blade_description">Obtienes un bonificador de +1 a todas las tiradas de ataques cuerpo a cuerpo.</string>
+    <string name="ring_of_the_blade_description_extra">Acero guiado por instinto.</string>
+
+    <string name="ring_of_the_dead_eye">Anillo del ojo certero</string>
+    <string name="ring_of_the_dead_eye_description">Obtienes un bonificador de +1 a todas las tiradas de ataques a distancia.</string>
+    <string name="ring_of_the_dead_eye_description_extra">Para aquellos que nunca fallan su objetivo.</string>
+
+    <string name="ring_of_arcane_precision">Anillo de precisión arcana</string>
+    <string name="ring_of_arcane_precision_description">Obtienes un bonificador de +1 a todas las tiradas de ataques con hechizos.</string>
+    <string name="ring_of_arcane_precision_description_extra">El conjuro parte de tus dedos como una flecha invisible, impulsado por una puntería nacida del estudio y la intuición.</string>
+
+    <string name="ring_of_the_blood_mage">Anillo del mago de sangre</string>
+    <string name="ring_of_the_blood_mage_description">Mientras lleves este anillo, puedes lanzar el hechizo \'Bola de fuego\' a nivel 3 sin gastar espacios de conjuro.\n
+        Cada vez que lo hagas, pierdes 2d10 + 5 Puntos de Golpe. Este daño ignora resistencias e inmunidades y no puede reducirse por ningún medio.</string>
+    <string name="ring_of_the_blood_mage_description_extra">Un fino aro carmesí que late con un pulso arcano, recordando a cada instante el precio de su poder.
+        En su brillo se oculta la promesa de un fuego devastador… y el sacrificio que exige para desatarlo.</string>
+
+    <string name="ironcleave_axe">Hacha de rajadura de hierro</string>
+    <string name="ironcleave_axe_description">Cada impacto certero arranca no solo carne, sino la defensa misma de su objetivo.\n
+        Daño: 1d12 + mod FUE, cortante\n
+        Con cada tirada de ataque que saques un 18 natural o más y en caso de impacto, la CA del objetivo es reducido en 1 (acumulable) hasta el final del encuentro.</string>
+    <string name="ironcleave_axe_description_extra">Forjada con un filo que vibra con cada golpe, esta hacha debilita las defensas del enemigo golpe tras golpe,
+        hasta que su armadura se convierte en poco más que un adorno.</string>
+
+    <string name="titan_fang">Colmillo de titán</string>
+    <string name="titan_fang_description">Forjada para los colosos de antaño, esta espada no es solo un arma, sino un símbolo de dominio.\n
+        · Daño: 2d6 + 2 + mod FUE, cortante\n
+        · +1 CA\n
+        Su hoja maciza otorga +2 al daño y a las tiradas de ataque, así como +1 a la CA gracias a su imponente tamaño, siempre que el portador posea al menos 18 de Fuerza.
+        Si no, luchar con ella es torpe y desbalanceado: se ataca con desventaja y no se recibe la bonificación de CA.\n
+        Este espadón reacciona de forma distinta según quién la empuñe, despertando propiedades únicas:\n\n
+        · Bárbaro: mientras estés enfurecido y una vez por furia, puedes usar tu reacción para recibir el impacto de un ataque que apuntaba a un aliado que esté
+        a 5 pies o menos de ti. Luego, con la misma reacción, puedes atacar con ventaja al agresor.\n
+        Alternativamente, puedes gastar la misma reacción para atacar con ventaja al agresor en caso de que te atacara a ti.\n
+        · Guerrero (Campeón o Caballero arcano): +1 de probabilidad crítica (acumulable) y los ataques realizados como reacción tienen ventaja.\n
+        · Guerrero (Maestro del combate): posees un dado de supremacía adicional y tus maniobras de contraataque no consumen dado de supremacía si fallas el ataque.\n
+        · Paladín: puedes realizar un \'Castigo Divino\' del nivel que quieras de tus conjuros sin consumir un espacio de conjuro una vez por descanso corto.\n\n
+    Esta espada puede ser mejorada a \'legendaria\' de la manera que el DM considere más oportuna.</string>
+    <string name="titan_fang_description_extra">Al sostenerla, no sientes el peso del metal, sino el eco de los gigantes. Cada movimiento exige respeto; cada impacto, obediencia.</string>
+
+    <string name="titan_fang_legendary">Colmillo de titán</string>
+    <string name="titan_fang_legendary_description">Forjada para los colosos de antaño, esta espada no es solo un arma, sino un símbolo de dominio.\n
+        · Daño: 2d6 + 3 + mod FUE, cortante\n
+        · +2 CA\n
+        Su hoja maciza otorga +3 al daño y a las tiradas de ataque, así como +2 a la CA gracias a su imponente tamaño, siempre que el portador posea al menos 18 de Fuerza.
+        Si no, luchar con ella es torpe y desbalanceado: se ataca con desventaja y no se recibe la bonificación de CA.\n
+        Este espadón reacciona de forma distinta según quién la empuñe, despertando propiedades únicas:\n\n
+        · Bárbaro: mientras estés enfurecido, dos veces por furia, puedes usar tu reacción para recibir el impacto de un ataque que apuntaba a un aliado que esté
+        a 5 pies o menos de ti. Luego, con la misma reacción, puedes atacar con ventaja al agresor.\n
+        Alternativamente, puedes gastar la misma reacción para atacar con ventaja al agresor en caso de que te atacara a ti.\n
+        · Guerrero (Campeón o Caballero arcano): +2 de probabilidad crítica (acumulable) y los ataques realizados como reacción tienen ventaja, además de un +1 de probabilidad crítica adicional (con un total de +3).\n
+        · Guerrero (Maestro del combate): posees dos dados de supremacía adicionales y tus maniobras de contraataque no consumen dado de supremacía si fallas el ataque.\n
+        · Paladín: puedes realizar un \'Castigo Divino\' del nivel que quieras de tus conjuros sin consumir un espacio de conjuro dos veces por descanso corto.</string>
+
+</resources>
