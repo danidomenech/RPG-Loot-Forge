@@ -36,16 +36,15 @@ import com.danidomenech.dndlootforge.core.design.components.ItemRow
 import com.danidomenech.dndlootforge.core.design.components.NAME_COLUMN_WEIGHT
 import com.danidomenech.dndlootforge.core.design.components.TYPE_COLUMN_WEIGHT
 import com.danidomenech.dndlootforge.domain.model.Item
-import com.danidomenech.dndlootforge.core.navigation.Screen
+import com.danidomenech.dndlootforge.core.navigation.AppDestination
 import com.danidomenech.dndlootforge.preview.fakeItems
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 
-@ExperimentalMaterial3Api
 @Composable
 fun VendorScreen(
     viewModel: VendorViewModel = hiltViewModel(),
     onItemClick: (Item, priceModifierPercent: Int?) -> Unit,
-    navController: NavController
+    onGenerateCatalogClick: () -> Unit
 ) {
     val items by viewModel.vendorItems.collectAsState()
     val playerLevel by viewModel.playerLevel.collectAsState()
@@ -55,23 +54,24 @@ fun VendorScreen(
         playerLevel = playerLevel,
         onPlayerLevelChange = viewModel::setPlayerLevel,
         onItemClick = onItemClick,
-        navController
+        onGenerateCatalogClick = onGenerateCatalogClick
     )
 }
 
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun VendorListContent(
     items: List<Item>,
     playerLevel: Int? = null,
     onPlayerLevelChange: ((Int) -> Unit)? = null,
     onItemClick: (Item, priceModifierPercent: Int?) -> Unit,
-    navController: NavController
+    onGenerateCatalogClick: () -> Unit
 ) {
-
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.vendor_screen_title)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.vendor_screen_title)) }
+            )
         }
     ) { paddingValues ->
 
@@ -88,11 +88,12 @@ fun VendorListContent(
                         style = MaterialTheme.typography.bodyLarge,
                         modifier = Modifier.padding(bottom = 4.dp)
                     )
+
                     Slider(
                         value = playerLevel.toFloat(),
                         onValueChange = { onPlayerLevelChange(it.toInt()) },
                         valueRange = 1f..20f,
-                        steps = 18, // 20 levels -> 19 steps between
+                        steps = 18,
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(horizontal = 8.dp)
@@ -101,17 +102,16 @@ fun VendorListContent(
             }
 
             Spacer(Modifier.height(8.dp))
+
             Box(
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 contentAlignment = Alignment.Center
             ) {
-                Button(onClick = {
-                    navController.navigate(Screen.CatalogItems.route) })
-                {
+                Button(onClick = onGenerateCatalogClick) {
                     Text(stringResource(R.string.generate_random_catalog))
                 }
             }
+
             Spacer(Modifier.height(8.dp))
 
             // Column headers
@@ -128,18 +128,18 @@ fun VendorListContent(
                     ),
                     modifier = Modifier.weight(NAME_COLUMN_WEIGHT)
                 )
+
                 Text(
                     text = stringResource(R.string.type),
                     style = MaterialTheme.typography.labelLarge.copy(
                         fontWeight = FontWeight.ExtraBold
                     ),
-                    modifier = Modifier.weight(TYPE_COLUMN_WEIGHT),
+                    modifier = Modifier.weight(TYPE_COLUMN_WEIGHT)
                 )
             }
 
             LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize(),
+                modifier = Modifier.fillMaxSize(),
                 contentPadding = PaddingValues(8.dp),
                 verticalArrangement = Arrangement.spacedBy(4.dp)
             ) {
@@ -159,22 +159,16 @@ fun VendorListContent(
 }
 
 
-//PREVIEWS
 @Preview(showBackground = true)
-@ExperimentalMaterial3Api
 @Composable
-fun VendorScreenPreview() {
-
-    val fakeItems = fakeItems
-    val fakeNavController = rememberNavController()
-
+private fun VendorScreenPreview() {
     DnDLootForgeTheme {
         VendorListContent(
             items = fakeItems,
             onItemClick = { _, _ -> },
             playerLevel = 2,
             onPlayerLevelChange = {},
-            navController = fakeNavController
+            onGenerateCatalogClick = {}
         )
     }
 }

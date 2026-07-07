@@ -13,17 +13,24 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.danidomenech.dndlootforge.R
-import com.danidomenech.dndlootforge.core.navigation.Screen
+import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MainMenuScreen(navController: NavController) {
+fun MainMenuScreen(
+    onAllItemsClick: () -> Unit,
+    onLootTablesClick: () -> Unit,
+    onNarrativeLootItemsClick: () -> Unit,
+    onVendorItemsClick: () -> Unit
+) {
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.main_menu_title)) })
+            TopAppBar(
+                title = { Text(stringResource(R.string.main_menu_title)) }
+            )
         }
     ) { paddingValues ->
         Column(
@@ -34,18 +41,34 @@ fun MainMenuScreen(navController: NavController) {
             verticalArrangement = Arrangement.spacedBy(16.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            Button(onClick = { navController.navigate(Screen.AllItems.route) }) {
+            Button(onClick = onAllItemsClick) {
                 Text(stringResource(R.string.all_items_screen_title))
             }
-            Button(onClick = { navController.navigate(Screen.LootTables.route) }) {
+
+            Button(onClick = onLootTablesClick) {
                 Text(stringResource(R.string.loot_tables_screen_title))
             }
-            Button(onClick = { navController.navigate(Screen.NarrativeLootItems.route) }) {
+
+            Button(onClick = onNarrativeLootItemsClick) {
                 Text(stringResource(R.string.narrative_loot_list_screen_title))
             }
-            Button(onClick = { navController.navigate(Screen.VendorItems.route) }) {
+
+            Button(onClick = onVendorItemsClick) {
                 Text(stringResource(R.string.vendor_screen_title))
             }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+private fun MainMenuScreenPreview() {
+    DnDLootForgeTheme {
+        MainMenuScreen(
+            onAllItemsClick = {},
+            onLootTablesClick = {},
+            onNarrativeLootItemsClick = {},
+            onVendorItemsClick = {}
+        )
     }
 }

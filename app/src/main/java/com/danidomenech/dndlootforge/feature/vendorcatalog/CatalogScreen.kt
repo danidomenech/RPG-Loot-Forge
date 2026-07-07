@@ -33,10 +33,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.danidomenech.dndlootforge.R
 import com.danidomenech.dndlootforge.domain.model.Item
-import com.danidomenech.dndlootforge.core.navigation.Screen
 import com.danidomenech.dndlootforge.preview.fakeItems
 import com.danidomenech.dndlootforge.feature.vendor.VendorViewModel
 import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogViewModel.Companion.PRICE_MAX_PERCENT
@@ -46,21 +44,16 @@ import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogViewModel.Comp
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 import com.danidomenech.dndlootforge.core.design.theme.UnevenRow
 import com.danidomenech.dndlootforge.core.ui.text.TextHelper
-import com.danidomenech.dndlootforge.core.navigation.rememberParentEntry
 
 private const val NAME_COLUMN_WEIGHT = 2f
 private const val TYPE_COLUMN_WEIGHT = 1f
 
-@ExperimentalMaterial3Api
 @Composable
 fun CatalogScreen(
-    navController: NavController,
+    vendorViewModel: VendorViewModel,
     catalogViewModel: CatalogViewModel = hiltViewModel(),
     onItemClick: (Item, priceModifierPercent: Int?) -> Unit
 ) {
-    val parentEntry = rememberParentEntry(Screen.VendorItems.route, navController)
-    val vendorViewModel: VendorViewModel = hiltViewModel(parentEntry)
-
     val itemsFullList by vendorViewModel.vendorItems.collectAsState()
     val playerLevel by vendorViewModel.playerLevel.collectAsState()
     val catalogItems by catalogViewModel.catalogItems.collectAsState()
@@ -68,14 +61,17 @@ fun CatalogScreen(
 
     LaunchedEffect(itemsFullList, playerLevel) {
         if (itemsFullList.isNotEmpty()) {
-            catalogViewModel.setVendorItemsAndPlayerLevel(itemsFullList, playerLevel)
+            catalogViewModel.setVendorItemsAndPlayerLevel(
+                items = itemsFullList,
+                playerLevel = playerLevel
+            )
         }
     }
 
     CatalogListContent(
-        itemsFullList = catalogItems,
+        items = catalogItems,
         onItemClick = onItemClick,
-        onRerollClick = { catalogViewModel.rerollCatalog() },
+        onRerollClick = catalogViewModel::rerollCatalog,
         uiState = uiState,
         onStockChange = catalogViewModel::setStockPercentage,
         onPriceModifierChange = catalogViewModel::setPriceModifier,
@@ -89,10 +85,10 @@ fun CatalogScreen(
     )
 }
 
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CatalogListContent(
-    itemsFullList: List<Item>,
+    items: List<Item>,
     onItemClick: (Item, priceModifierPercent: Int?) -> Unit,
     onRerollClick: () -> Unit,
     uiState: CatalogViewModel.CatalogUiState,
@@ -184,7 +180,7 @@ fun CatalogListContent(
                     contentPadding = PaddingValues(8.dp),
                     verticalArrangement = Arrangement.spacedBy(4.dp)
                 ) {
-                    itemsIndexed(itemsFullList, key = { _, item -> item.id.value }) { index, item ->
+                    itemsIndexed(items, key = { _, item -> item.id.value }) { index, item ->
                         CatalogItemRow(
                             item = item,
                             index = index,
@@ -234,14 +230,9 @@ fun CatalogItemRow(
 
 
 
-//PREVIEWS
 @Preview(showBackground = true)
-@ExperimentalMaterial3Api
 @Composable
-fun CatalogScreenPreview() {
-
-    val fakeItems = fakeItems
-
+private fun CatalogScreenPreview() {
     val fakeUiState = CatalogViewModel.CatalogUiState(
         stockPercentage = 50,
         priceModifierPercentage = 0,
@@ -250,7 +241,7 @@ fun CatalogScreenPreview() {
 
     DnDLootForgeTheme {
         CatalogListContent(
-            itemsFullList = fakeItems,
+            items = fakeItems,
             onItemClick = { _, _ -> },
             onRerollClick = {},
             uiState = fakeUiState,
