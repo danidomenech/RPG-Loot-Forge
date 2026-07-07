@@ -1350,73 +1350,6 @@ mientras lleves puesto este anillo.</string>
     <string name="gloves_of_heroism_description">Cuando el portador de estos guantes usa un conjuro de Canalizar Divinidad, obtiene el efecto del conjuro \'Heroísmo\' hasta que este termine.</string>
     <string name="gloves_of_heroism_description_extra">La gamuza cubre las palmas de estos guantes, asegurando un tacto suave y reconfortante para cualquiera que necesite ayuda.</string>
 
-    <string name="sword_of_justice">Espada de la justicia</string>
-    <string name="sword_of_justice_description">Daño: 1d8 + mod FUE, cortante, versátil (1d10).\n
-        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n\n
-    Esta espada puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
-    <string name="sword_of_justice_description_extra">Las palabras “Liberación. Justicia. Venganza.” están grabadas en la base de esta espada, resonando en tu mente con cada golpe.</string>
-
-    <string name="sword_of_justice_rare">Espada de la justicia +1</string>
-    <string name="sword_of_justice_rare_description">Otorga +1 al daño y a las tiradas de ataque.\n
-        · Daño: 1d8 + mod FUE +1, cortante, versátil (1d10).\n
-        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
-        · Aura de coraje menor: una vez por descanso largo, como acción adicional, proyectas un aura de 4,5 m (15 ft) que otorga a ti y aliados dentro, ventaja en tiradas de salvación contra miedo durante 1 minuto.\n\n
-        Esta espada puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.
-    </string>
-
-    <string name="sword_of_justice_very_rare">Espada de la justicia +2</string>
-    <string name="sword_of_justice_very_rare_description">Otorga +2 al daño y a las tiradas de ataque.\n
-        · Daño: 1d8 + mod FUE +2, cortante, versátil (1d10).\n
-        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
-        · Aura de coraje: una vez por descanso largo, como acción adicional, proyectas un aura de 4,5 m (15 ft) que otorga a ti y aliados dentro, ventaja en tiradas de salvación contra miedo y encanto durante 1 minuto.\n
-        · Curación de la Justicia: una vez por descanso largo, como acción, curas a todos los aliados en 7,5 m (25 ft) 2d8 + tu modificador de Carisma.\n\n
-        Esta espada puede ser mejorada a \'legendaria\' de la manera que el DM considere más oportuna.
-    </string>
-
-    <string name="sword_of_justice_legendary">Espada de la justicia +3</string>
-    <string name="sword_of_justice_legendary_description">Otorga +3 al daño y a las tiradas de ataque.\n
-        · Daño: 1d8 + mod FUE +3, cortante, versátil (1d10).\n
-        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
-        · Aura de coraje superior: una vez por descanso largo, como acción adicional, proyectas un aura de 4,5 m (15 ft) que otorga a ti y aliados dentro, ventaja en tiradas de salvación contra miedo y encanto
-        además de +1 CA durante 1 minuto.\n
-        · Curación de la Justicia: una vez por descanso largo, como acción, curas a todos los aliados en 9,5 m (30 ft) 3d8 + tu modificador de Carisma.\n
-        · Juicio de luz: al hacer \'Curación de la Justicia\', además, los enemigos que estén en el area, deberán hacer una tirada de salvación de Constitución,
-        si fallan, recibirán tantos puntos de daño como puntos de curación hayas aplicado a ti y a tus aliados, si la pasan, recibirán la mitad del daño.
-    </string>
-
-    <string name="sword_of_the_avenger">Espada del vengador</string>
-    <string name="sword_of_the_avenger_description">Daño: 2d6 + 1d4 radiante + mod FUE, cortante.\n
-        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n\n
-    Esta espada puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
-    <string name="sword_of_the_avenger_description_extra">Las runas de Torm arden con justicia en la hoja, impulsándote a castigar a quienes viven sin honor.</string>
-
-    <string name="sword_of_the_avenger_rare">Espada del vengador +1</string>
-    <string name="sword_of_the_avenger_rare_description">Otorga +1 al daño y a las tiradas de ataque.\n
-        · Daño: 2d6 + 1d4 radiante + mod FUE +1, cortante.\n
-        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
-        · Aura de ira divina menor: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 4,5 m (15 ft) que otorga a ti y a tus aliados 1d6 de daño adicional (requiere concentración).\n\n
-    Esta espada puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.</string>
-
-    <string name="sword_of_the_avenger_very_rare">Espada del vengador +2</string>
-    <string name="sword_of_the_avenger_very_rare_description">Otorga +2 al daño y a las tiradas de ataque.\n
-        · Daño: 2d6 + 1d4 radiante + mod FUE +2, cortante.\n
-        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
-        · Aura de ira divina: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 6 m (20 ft) que otorga a ti y a tus aliados 1d6 de daño adicional
-        y 1d4 adicional en las tiradas de ataque (requiere concentración).\n
-        · Llamado del Vengador: una vez por descanso largo, como acción, apunta el espada hacia una criatura que esté a un máximo de 15 m (45 ft). Dicha criatura deberá hacer una tirada de salvación de Constitución
-        (tirada de salvación de tus conjuros), si falla, infliges 5d10 + tu modificador de Carisma de daño radiante, si pasa la tirada, recibe la mitad del daño. Los no-muertos tienen desventaja en dicha tirada de salvación.\n\n
-    Esta espada puede ser mejorada a \'legendaria\' de la manera que el DM considere más oportuna.</string>
-
-    <string name="sword_of_the_avenger_legendary">Espada del vengador +3</string>
-    <string name="sword_of_the_avenger_legendary_description">Otorga +3 al daño y a las tiradas de ataque.\n
-        · Daño: 2d6 + 1d4 radiante + mod FUE +3, cortante.\n
-        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
-        · Aura de ira divina superior: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 9,5 m (30 ft) que otorga a ti y a tus aliados 1d6 de daño adicional,
-        1d4 adicional en las tiradas de ataque, además de ventaja en estas (requiere concentración).\n
-        · Juicio de Torm: una vez por descanso largo, como acción, genera un rallo de luz que cae del cielo sobre ti y cubre una area de 15 m (45 ft) de radio. Todas las criaturas enemigas que se encuentren dentro del area,
-        deberán hacer una tirada de salvación de Constitución (tirada de salvación de tus conjuros), si fallan, les infliges 8d10 + tu modificador de Carisma de daño radiante, si pasan la tirada, reciben la mitad del daño.
-    Los no-muertos tienen desventaja en dicha tirada de salvación.</string>
-
 
 
     <!--    Home made items    -->
@@ -1447,11 +1380,6 @@ mientras lleves puesto este anillo.</string>
     <string name="hammer_of_the_rift">Martillo de la grieta</string>
     <string name="hammer_of_the_rift_description">Cada golpe con esta arma inflige 1d4 puntos de daño de fuerza, además del daño habitual del arma.</string>
     <string name="hammer_of_the_rift_description_extra">Ondas de energía pura recorren su cabeza, distorsionando el aire a su alrededor.</string>
-
-    <string name="collectors_dagger">Daga del recolector</string>
-    <string name="collectors_dagger_description">Si reduces a 0 puntos de golpe a una criatura con esta daga,
-        obtienes ventaja en la siguiente tirada de Investigación o Percepción para encontrar objetos ocultos en su cuerpo o pertenencias.</string>
-    <string name="collectors_dagger_description_extra">Pequeña pero afilada, su empuñadura parece vibrar al oler la presencia de botín cercano.</string>
 
     <string name="steadyhand_gloves">Guantes de estabilización</string>
     <string name="steadyhand_gloves_description">Una vez por descanso corto o largo, puedes repetir una tirada fallida de ataque con un arma a distancia.</string>
@@ -1579,5 +1507,116 @@ Si la tirada excede el valor máximo de la tabla (100), cuenta como un 100.
         · Guerrero (Campeón o Caballero arcano): +2 de probabilidad crítica (acumulable) y los ataques realizados como reacción tienen ventaja, además de un +1 de probabilidad crítica adicional (con un total de +3).\n
         · Guerrero (Maestro del combate): posees dos dados de supremacía adicionales y tus maniobras de contraataque no consumen dado de supremacía si fallas el ataque.\n
         · Paladín: puedes realizar un \'Castigo Divino\' del nivel que quieras de tus conjuros sin consumir un espacio de conjuro dos veces por descanso corto.</string>
+
+    <string name="ring_of_the_last_guard">Anillo de la última guardia</string>
+    <string name="ring_of_the_last_guard_description">Este anillo solo puede ser sintonizado por un paladín.\n
+Una vez por descanso largo, cuando una criatura aliada a 30 pies o menos reciba daño, puedes usar tu reacción para interceptar parte del golpe.\n
+        El daño que recibe el aliado se reduce en 1d6 + tu bonificador de competencia + tu modificador de carisma, y tú recibes esa cantidad de daño en su lugar.</string>
+    <string name="ring_of_the_last_guard_description_extra">Un anillo sencillo, sin adornos, forjado en plata mate. Su superficie está suavemente desgastada, como si hubiera absorbido innumerables golpes destinados a otros.</string>
+
+    <string name="sword_of_justice">Espada de la justicia</string>
+    <string name="sword_of_justice_description">Daño: 1d8 + mod FUE, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n\n
+    Esta espada puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
+    <string name="sword_of_justice_description_extra">Las palabras “Liberación. Justicia. Venganza.” están grabadas en la base de esta espada, resonando en tu mente con cada golpe.</string>
+
+    <string name="sword_of_justice_rare">Espada de la justicia +1</string>
+    <string name="sword_of_justice_rare_description">Otorga +1 al daño y a las tiradas de ataque.\n
+        · Daño: 1d8 + mod FUE +1, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
+        · Deliberación sagrada menor: una vez por descanso corto, cuando impactas a una criatura, puedes activar este efecto: el objetivo debe superar una tirada de Salvación de Fuerza (CD 13) o queda derribado hasta el final de su próximo turno.\n\n
+        Esta espada puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.
+    </string>
+
+    <string name="sword_of_justice_very_rare">Espada de la justicia +2</string>
+    <string name="sword_of_justice_very_rare_description">Otorga +2 al daño y a las tiradas de ataque.\n
+        · Daño: 1d8 + mod FUE +2, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
+        · Deliberación sagrada: una vez por descanso corto, cuando impactas a una criatura, puedes activar este efecto: el objetivo debe superar una tirada de Salvación de Fuerza (CD 15) o queda derribado hasta el final de su próximo turno.
+        Además, si la tirada es exitosa, el objetivo tiene desventaja para cualquier criatura que no seas tú los siguientes 3 turnos.\n
+        · Respiro de Anachtyr: una vez por descanso largo, como acción, curas a todos los aliados en 7,5 m (25 ft) 2d8 + tu modificador de Carisma.\n\n
+        Esta espada puede ser mejorada a \'legendaria\' de la manera que el DM considere más oportuna.
+    </string>
+
+    <string name="sword_of_justice_legendary">Espada de la justicia +3</string>
+    <string name="sword_of_justice_legendary_description">Otorga +3 al daño y a las tiradas de ataque.\n
+        · Daño: 1d8 + mod FUE +3, cortante, versátil (1d10).\n
+        · Protección de Tyr: esta espada larga permite al portador lanzar el conjuro \'Escudo de Fe\' sobre sí mismo como acción adicionial una vez por descanso corto (requiere concentración).\n
+        · Deliberación sagrada: una vez por descanso corto, cuando impactas a una criatura, puedes activar este efecto: el objetivo debe superar una tirada de Salvación de Fuerza (CD 15) o queda derribado hasta el final de su próximo turno.
+        Además, si la tirada es exitosa, el objetivo tiene desventaja para cualquier criatura que no seas tú los siguientes 3 turnos.\n
+        · Respiro de Anachtyr: una vez por descanso largo, como acción, curas a todos los aliados en 9,5 m (30 ft) 3d8 + tu modificador de Carisma.\n
+        · Juicio de luz: al hacer \'Curación de la Justicia\', además, los enemigos que estén en el área, deberán hacer una tirada de salvación de Constitución,
+        si fallan, recibirán tantos puntos de daño como puntos de curación hayas aplicado a ti y a tus aliados, si la pasan, recibirán la mitad del daño.
+    </string>
+
+    <string name="sword_of_the_avenger">Espada del vengador</string>
+    <string name="sword_of_the_avenger_description">Daño: 2d6 + 1d4 radiante + mod FUE, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n\n
+    Esta espada puede ser mejorada a \'rara\' de la manera que el DM considere más oportuna.</string>
+    <string name="sword_of_the_avenger_description_extra">Las runas de Torm arden con justicia en la hoja, impulsándote a castigar a quienes viven sin honor.</string>
+
+    <string name="sword_of_the_avenger_rare">Espada del vengador +1</string>
+    <string name="sword_of_the_avenger_rare_description">Otorga +1 al daño y a las tiradas de ataque.\n
+        · Daño: 2d6 + 1d4 radiante + mod FUE +1, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
+        · Aura de ira divina menor: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 4,5 m (15 ft) que otorga a ti y a tus aliados 1d6 de daño adicional (requiere concentración).\n\n
+    Esta espada puede ser mejorada a \'muy rara\' de la manera que el DM considere más oportuna.</string>
+
+    <string name="sword_of_the_avenger_very_rare">Espada del vengador +2</string>
+    <string name="sword_of_the_avenger_very_rare_description">Otorga +2 al daño y a las tiradas de ataque.\n
+        · Daño: 2d6 + 1d4 radiante + mod FUE +2, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
+        · Aura de ira divina: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 6 m (20 ft) que otorga a ti y a tus aliados 1d6 de daño adicional
+        y 1d4 adicional en las tiradas de ataque (requiere concentración).\n
+        · Llamado del Vengador: una vez por descanso largo, como acción, apunta el espada hacia una criatura que esté a un máximo de 15 m (45 ft). Dicha criatura deberá hacer una tirada de salvación de Constitución
+        (tirada de salvación de tus conjuros), si falla, infliges 5d10 + tu modificador de Carisma de daño radiante, si pasa la tirada, recibe la mitad del daño. Los no-muertos tienen desventaja en dicha tirada de salvación.\n\n
+    Esta espada puede ser mejorada a \'legendaria\' de la manera que el DM considere más oportuna.</string>
+
+    <string name="sword_of_the_avenger_legendary">Espada del vengador +3</string>
+    <string name="sword_of_the_avenger_legendary_description">Otorga +3 al daño y a las tiradas de ataque.\n
+        · Daño: 2d6 + 1d4 radiante + mod FUE +3, cortante.\n
+        · Favor de Torm: los ataques de esta espada hacen 1d4 de daño radiante adicional.\n
+        · Aura de ira divina superior: una vez por descanso largo, como acción adicional, durante un minuto proyectas un aura de 9,5 m (30 ft) que otorga a ti y a tus aliados 1d6 de daño adicional,
+        1d4 adicional en las tiradas de ataque, además de ventaja en estas (requiere concentración).\n
+        · Juicio de Torm: una vez por descanso largo, como acción, genera un rallo de luz que cae del cielo sobre ti y cubre una área de 15 m (45 ft) de radio. Todas las criaturas enemigas que se encuentren dentro del area,
+        deberán hacer una tirada de salvación de Constitución (tirada de salvación de tus conjuros), si fallan, les infliges 8d10 + tu modificador de Carisma de daño radiante, si pasan la tirada, reciben la mitad del daño.
+    Los no-muertos tienen desventaja en dicha tirada de salvación.</string>
+
+    <string name="ring_of_the_primal_hunter">Anillo del Cazador Primigenio</string>
+    <string name="ring_of_the_primal_hunter_description">La mirada aguda del halcón guía tu puntería, revelando las vulnerabilidades de tus presas.\n
+Los objetivos que tengan un 50% o menos de puntos de golpe reciben 1d4 de daño perforante adicional de los ataques con armas a distancia.</string>
+    <string name="ring_of_the_primal_hunter_description_extra">El halcón grabado en este anillo simboliza la persecución implacable del cazador primigenio.\n
+    Cuando la presa flaquea, tus ataques se vuelven rápidos y despiadados, explotando su debilidad con una fuerza devastadora.</string>
+
+    <string name="ring_of_enchanting_tales">Anillo de los Relatos Encantadores</string>
+    <string name="ring_of_enchanting_tales_description">El anillo susurra relatos y melodías cautivadoras, otorgándote un bonificador de 1d4 a todas las pruebas de Persuasión.</string>
+    <string name="ring_of_enchanting_tales_description_extra">Este anillo, grabado con la delicada silueta de una sirena tocando una lira, susurra relatos encantadores a cualquiera que escuche.</string>
+
+    <string name="ring_of_the_hermit_crab">Anillo del Cangrejo Ermitaño</string>
+    <string name="ring_of_the_hermit_crab_description">El anillo está siempre vigilante, otorgándote un +2 a todas las pruebas de Percepción.</string>
+    <string name="ring_of_the_hermit_crab_description_extra">Este anillo está grabado con la silueta de un cangrejo ermitaño, que asoma periódicamente para tantear su entorno.</string>
+
+    <string name="boots_of_the_swift_stalker">Botas del Acechador Veloz</string>
+    <string name="boots_of_the_swift_stalker_description">El espíritu del guepardo presta su velocidad a tus pasos.\n
+    Tu velocidad de movimiento aumenta en 5 pies.</string>
+    <string name="boots_of_the_swift_stalker_description_extra">Estas botas están confeccionadas con piel de guepardo. Otorgan a quien las lleva un impulso a su movimiento.</string>
+
+    <string name="featherlight_boots">Botas Ligeras como Plumas</string>
+    <string name="featherlight_boots_description">Cuando el portador tiene un 50% o menos de puntos de golpe, su velocidad de movimiento aumenta en 10 pies.</string>
+    <string name="featherlight_boots_description_extra">El cuero suave y flexible se desliza sobre tu piel. Llevarlas se siente como correr descalzo.</string>
+
+    <string name="gloves_of_the_quick_draw">Guantes del Desenfunde Rápido</string>
+    <string name="gloves_of_the_quick_draw_description">Estos guantes mejoran tus reflejos, permitiéndote reaccionar rápidamente ante el peligro. Obtienes un +2 a las tiradas de iniciativa.</string>
+    <string name="gloves_of_the_quick_draw_description_extra">Estos guantes de cuero flexible parecen casi anticiparse a la acción, y su agarre se tensa de forma instintiva cuando se acerca el peligro.</string>
+
+    <string name="oil_of_accuracy">Aceite de Precisión</string>
+    <string name="oil_of_accuracy_description">Puedes consumir tu acción para cubrir tu arma activa con Aceite de Precisión. Otorga al arma un +2 a las tiradas de ataque durante una hora.</string>
+    <string name="oil_of_accuracy_description_extra">Este aceite resbaladizo ayuda a tu arma a deslizarse por las grietas más pequeñas de las defensas de un enemigo.</string>
+
+    <string name="hood_of_awakened_awareness">Capucha de la Conciencia Despierta</string>
+    <string name="hood_of_awakened_awareness_description">Al comienzo del combate, obtienes un +1 a la CA durante un turno.\n
+    Además, tienes un bonificador de 1d4 a las pruebas de Percepción mientras llevas equipada la capucha.</string>
+    <string name="hood_of_awakened_awareness_description_extra">Esta capucha está confeccionada con tela negra, acentuada con un llamativo ribete carmesí.
+    Al entrar en combate, tus sentidos se agudizan y tus movimientos se vuelven fluidos. Durante un instante fugaz, los enemigos ven cómo sus ataques resbalan inofensivamente sobre tu figura, como si tu conciencia anticipara cada uno de sus golpes.</string>
 
 </resources>
