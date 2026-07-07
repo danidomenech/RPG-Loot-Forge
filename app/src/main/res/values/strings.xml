@@ -1259,73 +1259,6 @@ while wearing this ring.</string>
     <string name="gloves_of_heroism_description">When the wearer of these gloves uses a Channel Divinity feature, they gain the effect of the \'Heroism\' spell until it ends.</string>
     <string name="gloves_of_heroism_description_extra">Suede lines the palms of these gloves, ensuring a soft, comforting touch for anyone in need of help.</string>
 
-    <string name="sword_of_justice">Sword of Justice</string>
-    <string name="sword_of_justice_description">Damage: 1d8 + STR mod, slashing, versatile (1d10).\n
-        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n\n
-    This sword can be upgraded to \'rare\' in whatever way the DM deems most appropriate.</string>
-    <string name="sword_of_justice_description_extra">The words “Liberation. Justice. Vengeance.” are etched at the base of this sword, echoing in your mind with every strike.</string>
-
-    <string name="sword_of_justice_rare">Sword of Justice +1</string>
-    <string name="sword_of_justice_rare_description">Grants +1 to damage and attack rolls.\n
-        · Damage: 1d8 + STR mod +1, slashing, versatile (1d10).\n
-        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n
-        · Lesser Aura of Courage: Once per long rest, as a bonus action, you project a 4.5 m (15 ft) aura that grants you and allies within it advantage on saving throws against fear for 1 minute.\n\n
-        This sword can be upgraded to \'very rare\' in whatever way the DM deems most appropriate.
-    </string>
-
-    <string name="sword_of_justice_very_rare">Sword of Justice +2</string>
-    <string name="sword_of_justice_very_rare_description">Grants +2 to damage and attack rolls.\n
-        · Damage: 1d8 + STR mod +2, slashing, versatile (1d10).\n
-        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n
-        · Aura of Courage: Once per long rest, as a bonus action, you project a 4.5 m (15 ft) aura that grants you and allies within it advantage on saving throws against fear and charm for 1 minute.\n
-        · Healing of Justice: Once per long rest, as an action, you heal all allies within 7.5 m (25 ft) for 2d8 + your Charisma modifier.\n\n
-        This sword can be upgraded to \'legendary\' in whatever way the DM deems most appropriate.
-    </string>
-
-    <string name="sword_of_justice_legendary">Sword of Justice +3</string>
-    <string name="sword_of_justice_legendary_description">Grants +3 to damage and attack rolls.\n
-        · Damage: 1d8 + STR mod +3, slashing, versatile (1d10).\n
-        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n
-        · Greater Aura of Courage: Once per long rest, as a bonus action, you project a 4.5 m (15 ft) aura that grants you and allies within it advantage on saving throws against fear and charm
-        and +1 AC for 1 minute.\n
-        · Healing of Justice: Once per long rest, as an action, you heal all allies within 9.5 m (30 ft) for 3d8 + your Charisma modifier.\n
-        · Judgment of Light: When you use \'Healing of Justice\', enemies in the area must make a Constitution saving throw.
-        On a failure, they take radiant damage equal to the total healing you applied to yourself and your allies; on a success, they take half as much damage.
-    </string>
-
-    <string name="sword_of_the_avenger">Sword of the Avenger</string>
-    <string name="sword_of_the_avenger_description">Damage: 2d6 + 1d4 radiant + STR mod, slashing.\n
-        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n\n
-    This sword can be upgraded to \'rare\' in whatever way the DM deems most appropriate.</string>
-    <string name="sword_of_the_avenger_description_extra">Torm\'s runes burn with justice along the blade, driving you to punish those who live without honor.</string>
-
-    <string name="sword_of_the_avenger_rare">Sword of the Avenger +1</string>
-    <string name="sword_of_the_avenger_rare_description">Grants +1 to damage and attack rolls.\n
-        · Damage: 2d6 + 1d4 radiant + STR mod +1, slashing.\n
-        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n
-        · Lesser Aura of Divine Wrath: Once per long rest, as a bonus action, for 1 minute you project a 4.5 m (15 ft) aura that grants you and your allies an additional 1d6 damage (requires concentration).\n\n
-    This sword can be upgraded to \'very rare\' in whatever way the DM deems most appropriate.</string>
-
-    <string name="sword_of_the_avenger_very_rare">Sword of the Avenger +2</string>
-    <string name="sword_of_the_avenger_very_rare_description">Grants +2 to damage and attack rolls.\n
-        · Damage: 2d6 + 1d4 radiant + STR mod +2, slashing.\n
-        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n
-        · Aura of Divine Wrath: Once per long rest, as a bonus action, for 1 minute you project a 6 m (20 ft) aura that grants you and your allies an additional 1d6 damage
-        and an additional 1d4 on attack rolls (requires concentration).\n
-        · The Avenger\'s Call: Once per long rest, as an action, point the sword at a creature within 15 m (45 ft). That creature must make a Constitution saving throw
-        (your spell save DC). On a failure, it takes 5d10 + your Charisma modifier radiant damage; on a success, it takes half as much damage. Undead have disadvantage on this saving throw.\n\n
-    This sword can be upgraded to \'legendary\' in whatever way the DM deems most appropriate.</string>
-
-    <string name="sword_of_the_avenger_legendary">Sword of the Avenger +3</string>
-    <string name="sword_of_the_avenger_legendary_description">Grants +3 to damage and attack rolls.\n
-        · Damage: 2d6 + 1d4 radiant + STR mod +3, slashing.\n
-        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n
-        · Greater Aura of Divine Wrath: Once per long rest, as a bonus action, for 1 minute you project a 9.5 m (30 ft) aura that grants you and your allies an additional 1d6 damage,
-        an additional 1d4 on attack rolls, and advantage on those rolls (requires concentration).\n
-        · Judgment of Torm: Once per long rest, as an action, you call down a ray of light from the heavens centered on you, covering a 15 m (45 ft) radius.
-        Each enemy creature in the area must make a Constitution saving throw (your spell save DC). On a failure, it takes 8d10 + your Charisma modifier radiant damage; on a success, it takes half as much damage.
-        Undead have disadvantage on this saving throw.</string>
-
 
 
     <!--    Home made items    -->
@@ -1356,11 +1289,6 @@ while wearing this ring.</string>
     <string name="hammer_of_the_rift">Hammer of the Rift</string>
     <string name="hammer_of_the_rift_description">Each hit with this weapon deals an additional 1d4 force damage, in addition to the weapon\'s normal damage.</string>
     <string name="hammer_of_the_rift_description_extra">Waves of pure energy ripple across its head, warping the air around it.</string>
-
-    <string name="collectors_dagger">Collector\'s Dagger</string>
-    <string name="collectors_dagger_description">If you reduce a creature to 0 hit points with this dagger,
-        you gain advantage on your next Investigation or Perception check to find hidden items on its body or belongings.</string>
-    <string name="collectors_dagger_description_extra">Small but razor-sharp, its hilt seems to vibrate at the scent of nearby loot.</string>
 
     <string name="steadyhand_gloves">Steadyhand Gloves</string>
     <string name="steadyhand_gloves_description">Once per short or long rest, you can reroll a missed ranged weapon attack roll.</string>
@@ -1488,5 +1416,116 @@ If the roll exceeds the table\'s maximum value (100), it counts as 100.
         · Fighter (Champion or Eldritch Knight): +2 critical chance (stacking) and attacks made as a reaction have advantage, plus an additional +1 critical chance (for a total of +3).\n
         · Fighter (Battle Master): You have two additional superiority dice, and your riposte maneuvers don\'t expend a superiority die if you miss the attack.\n
         · Paladin: You can perform a \'Divine Smite\' of any level from your spells without expending a spell slot twice per short rest.</string>
+
+    <string name="ring_of_the_last_guard">Ring of the last guard</string>
+    <string name="ring_of_the_last_guard_description">This ring can only be attuned by a Paladin.\n
+Once per long rest, when an allied creature within 30 feet takes damage, you can use your reaction to intercept part of the blow.\n
+        The ally reduces the damage taken by 1d6 + your proficiency bonus + your charisma modifier, and you take that amount of damage instead.</string>
+    <string name="ring_of_the_last_guard_description_extra">A simple, unadorned ring of dull silver. Its surface is worn smooth, as if it has absorbed countless blows meant for others.</string>
+
+    <string name="sword_of_justice">Sword of Justice</string>
+    <string name="sword_of_justice_description">Damage: 1d8 + STR mod, slashing, versatile (1d10).\n
+        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n\n
+    This sword can be upgraded to \'rare\' in whatever way the DM deems most appropriate.</string>
+    <string name="sword_of_justice_description_extra">The words “Liberation. Justice. Vengeance.” are etched at the base of this sword, echoing in your mind with every strike.</string>
+
+    <string name="sword_of_justice_rare">Sword of Justice +1</string>
+    <string name="sword_of_justice_rare_description">Grants +1 to damage and attack rolls.\n
+        · Damage: 1d8 + STR mod +1, slashing, versatile (1d10).\n
+        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n
+        · Lesser Sacred Deliberation: Once per short rest, when you hit a creature, you can activate this effect: the target must succeed a Strength Saving Throw (DC 13) or it will fall prone until his next turn.\n\n
+        This sword can be upgraded to \'very rare\' in whatever way the DM deems most appropriate.
+    </string>
+
+    <string name="sword_of_justice_very_rare">Sword of Justice +2</string>
+    <string name="sword_of_justice_very_rare_description">Grants +2 to damage and attack rolls.\n
+        · Damage: 1d8 + STR mod +2, slashing, versatile (1d10).\n
+        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n
+        · Sacred Deliberation: Once per short rest, when you hit a creature, you can activate this effect: the target must succeed a Strength Saving Throw (DC 15) or it will fall prone until his next turn.
+        Additionally, in case of success, the target will have disadvantage to hit any creature that is not you for the next 3 turns.\n
+        · Healing of Justice: Once per long rest, as an action, you heal all allies within 7.5 m (25 ft) for 2d8 + your Charisma modifier.\n\n
+        This sword can be upgraded to \'legendary\' in whatever way the DM deems most appropriate.
+    </string>
+
+    <string name="sword_of_justice_legendary">Sword of Justice +3</string>
+    <string name="sword_of_justice_legendary_description">Grants +3 to damage and attack rolls.\n
+        · Damage: 1d8 + STR mod +3, slashing, versatile (1d10).\n
+        · Tyr\'s Protection: This longsword allows the wearer to cast the \'Shield of Faith\' spell on themself as a bonus action once per short rest (requires concentration).\n
+        · Sacred Deliberation: Once per short rest, when you hit a creature, you can activate this effect: the target must succeed a Strength Saving Throw (DC 15) or it will fall prone until his next turn.
+        Additionally, in case of success, the target will have disadvantage to hit any creature that is not you for the next 3 turns.\n
+        · Healing of Justice: Once per long rest, as an action, you heal all allies within 9.5 m (30 ft) for 3d8 + your Charisma modifier.\n
+        · Judgment of Light: When you use \'Healing of Justice\', enemies in the area must make a Constitution saving throw.
+        On a failure, they take radiant damage equal to the total healing you applied to yourself and your allies; on a success, they take half as much damage.
+    </string>
+
+    <string name="sword_of_the_avenger">Sword of the Avenger</string>
+    <string name="sword_of_the_avenger_description">Damage: 2d6 + 1d4 radiant + STR mod, slashing.\n
+        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n\n
+    This sword can be upgraded to \'rare\' in whatever way the DM deems most appropriate.</string>
+    <string name="sword_of_the_avenger_description_extra">Torm\'s runes burn with justice along the blade, driving you to punish those who live without honor.</string>
+
+    <string name="sword_of_the_avenger_rare">Sword of the Avenger +1</string>
+    <string name="sword_of_the_avenger_rare_description">Grants +1 to damage and attack rolls.\n
+        · Damage: 2d6 + 1d4 radiant + STR mod +1, slashing.\n
+        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n
+        · Lesser Aura of Divine Wrath: Once per long rest, as a bonus action, for 1 minute you project a 4.5 m (15 ft) aura that grants you and your allies an additional 1d6 damage (requires concentration).\n\n
+    This sword can be upgraded to \'very rare\' in whatever way the DM deems most appropriate.</string>
+
+    <string name="sword_of_the_avenger_very_rare">Sword of the Avenger +2</string>
+    <string name="sword_of_the_avenger_very_rare_description">Grants +2 to damage and attack rolls.\n
+        · Damage: 2d6 + 1d4 radiant + STR mod +2, slashing.\n
+        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n
+        · Aura of Divine Wrath: Once per long rest, as a bonus action, for 1 minute you project a 6 m (20 ft) aura that grants you and your allies an additional 1d6 damage
+        and an additional 1d4 on attack rolls (requires concentration).\n
+        · The Avenger\'s Call: Once per long rest, as an action, point the sword at a creature within 15 m (45 ft). That creature must make a Constitution saving throw
+        (your spell save DC). On a failure, it takes 5d10 + your Charisma modifier radiant damage; on a success, it takes half as much damage. Undead have disadvantage on this saving throw.\n\n
+    This sword can be upgraded to \'legendary\' in whatever way the DM deems most appropriate.</string>
+
+    <string name="sword_of_the_avenger_legendary">Sword of the Avenger +3</string>
+    <string name="sword_of_the_avenger_legendary_description">Grants +3 to damage and attack rolls.\n
+        · Damage: 2d6 + 1d4 radiant + STR mod +3, slashing.\n
+        · Torm\'s Favor: This sword\'s attacks deal an additional 1d4 radiant damage.\n
+        · Greater Aura of Divine Wrath: Once per long rest, as a bonus action, for 1 minute you project a 9.5 m (30 ft) aura that grants you and your allies an additional 1d6 damage,
+        an additional 1d4 on attack rolls, and advantage on those rolls (requires concentration).\n
+        · Judgment of Torm: Once per long rest, as an action, you call down a ray of light from the heavens centered on you, covering a 15 m (45 ft) radius.
+        Each enemy creature in the area must make a Constitution saving throw (your spell save DC). On a failure, it takes 8d10 + your Charisma modifier radiant damage; on a success, it takes half as much damage.
+        Undead have disadvantage on this saving throw.</string>
+
+    <string name="ring_of_the_primal_hunter">Ring of the Primal Hunter</string>
+    <string name="ring_of_the_primal_hunter_description">The hawk\'s keen gaze guides your aim, revealing your preys vulnerabilities.\n
+Targets that have 50% or less hit points take an additional 1d4 piercing damage from ranged weapon attacks.</string>
+    <string name="ring_of_the_primal_hunter_description_extra">The hawk etched upon this ring symbolizes the primal hunter\'s unyielding pursuit.\n
+    When prey falters, your attacks become swift and merciless, exploiting weakness with devastating force.</string>
+
+    <string name="ring_of_enchanting_tales">Ring of Enchanting Tales</string>
+    <string name="ring_of_enchanting_tales_description">The ring whispers captivating tales and melodies, granting you 1d4 bonus to all Persuasion checks.</string>
+    <string name="ring_of_enchanting_tales_description_extra">This ring, etched with the delicate silhouette of a siren playing a lyre, whispers enchanting tales to any who listen.</string>
+
+    <string name="ring_of_the_hermit_crab">Ring of the Hermit Crab</string>
+    <string name="ring_of_the_hermit_crab_description">The ring is always vigilant, granting you a +2 to all Perception checks.</string>
+    <string name="ring_of_the_hermit_crab_description_extra">This ring is etched with the silhouette of a hermit crab, who is periodically creeping out to poke its surroundings.</string>
+
+    <string name="boots_of_the_swift_stalker">Boots of the Swift Stalker</string>
+    <string name="boots_of_the_swift_stalker_description">The spirit of the cheetah lends its speed to your stride.\n
+    Your movement speed increases by 5 feet.</string>
+    <string name="boots_of_the_swift_stalker_description_extra">These boots are crafted from the hide of a cheetah. Grant the wearer a boost to their movement.</string>
+
+    <string name="featherlight_boots">Featherlight Boots</string>
+    <string name="featherlight_boots_description">When the wearer has 50% hit points or less, their movement speed is increased by 10 feet.</string>
+    <string name="featherlight_boots_description_extra">The soft and supple leather glides over your skin. Wearing them feels like running barefoot.</string>
+
+    <string name="gloves_of_the_quick_draw">Gloves of the Quick Draw</string>
+    <string name="gloves_of_the_quick_draw_description">These gloves enhance your reflexes, allowing you to react swiftly to danger. You gain +2 to initiative rolls.</string>
+    <string name="gloves_of_the_quick_draw_description_extra">These supple leather gloves seem to almost anticipate action, their grip tightening instinctively as danger approaches.</string>
+
+    <string name="oil_of_accuracy">Oil of Accuracy</string>
+    <string name="oil_of_accuracy_description">You can consume your action to coat your active weapon with Oil of Accuracy. Grants weapon +2 on attack rolls for one hour.</string>
+    <string name="oil_of_accuracy_description_extra">This slick oil helps your weapon slip through the tiniest of cracks in an enemy\'s defences.</string>
+
+    <string name="hood_of_awakened_awareness">Hood of Awakened Awareness</string>
+    <string name="hood_of_awakened_awareness_description">At the start of combat, you gain +1 AC for one turn.\n
+    Additionally, you have 1d4 bonus to Perception checks while the hood is equipped.</string>
+    <string name="hood_of_awakened_awareness_description_extra">This hood is crafted from black cloth, accented with striking crimson trim.
+    As you enter combat, your senses sharpen and your movements become fluid. Enemies find their attacks glancing harmlessly off your form for a fleeting moment, as if your awareness anticipates their every strike.</string>
 
 </resources>

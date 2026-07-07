@@ -1,8 +1,8 @@
 package com.danidomenech.dndlootforge.domain.usecase
 
-import com.danidomenech.dndlootforge.data.model.Item
-import com.danidomenech.dndlootforge.data.repository.ItemRepository
-import jakarta.inject.Inject
+import com.danidomenech.dndlootforge.domain.model.Item
+import com.danidomenech.dndlootforge.domain.repository.ItemRepository
+import javax.inject.Inject
 
 class GetAllItemsUseCase @Inject constructor(
     private val repository: ItemRepository
