@@ -17,7 +17,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.feature.itemdetail.ItemDetailSheetContent
-import com.danidomenech.dndlootforge.feature.lootlist.LootListScreen
+import com.danidomenech.dndlootforge.feature.lootlist.LootListRoute
 import com.danidomenech.dndlootforge.feature.loottables.LootTablesScreen
 import com.danidomenech.dndlootforge.feature.mainmenu.MainMenuScreen
 import com.danidomenech.dndlootforge.feature.narrativelootlist.NarrativeLootListScreen
@@ -91,7 +91,7 @@ fun DnDLootForgeNavHost(
         }
 
         composable(AppDestination.AllItems.route) {
-            LootListScreen(
+            LootListRoute(
                 onItemClick = onItemClick
             )
         }

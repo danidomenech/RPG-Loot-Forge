@@ -28,90 +28,101 @@ import com.danidomenech.dndlootforge.R
 import com.danidomenech.dndlootforge.core.design.components.ItemRow
 import com.danidomenech.dndlootforge.core.design.components.NAME_COLUMN_WEIGHT
 import com.danidomenech.dndlootforge.core.design.components.TYPE_COLUMN_WEIGHT
+import com.danidomenech.dndlootforge.core.design.theme.Dimensions
 import com.danidomenech.dndlootforge.preview.fakeItems
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LootListScreen(
-    viewModel: LootListViewModel = hiltViewModel(),
-    onItemClick: (Item, priceModifierPercent: Int?) -> Unit
+    uiState: LootListUiState,
+    onAction: (LootListAction) -> Unit
 ) {
-    val items by viewModel.items.collectAsState()
-    LootListContent(items = items, onItemClick = onItemClick)
-}
-
-@ExperimentalMaterial3Api
-@Composable
-fun LootListContent(
-    items: List<Item>,
-    onItemClick: (Item, priceModifierPercent: Int?) -> Unit
-) {
-
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.all_items_screen_title)) })
+            TopAppBar(
+                title = {
+                    Text(stringResource(R.string.all_items_screen_title))
+                }
+            )
         }
     ) { paddingValues ->
+        LootListContent(
+            items = uiState.items,
+            onItemClick = { item ->
+                onAction(LootListAction.ItemClick(item))
+            },
+            modifier = Modifier.padding(paddingValues)
+        )
+    }
+}
 
-        Column(modifier = Modifier.padding(paddingValues)) {
+@Composable
+private fun LootListContent(
+    items: List<Item>,
+    onItemClick: (Item) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(modifier = modifier) {
+        LootListHeader()
 
-            // Column headers
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Text(
-                    text = stringResource(R.string.magic_item),
-                    style = MaterialTheme.typography.labelLarge.copy(
-                        fontWeight = FontWeight.ExtraBold
-                    ),
-                    modifier = Modifier.weight(NAME_COLUMN_WEIGHT)
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(Dimensions.small),
+            verticalArrangement = Arrangement.spacedBy(Dimensions.extraSmall)
+        ) {
+            itemsIndexed(
+                items = items,
+                key = { _, item -> item.id.value }
+            ) { index, item ->
+                ItemRow(
+                    item = item,
+                    index = index,
+                    onClick = { onItemClick(item) }
                 )
-                Text(
-                    text = stringResource(R.string.type),
-                    style = MaterialTheme.typography.labelLarge.copy(
-                        fontWeight = FontWeight.ExtraBold
-                    ),
-                    modifier = Modifier.weight(TYPE_COLUMN_WEIGHT),
-                )
-            }
-
-            LazyColumn(
-                modifier = Modifier.fillMaxSize(),
-                contentPadding = PaddingValues(8.dp),
-                verticalArrangement = Arrangement.spacedBy(4.dp)
-            ) {
-                itemsIndexed(
-                    items = items,
-                    key = { _, item -> item.id.value }
-                ) { index, item ->
-                    ItemRow(
-                        item = item,
-                        index = index,
-                        onClick = { onItemClick(item, null) }
-                    )
-                }
             }
         }
     }
 }
 
-
-//PREVIEWS
-@Preview(showBackground = true)
-@ExperimentalMaterial3Api
 @Composable
-fun LootListScreenPreview() {
+private fun LootListHeader() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                horizontal = Dimensions.medium,
+                vertical = Dimensions.small
+            ),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = stringResource(R.string.magic_item),
+            style = MaterialTheme.typography.labelLarge.copy(
+                fontWeight = FontWeight.ExtraBold
+            ),
+            modifier = Modifier.weight(NAME_COLUMN_WEIGHT)
+        )
 
-    val fakeItems = fakeItems
+        Text(
+            text = stringResource(R.string.type),
+            style = MaterialTheme.typography.labelLarge.copy(
+                fontWeight = FontWeight.ExtraBold
+            ),
+            modifier = Modifier.weight(TYPE_COLUMN_WEIGHT)
+        )
+    }
+}
 
+@Preview(showBackground = true)
+@Composable
+private fun LootListScreenPreview() {
     DnDLootForgeTheme {
-        LootListContent(
-            items = fakeItems,
-            onItemClick = { _, _ -> }
+        LootListScreen(
+            uiState = LootListUiState(
+                items = fakeItems
+            ),
+            onAction = {}
         )
     }
 }

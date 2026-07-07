@@ -14,8 +14,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
 import com.danidomenech.dndlootforge.R
+import com.danidomenech.dndlootforge.core.design.theme.Dimensions
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -37,8 +37,8 @@ fun MainMenuScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(paddingValues)
-                .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
+                .padding(Dimensions.medium),
+            verticalArrangement = Arrangement.spacedBy(Dimensions.medium),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(onClick = onAllItemsClick) {
