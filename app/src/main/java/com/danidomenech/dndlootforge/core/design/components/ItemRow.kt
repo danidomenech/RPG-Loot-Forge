@@ -16,11 +16,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.danidomenech.dndlootforge.core.design.item.color
+import com.danidomenech.dndlootforge.core.design.item.text
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.preview.fakeItems
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 import com.danidomenech.dndlootforge.core.design.theme.UnevenRow
-import com.danidomenech.dndlootforge.core.ui.text.TextHelper
 
 const val NAME_COLUMN_WEIGHT = 2f
 const val TYPE_COLUMN_WEIGHT = 1f
@@ -45,7 +46,7 @@ fun ItemRow(
     ) {
         Text(
             text = context.getString(item.nameResId),
-            color = TextHelper.getRarityColor(item.rarity),
+            color = item.rarity.color,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
                 .weight(NAME_COLUMN_WEIGHT)
@@ -53,7 +54,7 @@ fun ItemRow(
         )
 
         Text(
-            text = TextHelper.getItemTypeString(item.type),
+            text = item.type.text(),
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier.weight(TYPE_COLUMN_WEIGHT),
         )

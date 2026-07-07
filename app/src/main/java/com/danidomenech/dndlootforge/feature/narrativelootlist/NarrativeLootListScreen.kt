@@ -32,10 +32,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.danidomenech.dndlootforge.R
 import com.danidomenech.dndlootforge.core.design.components.NAME_COLUMN_WEIGHT
 import com.danidomenech.dndlootforge.core.design.components.TYPE_COLUMN_WEIGHT
+import com.danidomenech.dndlootforge.core.design.item.color
 import com.danidomenech.dndlootforge.preview.fakeItems
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 import com.danidomenech.dndlootforge.core.design.theme.UnevenRow
-import com.danidomenech.dndlootforge.core.ui.text.TextHelper
 import com.danidomenech.dndlootforge.domain.rules.LootTableRules.getRequiredPlayerLevel
 
 @ExperimentalMaterial3Api
@@ -127,7 +127,7 @@ fun NarrativeItemRow(
     ) {
         Text(
             text = context.getString(item.nameResId),
-            color = TextHelper.getRarityColor(item.rarity),
+            color = item.rarity.color,
             style = MaterialTheme.typography.bodyMedium,
             modifier = Modifier
                 .weight(NAME_COLUMN_WEIGHT)

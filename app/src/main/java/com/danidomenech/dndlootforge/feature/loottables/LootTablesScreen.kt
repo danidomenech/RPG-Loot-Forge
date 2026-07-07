@@ -17,14 +17,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.danidomenech.dndlootforge.R
+import com.danidomenech.dndlootforge.core.design.item.color
+import com.danidomenech.dndlootforge.core.design.theme.Dimensions
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.domain.model.LootTable
 import com.danidomenech.dndlootforge.domain.model.LootTableEntry
 import com.danidomenech.dndlootforge.preview.fakeItems
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
 import com.danidomenech.dndlootforge.core.design.theme.UnevenRow
-import com.danidomenech.dndlootforge.core.ui.text.TextHelper
-import com.danidomenech.dndlootforge.core.ui.text.TextHelper.getLootTablePlayerLevel
+import com.danidomenech.dndlootforge.core.ui.text.toPlayerLevelText
 import com.danidomenech.dndlootforge.domain.rules.LootTableRules
 
 private const val DICE_COLUMN_WEIGHT = 1f
@@ -120,15 +121,16 @@ fun LootTableSection(
                 modifier = Modifier.padding(start = 4.dp)
             )
             Text(
-                text = stringResource(R.string.loot_table_player_level,
-                    getLootTablePlayerLevel(LootTableRules.playerLevelTables[table] ?: 1..1)
+                text = stringResource(
+                    R.string.loot_table_player_level,
+                    LootTableRules.playerLevelTables[table].toPlayerLevelText()
                 ),
                 style = MaterialTheme.typography.bodyMedium.copy(
                     fontStyle = FontStyle.Italic,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 ),
                 modifier = Modifier
-                    .padding(start = 8.dp, end = 4.dp)
+                    .padding(start = Dimensions.small, end = Dimensions.extraSmall)
                     .align(Alignment.CenterVertically)
             )
         }
@@ -182,7 +184,7 @@ fun LootTableSection(
                 )
                 Text(
                     text = context.getString(item.nameResId),
-                    color = TextHelper.getRarityColor(item.rarity),
+                    color = item.rarity.color,
                     style = MaterialTheme.typography.bodyMedium,
                     modifier = Modifier
                         .weight(NAME_COLUMN_WEIGHT)

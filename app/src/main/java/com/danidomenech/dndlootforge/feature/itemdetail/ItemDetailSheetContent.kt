@@ -26,141 +26,166 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.danidomenech.dndlootforge.R
+import com.danidomenech.dndlootforge.core.design.item.color
+import com.danidomenech.dndlootforge.core.design.item.text
+import com.danidomenech.dndlootforge.core.design.theme.Dimensions
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.domain.model.ItemOrigin
 import com.danidomenech.dndlootforge.domain.model.ItemRarity
 import com.danidomenech.dndlootforge.domain.model.ItemType
 import com.danidomenech.dndlootforge.core.design.theme.ItemOriginEditedColor
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
-import com.danidomenech.dndlootforge.core.ui.text.TextHelper
 import com.danidomenech.dndlootforge.domain.model.ItemId
+import com.danidomenech.dndlootforge.preview.fakeItems
 
 @Composable
 fun ItemDetailSheetContent(
     item: Item,
-    priceModifierPercent: Int? = null
+    priceModifierPercent: Int? = null,
+    modifier: Modifier = Modifier
 ) {
-    val context = LocalContext.current
-
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 16.dp)
+            .padding(
+                horizontal = Dimensions.large,
+                vertical = Dimensions.medium
+            )
     ) {
-        // Title
-        Text(
-            text = context.getString(item.nameResId).uppercase(),
-            color = TextHelper.getRarityColor(item.rarity),
-            style = MaterialTheme.typography.titleMedium,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 8.dp)
+        ItemDetailTitle(item = item)
+
+        ItemDetailMetadataRow(item = item)
+
+        ItemDetailBody(
+            item = item,
+            priceModifierPercent = priceModifierPercent
         )
-
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(bottom = 16.dp),
-            horizontalArrangement = Arrangement.SpaceBetween,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            // Type and Rarity
-            Text(
-                text = "${TextHelper.getItemTypeString(item.type)}, ${TextHelper.getRarityTextString(item.rarity)}",
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    fontStyle = FontStyle.Italic,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                ),
-                modifier = Modifier
-                    .wrapContentSize()
-            )
-
-            val (icon, iconTint) = when (item.origin) {
-                ItemOrigin.BOOK -> Icons.AutoMirrored.Filled.MenuBook to MaterialTheme.colorScheme.onSurfaceVariant
-                ItemOrigin.BOOK_EDITED -> Icons.AutoMirrored.Filled.MenuBook to ItemOriginEditedColor
-                ItemOrigin.BG3 -> Icons.Filled.VideogameAsset to MaterialTheme.colorScheme.onSurfaceVariant
-                ItemOrigin.BG3_EDITED -> Icons.Filled.VideogameAsset to ItemOriginEditedColor
-                ItemOrigin.HOMEBREW -> Icons.Filled.Lightbulb to MaterialTheme.colorScheme.onSurfaceVariant
-            }
-
-            Icon(
-                imageVector = icon,
-                contentDescription = item.origin.name,
-                tint = iconTint
-            )
-        }
-
-        // Scrollable content from this point on
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .heightIn(max = 600.dp)
-                .verticalScroll(rememberScrollState())
-                .padding(top = 0.dp)
-        ) {
-            // Requires attunement
-            if (item.requiresAttunement) {
-                Text(
-                    text = stringResource(R.string.requires_attunement),
-                    style = MaterialTheme.typography.bodyMedium.copy(
-                        fontStyle = FontStyle.Italic,
-                        fontWeight = FontWeight.Bold,
-                        color = MaterialTheme.colorScheme.primary
-                    ),
-                    modifier = Modifier.padding(bottom = 16.dp)
-                )
-            }
-
-            // Description
-            Text(
-                text = context.getString(item.descriptionResId),
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(top = 0.dp)
-            )
-
-            // Description Extra
-            item.descriptionExtraResId?.let {
-                Text(
-                    text = context.getString(it),
-                    style = MaterialTheme.typography.bodySmall.copy(
-                        fontStyle = FontStyle.Italic,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    ),
-                    modifier = Modifier.padding(top = 16.dp)
-                )
-            }
-
-            // Value
-            val finalPrice = priceModifierPercent?.let {
-                (item.value * (1 + it / 100f)).toInt().coerceAtLeast(0)
-            } ?: item.value
-
-            Text(
-                text = stringResource(R.string.item_value, finalPrice),
-                style = MaterialTheme.typography.bodyMedium,
-                modifier = Modifier.padding(top = 16.dp)
-            )
-        }
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun ItemDetailSheetContentPreview() {
-    DnDLootForgeTheme {
-        val fakeItem = Item(
-            id = ItemId("healing_potion"),
-            nameResId = R.string.healing_potion,
-            type = ItemType.POTION,
-            rarity = ItemRarity.COMMON,
-            descriptionResId = R.string.healing_potion_description,
-            descriptionExtraResId = R.string.healing_potion_description_extra,
-            value = 50,
-            powerLevel = 50,
-            requiresAttunement = true
+private fun ItemDetailTitle(
+    item: Item
+) {
+    Text(
+        text = stringResource(item.nameResId).uppercase(),
+        color = item.rarity.color,
+        style = MaterialTheme.typography.titleMedium,
+        fontWeight = FontWeight.Bold,
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = Dimensions.small)
+    )
+}
+
+@Composable
+private fun ItemDetailMetadataRow(
+    item: Item
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(bottom = Dimensions.medium),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = "${item.type.text()}, ${item.rarity.text()}",
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            ),
+            modifier = Modifier.wrapContentSize()
         )
 
-        ItemDetailSheetContent(item = fakeItem)
+        ItemOriginIcon(origin = item.origin)
+    }
+}
+
+@Composable
+private fun ItemOriginIcon(
+    origin: ItemOrigin
+) {
+    val (icon, iconTint) = when (origin) {
+        ItemOrigin.BOOK -> Icons.AutoMirrored.Filled.MenuBook to MaterialTheme.colorScheme.onSurfaceVariant
+        ItemOrigin.BOOK_EDITED -> Icons.AutoMirrored.Filled.MenuBook to ItemOriginEditedColor
+        ItemOrigin.BG3 -> Icons.Filled.VideogameAsset to MaterialTheme.colorScheme.onSurfaceVariant
+        ItemOrigin.BG3_EDITED -> Icons.Filled.VideogameAsset to ItemOriginEditedColor
+        ItemOrigin.HOMEBREW -> Icons.Filled.Lightbulb to MaterialTheme.colorScheme.onSurfaceVariant
+    }
+
+    Icon(
+        imageVector = icon,
+        contentDescription = origin.name,
+        tint = iconTint
+    )
+}
+
+@Composable
+private fun ItemDetailBody(
+    item: Item,
+    priceModifierPercent: Int?
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .heightIn(max = MaxDescriptionHeight)
+            .verticalScroll(rememberScrollState())
+    ) {
+        if (item.requiresAttunement) {
+            Text(
+                text = stringResource(R.string.requires_attunement),
+                style = MaterialTheme.typography.bodyMedium.copy(
+                    fontStyle = FontStyle.Italic,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.primary
+                ),
+                modifier = Modifier.padding(bottom = Dimensions.medium)
+            )
+        }
+
+        Text(
+            text = stringResource(item.descriptionResId),
+            style = MaterialTheme.typography.bodyMedium
+        )
+
+        item.descriptionExtraResId?.let { descriptionExtraResId ->
+            Text(
+                text = stringResource(descriptionExtraResId),
+                style = MaterialTheme.typography.bodySmall.copy(
+                    fontStyle = FontStyle.Italic,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                ),
+                modifier = Modifier.padding(top = Dimensions.medium)
+            )
+        }
+
+        val finalPrice = item.getFinalPrice(priceModifierPercent)
+
+        Text(
+            text = stringResource(R.string.item_value, finalPrice),
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier.padding(top = Dimensions.medium)
+        )
+    }
+}
+
+private fun Item.getFinalPrice(
+    priceModifierPercent: Int?
+): Int {
+    return priceModifierPercent?.let { modifier ->
+        (value * (1 + modifier / 100f)).toInt().coerceAtLeast(0)
+    } ?: value
+}
+
+private val MaxDescriptionHeight = 600.dp
+
+@Preview(showBackground = true)
+@Composable
+private fun ItemDetailSheetContentPreview() {
+    DnDLootForgeTheme {
+        ItemDetailSheetContent(
+            item = fakeItems.first()
+        )
     }
 }
