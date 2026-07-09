@@ -18,6 +18,6 @@ fun LocalItem.toDomain(): Item {
         overrideTables = overrideTables?: emptyList(),
         vendorExclusive = vendorExclusive?: false,
         lootExclusive = lootExclusive?: false,
-        narrativeLootExclusive = lootExclusive?: false
+        narrativeLootExclusive = narrativeLootExclusive?: false
     )
 }

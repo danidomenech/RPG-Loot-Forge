@@ -2,6 +2,7 @@ package com.danidomenech.dndlootforge.core.design.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxWithConstraints
@@ -34,22 +35,123 @@ fun VerticalScrollbar(
     minThumbHeight: Dp = ScrollbarDefaults.MinThumbHeight,
     paddingEnd: Dp = ScrollbarDefaults.PaddingEnd,
     shape: Shape = RoundedCornerShape(percent = 50),
-    thumbColor: Color = MaterialTheme.colorScheme.onSurface.copy(alpha = ScrollbarDefaults.THUMB_ALPHA),
+    thumbColor: Color = MaterialTheme.colorScheme.onSurface.copy(
+        alpha = ScrollbarDefaults.THUMB_ALPHA
+    ),
     autoHide: Boolean = true
 ) {
     val layoutInfo = listState.layoutInfo
-    val totalItemsCount = layoutInfo.totalItemsCount
     val visibleItems = layoutInfo.visibleItemsInfo
+    val totalItemsCount = layoutInfo.totalItemsCount
 
-    val isVisible = !autoHide || listState.isScrollInProgress
+    if (totalItemsCount == 0 || visibleItems.isEmpty()) return
+
+    VerticalScrollbarThumb(
+        modifier = modifier,
+        isVisible = !autoHide || listState.isScrollInProgress,
+        thumbWidth = thumbWidth,
+        minThumbHeight = minThumbHeight,
+        paddingEnd = paddingEnd,
+        shape = shape,
+        thumbColor = thumbColor
+    ) { viewportHeightPx, minThumbHeightPx ->
+        val firstVisibleItem = visibleItems.first()
+
+        val averageItemHeightPx = visibleItems
+            .map { it.size }
+            .average()
+            .toFloat()
+            .coerceAtLeast(1f)
+
+        val totalContentHeightPx = averageItemHeightPx * totalItemsCount
+
+        val viewportFraction = (viewportHeightPx / totalContentHeightPx)
+            .coerceIn(0f, 1f)
+
+        val thumbHeightPx = (viewportHeightPx * viewportFraction)
+            .coerceAtLeast(minThumbHeightPx)
+
+        val firstVisibleItemScrollOffsetPx =
+            firstVisibleItem.index * averageItemHeightPx + listState.firstVisibleItemScrollOffset
+
+        val maxScrollOffsetPx = (totalContentHeightPx - viewportHeightPx)
+            .coerceAtLeast(1f)
+
+        val scrollProgress = (firstVisibleItemScrollOffsetPx / maxScrollOffsetPx)
+            .coerceIn(0f, 1f)
+
+        val maxThumbOffsetPx = viewportHeightPx - thumbHeightPx
+        val thumbOffsetPx = scrollProgress * maxThumbOffsetPx
+
+        ScrollbarThumbMetrics(
+            heightPx = thumbHeightPx,
+            offsetPx = thumbOffsetPx
+        )
+    }
+}
+
+@Composable
+fun VerticalScrollbar(
+    scrollState: ScrollState,
+    modifier: Modifier = Modifier,
+    thumbWidth: Dp = ScrollbarDefaults.ThumbWidth,
+    minThumbHeight: Dp = ScrollbarDefaults.MinThumbHeight,
+    paddingEnd: Dp = ScrollbarDefaults.PaddingEnd,
+    shape: Shape = RoundedCornerShape(percent = 50),
+    thumbColor: Color = MaterialTheme.colorScheme.onSurface.copy(
+        alpha = ScrollbarDefaults.THUMB_ALPHA
+    ),
+    autoHide: Boolean = true
+) {
+    if (scrollState.maxValue <= 0) return
+
+    VerticalScrollbarThumb(
+        modifier = modifier,
+        isVisible = !autoHide || scrollState.isScrollInProgress,
+        thumbWidth = thumbWidth,
+        minThumbHeight = minThumbHeight,
+        paddingEnd = paddingEnd,
+        shape = shape,
+        thumbColor = thumbColor
+    ) { viewportHeightPx, minThumbHeightPx ->
+        val scrollMaxPx = scrollState.maxValue.toFloat()
+        val scrollValuePx = scrollState.value.toFloat()
+
+        val totalContentHeightPx = viewportHeightPx + scrollMaxPx
+
+        val thumbHeightPx = ((viewportHeightPx / totalContentHeightPx) * viewportHeightPx)
+            .coerceAtLeast(minThumbHeightPx)
+
+        val maxThumbOffsetPx = viewportHeightPx - thumbHeightPx
+        val thumbOffsetPx = (scrollValuePx / scrollMaxPx) * maxThumbOffsetPx
+
+        ScrollbarThumbMetrics(
+            heightPx = thumbHeightPx,
+            offsetPx = thumbOffsetPx
+        )
+    }
+}
+
+@Composable
+private fun VerticalScrollbarThumb(
+    modifier: Modifier,
+    isVisible: Boolean,
+    thumbWidth: Dp,
+    minThumbHeight: Dp,
+    paddingEnd: Dp,
+    shape: Shape,
+    thumbColor: Color,
+    calculateMetrics: (viewportHeightPx: Float, minThumbHeightPx: Float) -> ScrollbarThumbMetrics
+) {
+    val density = LocalDensity.current
 
     val alpha by animateFloatAsState(
         targetValue = if (isVisible) 1f else 0f,
-        animationSpec = tween(durationMillis = ScrollbarDefaults.AUTO_HIDE_DURATION_MILIS),
+        animationSpec = tween(
+            durationMillis = ScrollbarDefaults.AUTO_HIDE_DURATION_MILLIS
+        ),
         label = "VerticalScrollbarAlpha"
     )
-
-    if (totalItemsCount == 0 || visibleItems.isEmpty()) return
 
     BoxWithConstraints(
         modifier = modifier
@@ -60,41 +162,29 @@ fun VerticalScrollbar(
         val viewportHeightPx = constraints.maxHeight.toFloat()
         if (viewportHeightPx <= 0f) return@BoxWithConstraints
 
-        val firstVisibleItem = visibleItems.first()
-        val averageItemHeightPx = visibleItems
-            .map { it.size }
-            .average()
-            .toFloat()
-            .coerceAtLeast(1f)
+        val minThumbHeightPx = with(density) {
+            minThumbHeight.toPx()
+        }
 
-        val totalContentHeightPx = averageItemHeightPx * totalItemsCount
-        val viewportFraction = (viewportHeightPx / totalContentHeightPx)
-            .coerceIn(0f, 1f)
-
-        val thumbHeightPx = (viewportHeightPx * viewportFraction).coerceAtLeast(
-            with(LocalDensity.current) { minThumbHeight.toPx() }
+        val metrics = calculateMetrics(
+            viewportHeightPx,
+            minThumbHeightPx
         )
-
-        val firstVisibleItemScrollOffsetPx =
-            firstVisibleItem.index * averageItemHeightPx + listState.firstVisibleItemScrollOffset
-
-        val maxScrollOffsetPx = (totalContentHeightPx - viewportHeightPx).coerceAtLeast(1f)
-        val scrollProgress = (firstVisibleItemScrollOffsetPx / maxScrollOffsetPx)
-            .coerceIn(0f, 1f)
-
-        val maxThumbOffsetPx = viewportHeightPx - thumbHeightPx
-        val thumbOffsetPx = scrollProgress * maxThumbOffsetPx
 
         Box(
             modifier = Modifier
                 .offset {
                     IntOffset(
                         x = 0,
-                        y = thumbOffsetPx.roundToInt()
+                        y = metrics.offsetPx.roundToInt()
                     )
                 }
                 .width(thumbWidth)
-                .height(with(LocalDensity.current) { thumbHeightPx.toDp() })
+                .height(
+                    with(density) {
+                        metrics.heightPx.toDp()
+                    }
+                )
                 .alpha(alpha)
                 .background(
                     color = thumbColor,
@@ -104,8 +194,13 @@ fun VerticalScrollbar(
     }
 }
 
+private data class ScrollbarThumbMetrics(
+    val heightPx: Float,
+    val offsetPx: Float
+)
+
 private object ScrollbarDefaults {
-    const val AUTO_HIDE_DURATION_MILIS = 1000
+    const val AUTO_HIDE_DURATION_MILLIS = 1000
     const val THUMB_ALPHA = 0.65f
 
     val ThumbWidth = 3.dp

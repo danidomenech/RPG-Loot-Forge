@@ -1,6 +1,7 @@
 package com.danidomenech.dndlootforge.feature.itemdetail
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -26,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.danidomenech.dndlootforge.R
+import com.danidomenech.dndlootforge.core.design.components.VerticalScrollbar
 import com.danidomenech.dndlootforge.core.design.item.color
 import com.danidomenech.dndlootforge.core.design.item.text
 import com.danidomenech.dndlootforge.core.design.theme.Dimensions
@@ -126,46 +128,61 @@ private fun ItemDetailBody(
     item: Item,
     priceModifierPercent: Int?
 ) {
-    Column(
+    val scrollState = rememberScrollState()
+
+    Box(
         modifier = Modifier
             .fillMaxWidth()
             .heightIn(max = MaxDescriptionHeight)
-            .verticalScroll(rememberScrollState())
     ) {
-        if (item.requiresAttunement) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .verticalScroll(scrollState)
+                .padding(end = Dimensions.medium)
+        ) {
+            if (item.requiresAttunement) {
+                Text(
+                    text = stringResource(R.string.requires_attunement),
+                    style = MaterialTheme.typography.bodyMedium.copy(
+                        fontStyle = FontStyle.Italic,
+                        fontWeight = FontWeight.Bold,
+                        color = MaterialTheme.colorScheme.primary
+                    ),
+                    modifier = Modifier.padding(bottom = Dimensions.medium)
+                )
+            }
+
             Text(
-                text = stringResource(R.string.requires_attunement),
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    fontStyle = FontStyle.Italic,
-                    fontWeight = FontWeight.Bold,
-                    color = MaterialTheme.colorScheme.primary
-                ),
-                modifier = Modifier.padding(bottom = Dimensions.medium)
+                text = stringResource(item.descriptionResId),
+                style = MaterialTheme.typography.bodyMedium
             )
-        }
 
-        Text(
-            text = stringResource(item.descriptionResId),
-            style = MaterialTheme.typography.bodyMedium
-        )
+            item.descriptionExtraResId?.let { descriptionExtraResId ->
+                Text(
+                    text = stringResource(descriptionExtraResId),
+                    style = MaterialTheme.typography.bodySmall.copy(
+                        fontStyle = FontStyle.Italic,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    ),
+                    modifier = Modifier.padding(top = Dimensions.medium)
+                )
+            }
 
-        item.descriptionExtraResId?.let { descriptionExtraResId ->
+            val finalPrice = item.getFinalPrice(priceModifierPercent)
+
             Text(
-                text = stringResource(descriptionExtraResId),
-                style = MaterialTheme.typography.bodySmall.copy(
-                    fontStyle = FontStyle.Italic,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                ),
+                text = stringResource(R.string.item_value, finalPrice),
+                style = MaterialTheme.typography.bodyMedium,
                 modifier = Modifier.padding(top = Dimensions.medium)
             )
         }
 
-        val finalPrice = item.getFinalPrice(priceModifierPercent)
-
-        Text(
-            text = stringResource(R.string.item_value, finalPrice),
-            style = MaterialTheme.typography.bodyMedium,
-            modifier = Modifier.padding(top = Dimensions.medium)
+        VerticalScrollbar(
+            scrollState = scrollState,
+            modifier = Modifier
+                .align(Alignment.CenterEnd),
+            thumbColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f)
         )
     }
 }
