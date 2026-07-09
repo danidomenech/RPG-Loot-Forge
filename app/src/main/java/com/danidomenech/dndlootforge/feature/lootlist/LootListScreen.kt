@@ -1,6 +1,7 @@
 package com.danidomenech.dndlootforge.feature.lootlist
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -20,7 +21,9 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.danidomenech.dndlootforge.domain.model.Item
 import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +31,7 @@ import com.danidomenech.dndlootforge.R
 import com.danidomenech.dndlootforge.core.design.components.ItemRow
 import com.danidomenech.dndlootforge.core.design.components.NAME_COLUMN_WEIGHT
 import com.danidomenech.dndlootforge.core.design.components.TYPE_COLUMN_WEIGHT
+import com.danidomenech.dndlootforge.core.design.components.VerticalScrollbar
 import com.danidomenech.dndlootforge.core.design.theme.Dimensions
 import com.danidomenech.dndlootforge.preview.fakeItems
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
@@ -63,24 +67,38 @@ private fun LootListContent(
     onItemClick: (Item) -> Unit,
     modifier: Modifier = Modifier
 ) {
+    val listState = rememberLazyListState()
+
     Column(modifier = modifier) {
         LootListHeader()
 
-        LazyColumn(
-            modifier = Modifier.fillMaxSize(),
-            contentPadding = PaddingValues(Dimensions.small),
-            verticalArrangement = Arrangement.spacedBy(Dimensions.extraSmall)
+        Box(
+            modifier = Modifier.fillMaxSize()
         ) {
-            itemsIndexed(
-                items = items,
-                key = { _, item -> item.id.value }
-            ) { index, item ->
-                ItemRow(
-                    item = item,
-                    index = index,
-                    onClick = { onItemClick(item) }
-                )
+            LazyColumn(
+                state = listState,
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(Dimensions.small),
+                verticalArrangement = Arrangement.spacedBy(Dimensions.extraSmall)
+            ) {
+                itemsIndexed(
+                    items = items,
+                    key = { _, item -> item.id.value }
+                ) { index, item ->
+                    ItemRow(
+                        item = item,
+                        index = index,
+                        onClick = { onItemClick(item) }
+                    )
+                }
             }
+
+            VerticalScrollbar(
+                listState = listState,
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .padding(vertical = Dimensions.small)
+            )
         }
     }
 }
