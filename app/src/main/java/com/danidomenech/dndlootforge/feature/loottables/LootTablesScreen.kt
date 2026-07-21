@@ -2,89 +2,108 @@ package com.danidomenech.dndlootforge.feature.loottables
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.material3.Checkbox
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.danidomenech.dndlootforge.R
-import com.danidomenech.dndlootforge.core.design.item.color
+import com.danidomenech.dndlootforge.core.design.components.VerticalScrollbar
 import com.danidomenech.dndlootforge.core.design.theme.Dimensions
+import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
+import com.danidomenech.dndlootforge.core.design.theme.UnevenRow
+import com.danidomenech.dndlootforge.core.design.item.color
+import com.danidomenech.dndlootforge.core.ui.text.toPlayerLevelText
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.domain.model.LootTable
 import com.danidomenech.dndlootforge.domain.model.LootTableEntry
-import com.danidomenech.dndlootforge.preview.fakeItems
-import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
-import com.danidomenech.dndlootforge.core.design.theme.UnevenRow
-import com.danidomenech.dndlootforge.core.ui.text.toPlayerLevelText
 import com.danidomenech.dndlootforge.domain.rules.LootTableRules
+import com.danidomenech.dndlootforge.preview.fakeItems
 
 private const val DICE_COLUMN_WEIGHT = 1f
 private const val NAME_COLUMN_WEIGHT = 5f
 
-@ExperimentalMaterial3Api
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LootTablesScreen(
-    viewModel: LootTablesViewModel = hiltViewModel(),
-    onItemClick: (Item, priceModifierPercent: Int?) -> Unit
+    uiState: LootTablesUiState,
+    onAction: (LootTablesAction) -> Unit
 ) {
-    val lootTables by viewModel.lootTables.collectAsState()
-    val showOnlyGear by viewModel.showOnlyGear.collectAsState()
-
     Scaffold(
         topBar = {
-            TopAppBar(title = { Text(stringResource(R.string.loot_tables_screen_title)) })
+            TopAppBar(
+                title = {
+                    Text(stringResource(R.string.loot_tables_screen_title))
+                }
+            )
         }
     ) { paddingValues ->
         LootTablesContent(
-            lootTables = lootTables,
-            onItemClick = onItemClick,
-            showOnlyGear = showOnlyGear,
-            onShowOnlyGearChanged = { viewModel.setShowOnlyGear(it) },
+            lootTables = uiState.lootTables,
+            showOnlyGear = uiState.showOnlyGear,
+            onShowOnlyGearChanged = { showOnlyGear ->
+                onAction(LootTablesAction.ShowOnlyGearChange(showOnlyGear))
+            },
+            onItemClick = { item ->
+                onAction(LootTablesAction.ItemClick(item))
+            },
             modifier = Modifier.padding(paddingValues)
         )
     }
 }
 
-@ExperimentalMaterial3Api
 @Composable
-fun LootTablesContent(
+private fun LootTablesContent(
     lootTables: Map<LootTable, List<LootTableEntry>>,
-    onItemClick: (Item, priceModifierPercent: Int?) -> Unit,
     showOnlyGear: Boolean,
     onShowOnlyGearChanged: (Boolean) -> Unit,
+    onItemClick: (Item) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    Column(modifier = modifier.fillMaxSize()) {
+    val listState = rememberLazyListState()
 
-        Row(
-            verticalAlignment = Alignment.CenterVertically,
-            modifier = Modifier
-                .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
-        ) {
-            Checkbox(
-                checked = showOnlyGear,
-                onCheckedChange = onShowOnlyGearChanged
-            )
-            Text(stringResource(R.string.show_only_gear))
-        }
+    Column(
+        modifier = modifier.fillMaxSize()
+    ) {
+        ShowOnlyGearFilter(
+            checked = showOnlyGear,
+            onCheckedChange = onShowOnlyGearChanged
+        )
 
-        LazyColumn(
-            modifier = Modifier.weight(1f),
-            contentPadding = PaddingValues(8.dp),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+        Box(
+            modifier = Modifier.weight(1f)
         ) {
-            lootTables.forEach { (table, entries) ->
-                item {
+            LazyColumn(
+                state = listState,
+                modifier = Modifier.fillMaxSize(),
+                contentPadding = PaddingValues(Dimensions.small),
+                verticalArrangement = Arrangement.spacedBy(Dimensions.medium)
+            ) {
+                items(
+                    items = lootTables.entries.toList(),
+                    key = { (table, _) -> table.name }
+                ) { (table, entries) ->
                     LootTableSection(
                         table = table,
                         entries = entries,
@@ -92,116 +111,186 @@ fun LootTablesContent(
                     )
                 }
             }
+
+            VerticalScrollbar(
+                listState = listState,
+                modifier = Modifier.align(Alignment.CenterEnd)
+            )
         }
     }
 }
 
 @Composable
-fun LootTableSection(
+private fun ShowOnlyGearFilter(
+    checked: Boolean,
+    onCheckedChange: (Boolean) -> Unit
+) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier.padding(
+            start = Dimensions.medium,
+            end = Dimensions.medium,
+            bottom = Dimensions.small
+        )
+    ) {
+        Checkbox(
+            checked = checked,
+            onCheckedChange = onCheckedChange
+        )
+
+        Text(stringResource(R.string.show_only_gear))
+    }
+}
+
+@Composable
+private fun LootTableSection(
     table: LootTable,
     entries: List<LootTableEntry>,
-    onItemClick: (Item, priceModifierPercent: Int?) -> Unit
+    onItemClick: (Item) -> Unit
 ) {
-    val context = LocalContext.current
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(bottom = 16.dp)
+            .padding(bottom = Dimensions.medium)
     ) {
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(top = 8.dp, bottom = 4.dp)
-        ) {
-            Text(
-                text = stringResource(R.string.loot_table_title, table.name).uppercase(),
-                style = MaterialTheme.typography.titleMedium,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(start = 4.dp)
-            )
-            Text(
-                text = stringResource(
-                    R.string.loot_table_player_level,
-                    LootTableRules.playerLevelTables[table].toPlayerLevelText()
-                ),
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    fontStyle = FontStyle.Italic,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                ),
-                modifier = Modifier
-                    .padding(start = Dimensions.small, end = Dimensions.extraSmall)
-                    .align(Alignment.CenterVertically)
-            )
-        }
+        LootTableHeader(table = table)
 
-        // Column headers
-        Row(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp, vertical = 4.dp),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            Text(
-                text = stringResource(R.string.d100_title),
-                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.ExtraBold),
-                modifier = Modifier
-                    .weight(DICE_COLUMN_WEIGHT)
-                    .fillMaxWidth()
-                    .wrapContentWidth(Alignment.CenterHorizontally)
-            )
-            Text(
-                text = stringResource(R.string.magic_item),
-                style = MaterialTheme.typography.labelLarge.copy(fontWeight = FontWeight.ExtraBold),
-                modifier = Modifier
-                    .weight(NAME_COLUMN_WEIGHT)
-                    .padding(start = 16.dp)
-            )
-        }
+        LootTableColumnHeaders()
 
-        // Rows
         entries.forEachIndexed { index, entry ->
-            val item = entry.item
-            val backgroundColor = if (index % 2 == 0) UnevenRow else Color.Transparent
-            val range = entry.range
-
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(backgroundColor)
-                    .clickable { onItemClick(item, null) }
-                    .padding(horizontal = 16.dp, vertical = 8.dp),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = range,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier
-                        .weight(DICE_COLUMN_WEIGHT)
-                        .fillMaxWidth()
-                        .wrapContentWidth(Alignment.CenterHorizontally)
-                )
-                Text(
-                    text = context.getString(item.nameResId),
-                    color = item.rarity.color,
-                    style = MaterialTheme.typography.bodyMedium,
-                    modifier = Modifier
-                        .weight(NAME_COLUMN_WEIGHT)
-                        .padding(start = 16.dp)
-                )
-            }
+            LootTableEntryRow(
+                entry = entry,
+                index = index,
+                onClick = {
+                    onItemClick(entry.item)
+                }
+            )
         }
+    }
+}
+
+@Composable
+private fun LootTableHeader(
+    table: LootTable
+) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                top = Dimensions.small,
+                bottom = Dimensions.extraSmall
+            )
+    ) {
+        Text(
+            text = stringResource(
+                R.string.loot_table_title,
+                table.name
+            ).uppercase(),
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(start = Dimensions.extraSmall)
+        )
+
+        Text(
+            text = stringResource(
+                R.string.loot_table_player_level,
+                LootTableRules.playerLevelTables[table].toPlayerLevelText()
+            ),
+            style = MaterialTheme.typography.bodyMedium.copy(
+                fontStyle = FontStyle.Italic,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            ),
+            modifier = Modifier
+                .padding(
+                    start = Dimensions.small,
+                    end = Dimensions.extraSmall
+                )
+                .align(Alignment.CenterVertically)
+        )
+    }
+}
+
+@Composable
+private fun LootTableColumnHeaders() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(
+                horizontal = Dimensions.medium,
+                vertical = Dimensions.extraSmall
+            ),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = stringResource(R.string.d100_title),
+            style = MaterialTheme.typography.labelLarge.copy(
+                fontWeight = FontWeight.ExtraBold
+            ),
+            modifier = Modifier
+                .weight(DICE_COLUMN_WEIGHT)
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
+
+        Text(
+            text = stringResource(R.string.magic_item),
+            style = MaterialTheme.typography.labelLarge.copy(
+                fontWeight = FontWeight.ExtraBold
+            ),
+            modifier = Modifier
+                .weight(NAME_COLUMN_WEIGHT)
+                .padding(start = Dimensions.medium)
+        )
+    }
+}
+
+@Composable
+private fun LootTableEntryRow(
+    entry: LootTableEntry,
+    index: Int,
+    onClick: () -> Unit
+) {
+    val backgroundColor = if (index % 2 == 0) {
+        UnevenRow
+    } else {
+        Color.Transparent
+    }
+
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .background(backgroundColor)
+            .clickable { onClick() }
+            .padding(
+                horizontal = Dimensions.medium,
+                vertical = Dimensions.small
+            ),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = entry.range,
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier
+                .weight(DICE_COLUMN_WEIGHT)
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.CenterHorizontally)
+        )
+
+        Text(
+            text = stringResource(entry.item.nameResId),
+            color = entry.item.rarity.color,
+            style = MaterialTheme.typography.bodyMedium,
+            modifier = Modifier
+                .weight(NAME_COLUMN_WEIGHT)
+                .padding(start = Dimensions.medium)
+        )
     }
 }
 
 @Preview(showBackground = true)
-@ExperimentalMaterial3Api
 @Composable
-fun LootTablesScreenPreview() {
-
-    val fakeItems = fakeItems
-
+private fun LootTablesScreenPreview() {
     val lootTableEntriesA = listOf(
         LootTableEntry("1-70", fakeItems[0]),
         LootTableEntry("71-85", fakeItems[1]),
@@ -209,7 +298,6 @@ fun LootTablesScreenPreview() {
         LootTableEntry("96-100", fakeItems[3])
     )
 
-    // Optional: you can add other tables if you want to preview multiple
     val lootTableEntriesB = listOf(
         LootTableEntry("1-50", fakeItems[2]),
         LootTableEntry("51-100", fakeItems[3])
@@ -221,12 +309,12 @@ fun LootTablesScreenPreview() {
     )
 
     DnDLootForgeTheme {
-        LootTablesContent(
-
-            lootTables = lootTables,
-            onItemClick = { _, _ -> },
-            showOnlyGear = false,
-            onShowOnlyGearChanged = {}
+        LootTablesScreen(
+            uiState = LootTablesUiState(
+                lootTables = lootTables,
+                showOnlyGear = false
+            ),
+            onAction = {}
         )
     }
 }

@@ -1,57 +1,71 @@
 package com.danidomenech.dndlootforge.feature.loottables
 
-import android.app.Application
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.domain.model.LootTable
 import com.danidomenech.dndlootforge.domain.model.LootTableEntry
-import com.danidomenech.dndlootforge.domain.repository.ItemRepository
-import com.danidomenech.dndlootforge.core.ui.BaseViewModel
 import com.danidomenech.dndlootforge.domain.model.isGear
 import com.danidomenech.dndlootforge.domain.rules.LootTableRules
+import com.danidomenech.dndlootforge.domain.usecase.GetAllItemsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.combine
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 import kotlin.math.roundToInt
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel
 class LootTablesViewModel @Inject constructor(
-    application: Application,
-    private val itemRepository: ItemRepository
-) : BaseViewModel(application) {
+    getAllItemsUseCase: GetAllItemsUseCase
+) : ViewModel() {
 
-    private val _lootTables = MutableStateFlow<Map<LootTable, List<LootTableEntry>>>(emptyMap())
-    val lootTables: StateFlow<Map<LootTable, List<LootTableEntry>>> = _lootTables
-    val showOnlyGear = MutableStateFlow(false)
+    private val allItems = MutableStateFlow(getAllItemsUseCase())
+    private val showOnlyGear = MutableStateFlow(false)
 
-    init {
-        viewModelScope.launch {
-            combine(
-                showOnlyGear,
-                flow { emit(itemRepository.getAllItems()) } // Emits once
-            ) { onlyGear, allItems ->
-                val filteredItems = if (onlyGear) {
-                    allItems.filter { it.type.isGear }
-                } else {
-                    allItems
-                }
+    val uiState: StateFlow<LootTablesUiState> = combine(
+        allItems,
+        showOnlyGear
+    ) { allItems, showOnlyGear ->
+        val filteredItems = if (showOnlyGear) {
+            allItems.filter { it.type.isGear }
+        } else {
+            allItems
+        }
 
-                val allTableEntries = LootTableRules.lootTableRanges.mapValues { (table, range) ->
-                    computeTableEntriesForTable(table, filteredItems, range)
-                }
+        val lootTables = LootTableRules.lootTableRanges.mapValues { (table, range) ->
+            computeTableEntriesForTable(
+                table = table,
+                allItems = filteredItems,
+                powerRange = range
+            )
+        }
 
-                allTableEntries
-            }.collect {
-                _lootTables.value = it
+        LootTablesUiState(
+            lootTables = lootTables,
+            showOnlyGear = showOnlyGear
+        )
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS),
+        initialValue = LootTablesUiState()
+    )
+
+    fun onAction(action: LootTablesAction) {
+        when (action) {
+            is LootTablesAction.ShowOnlyGearChange -> {
+                setShowOnlyGear(action.showOnlyGear)
+            }
+
+            is LootTablesAction.ItemClick -> {
+                // Handled by Route.
             }
         }
     }
 
-    fun setShowOnlyGear(onlyGear : Boolean) {
+    private fun setShowOnlyGear(onlyGear: Boolean) {
         showOnlyGear.value = onlyGear
     }
 
@@ -69,44 +83,67 @@ class LootTablesViewModel @Inject constructor(
         }
 
         // Step 2: Calculate individual weights
-        val maxPL = powerRange.last
+        val maxPowerLevel = powerRange.last
         val weightedItems = eligibleItems.map { item ->
-            val adjustedPL = getItemPowerLevelForTable(item, powerRange)
-            val weight = (maxPL + 1 - adjustedPL).coerceAtLeast(1)
-            WeightedItem(item, weight)
+            val adjustedPowerLevel = getItemPowerLevelForTable(item, powerRange)
+            val weight = (maxPowerLevel + 1 - adjustedPowerLevel).coerceAtLeast(1)
+
+            WeightedItem(
+                item = item,
+                weight = weight
+            )
         }
 
         // Step 3: Total weight
         val totalWeight = weightedItems.sumOf { it.weight }
 
+        if (totalWeight == 0) return emptyList()
+
         // Step 4: Assign slot ranges starting from 100 down to 1
         val sortedItems = weightedItems.sortedWith(
-            compareByDescending<WeightedItem> { getItemPowerLevelForTable(it.item, powerRange) }
-                .thenByDescending { it.item.powerLevel }
+            compareByDescending<WeightedItem> {
+                getItemPowerLevelForTable(it.item, powerRange)
+            }.thenByDescending {
+                it.item.powerLevel
+            }
         )
-        val entries = mutableListOf<LootTableEntry>()
 
-        var currentMax = 100
+        val entries = mutableListOf<LootTableEntry>()
+        var currentMax = MAX_DICE_VALUE
+
         for ((index, weighted) in sortedItems.withIndex()) {
             val item = weighted.item
-            val slots = ((weighted.weight * 100f) / totalWeight).roundToInt().coerceAtLeast(1)
+            val slots = ((weighted.weight * MAX_DICE_VALUE.toFloat()) / totalWeight)
+                .roundToInt()
+                .coerceAtLeast(1)
 
             val isLast = index == sortedItems.lastIndex
-            val rangeStart = if (isLast) 1 else (currentMax - slots + 1).coerceAtLeast(1)
+            val rangeStart = if (isLast) {
+                MIN_DICE_VALUE
+            } else {
+                (currentMax - slots + 1).coerceAtLeast(MIN_DICE_VALUE)
+            }
+
             val range = rangeStart..currentMax
 
-            entries += LootTableEntry(formatRange(range), item)
+            entries += LootTableEntry(
+                range = formatRange(range),
+                item = item
+            )
+
             currentMax = rangeStart - 1
         }
 
         return entries.reversed()
     }
 
-    private data class WeightedItem(val item: Item, val weight: Int)
-
-    private fun getItemPowerLevelForTable(item: Item, powerRange: IntRange): Int {
+    private fun getItemPowerLevelForTable(
+        item: Item,
+        powerRange: IntRange
+    ): Int {
         val minRange = powerRange.first
         val maxRange = powerRange.last
+
         return when {
             item.powerLevel in powerRange -> item.powerLevel
             item.powerLevel < minRange -> minRange
@@ -114,6 +151,22 @@ class LootTablesViewModel @Inject constructor(
         }
     }
 
-    private fun formatRange(range: IntRange): String =
-        if (range.first == range.last) "${range.first}" else "${range.first}-${range.last}"
+    private fun formatRange(range: IntRange): String {
+        return if (range.first == range.last) {
+            range.first.toString()
+        } else {
+            "${range.first}-${range.last}"
+        }
+    }
+
+    private data class WeightedItem(
+        val item: Item,
+        val weight: Int
+    )
+
+    private companion object {
+        const val STOP_TIMEOUT_MILLIS = 5_000L
+        const val MIN_DICE_VALUE = 1
+        const val MAX_DICE_VALUE = 100
+    }
 }
