@@ -19,7 +19,7 @@ import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.feature.itemdetail.ItemDetailSheetContent
 import com.danidomenech.dndlootforge.feature.lootlist.LootListRoute
 import com.danidomenech.dndlootforge.feature.loottables.LootTablesRoute
-import com.danidomenech.dndlootforge.feature.mainmenu.MainMenuScreen
+import com.danidomenech.dndlootforge.feature.mainmenu.MainMenuRoute
 import com.danidomenech.dndlootforge.feature.narrativelootlist.NarrativeLootListScreen
 import com.danidomenech.dndlootforge.feature.vendor.VendorScreen
 import com.danidomenech.dndlootforge.feature.vendor.VendorViewModel
@@ -74,17 +74,17 @@ fun DnDLootForgeNavHost(
         startDestination = AppDestination.MainMenu.route
     ) {
         composable(AppDestination.MainMenu.route) {
-            MainMenuScreen(
-                onAllItemsClick = {
+            MainMenuRoute(
+                onNavigateToAllItems = {
                     navController.navigate(AppDestination.AllItems.route)
                 },
-                onLootTablesClick = {
+                onNavigateToLootTables = {
                     navController.navigate(AppDestination.LootTables.route)
                 },
-                onNarrativeLootItemsClick = {
+                onNavigateToNarrativeLootItems = {
                     navController.navigate(AppDestination.NarrativeLootItems.route)
                 },
-                onVendorItemsClick = {
+                onNavigateToVendorItems = {
                     navController.navigate(AppDestination.VendorItems.route)
                 }
             )
