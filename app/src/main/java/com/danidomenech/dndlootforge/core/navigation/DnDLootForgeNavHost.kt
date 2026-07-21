@@ -20,7 +20,7 @@ import com.danidomenech.dndlootforge.feature.itemdetail.ItemDetailSheetContent
 import com.danidomenech.dndlootforge.feature.lootlist.LootListRoute
 import com.danidomenech.dndlootforge.feature.loottables.LootTablesRoute
 import com.danidomenech.dndlootforge.feature.mainmenu.MainMenuRoute
-import com.danidomenech.dndlootforge.feature.narrativelootlist.NarrativeLootListScreen
+import com.danidomenech.dndlootforge.feature.narrativelootlist.NarrativeLootListRoute
 import com.danidomenech.dndlootforge.feature.vendor.VendorScreen
 import com.danidomenech.dndlootforge.feature.vendor.VendorViewModel
 import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogScreen
@@ -103,7 +103,7 @@ fun DnDLootForgeNavHost(
         }
 
         composable(AppDestination.NarrativeLootItems.route) {
-            NarrativeLootListScreen(
+            NarrativeLootListRoute(
                 onItemClick = onItemClick
             )
         }
