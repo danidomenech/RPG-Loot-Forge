@@ -1,63 +1,60 @@
 package com.danidomenech.dndlootforge.feature.vendor
 
-import android.app.Application
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.danidomenech.dndlootforge.domain.model.Item
-import com.danidomenech.dndlootforge.domain.repository.ItemRepository
-import com.danidomenech.dndlootforge.core.ui.BaseViewModel
-import com.danidomenech.dndlootforge.domain.model.sortOrder
-import com.danidomenech.dndlootforge.domain.rules.LootTableRules
+import com.danidomenech.dndlootforge.domain.usecase.GetVendorItemsUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 
 @HiltViewModel
 class VendorViewModel @Inject constructor(
-    application: Application,
-    private val itemRepository: ItemRepository
-) : BaseViewModel(application) {
+    private val getVendorItemsUseCase: GetVendorItemsUseCase
+) : ViewModel() {
 
-    private val _playerLevel = MutableStateFlow(1)
-    val playerLevel: StateFlow<Int> = _playerLevel
+    private val playerLevel = MutableStateFlow(DEFAULT_PLAYER_LEVEL)
 
-    private val _vendorItems = MutableStateFlow<List<Item>>(emptyList())
-    val vendorItems: StateFlow<List<Item>> = _vendorItems
-
-    private lateinit var allVendorItems: List<Item>
-
-    init {
-        viewModelScope.launch {
-            val allItems = itemRepository.getAllItems()
-            allVendorItems = allItems.filter { it.vendorExclusive ||
-                    (!it.lootExclusive && !it.narrativeLootExclusive) }
-            updateFilteredItems()
-        }
-    }
-
-    fun setPlayerLevel(level: Int) {
-        _playerLevel.value = level
-        updateFilteredItems()
-    }
-
-    private fun updateFilteredItems() {
-        val level = _playerLevel.value
-        val allowedTables = LootTableRules.getTablesForPlayerLevel(level)
-        val allowedRanges = allowedTables.mapNotNull { LootTableRules.lootTableRanges[it] }
-
-        val filteredItems = allVendorItems.filter { item ->
-            allowedRanges.any { range -> item.powerLevel in range }
-        }
-
-        // 🔽 Sort by item type and then by rarity
-        val sortedItems = filteredItems.sortedWith(
-            compareBy(
-                { typeOrder.indexOf(it.type) },
-                { it.rarity.sortOrder }
+    val uiState: StateFlow<VendorUiState> = playerLevel
+        .map { level ->
+            VendorUiState(
+                playerLevel = level,
+                items = getVendorItemsUseCase(level)
             )
+        }
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(STOP_TIMEOUT_MILLIS),
+            initialValue = VendorUiState()
         )
 
-        _vendorItems.value = sortedItems
+    fun onAction(action: VendorAction) {
+        when (action) {
+            is VendorAction.PlayerLevelChange -> {
+                setPlayerLevel(action.playerLevel)
+            }
+
+            is VendorAction.ItemClick,
+            is VendorAction.GenerateCatalogClick -> {
+                // Handled by Route.
+            }
+        }
+    }
+
+    private fun setPlayerLevel(level: Int) {
+        playerLevel.value = level.coerceIn(
+            MIN_PLAYER_LEVEL,
+            MAX_PLAYER_LEVEL
+        )
+    }
+
+    companion object {
+        const val DEFAULT_PLAYER_LEVEL = 1
+        const val MIN_PLAYER_LEVEL = 1
+        const val MAX_PLAYER_LEVEL = 20
+        const val STOP_TIMEOUT_MILLIS = 5_000L
     }
 }

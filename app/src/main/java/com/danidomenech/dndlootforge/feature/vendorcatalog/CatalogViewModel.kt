@@ -1,125 +1,130 @@
 package com.danidomenech.dndlootforge.feature.vendorcatalog
 
-import android.app.Application
+import androidx.lifecycle.ViewModel
 import com.danidomenech.dndlootforge.domain.model.Item
-import com.danidomenech.dndlootforge.core.ui.BaseViewModel
-import com.danidomenech.dndlootforge.domain.model.sortOrder
-import com.danidomenech.dndlootforge.feature.vendor.typeOrder
-import com.danidomenech.dndlootforge.domain.rules.LootTableRules
+import com.danidomenech.dndlootforge.domain.usecase.GenerateVendorCatalogUseCase
+import com.danidomenech.dndlootforge.domain.usecase.GetVendorItemsUseCase
+import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogDefaults.PRICE_MAX_PERCENT
+import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogDefaults.PRICE_MIN_PERCENT
+import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogDefaults.STOCK_MAX_PERCENT
+import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogDefaults.STOCK_MIN_PERCENT
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import javax.inject.Inject
-import kotlin.random.Random
 
 @HiltViewModel
 class CatalogViewModel @Inject constructor(
-    application: Application,
-) : BaseViewModel(application) {
-
-    private val _catalogItems = MutableStateFlow<List<Item>>(emptyList())
-    val catalogItems: StateFlow<List<Item>> = _catalogItems
+    private val getVendorItemsUseCase: GetVendorItemsUseCase,
+    private val generateVendorCatalogUseCase: GenerateVendorCatalogUseCase
+) : ViewModel() {
 
     private val _uiState = MutableStateFlow(CatalogUiState())
-    val uiState: StateFlow<CatalogUiState> = _uiState
+    val uiState: StateFlow<CatalogUiState> = _uiState.asStateFlow()
 
-    private var fullVendorList: List<Item> = emptyList()
-    private var maxPowerLevel: Int = 0
+    private var playerLevel: Int = DEFAULT_PLAYER_LEVEL
+    private var vendorItems: List<Item> = emptyList()
 
-    fun setVendorItemsAndPlayerLevel(items: List<Item>, playerLevel: Int) {
-        fullVendorList = items
+    fun setPlayerLevel(playerLevel: Int) {
+        if (this.playerLevel == playerLevel && vendorItems.isNotEmpty()) return
 
-        val allowedTables = LootTableRules.getTablesForPlayerLevel(playerLevel)
-        maxPowerLevel = allowedTables
-            .mapNotNull { LootTableRules.lootTableRanges[it]?.last }
-            .maxOrNull() ?: 0
+        this.playerLevel = playerLevel
+        vendorItems = getVendorItemsUseCase(playerLevel)
+
+        resetCatalogState()
+    }
+
+    fun onAction(action: CatalogAction) {
+        when (action) {
+            is CatalogAction.StockPercentageChange -> {
+                setStockPercentage(action.percentage)
+            }
+
+            is CatalogAction.PriceModifierChange -> {
+                setPriceModifier(action.percentage)
+            }
+
+            CatalogAction.GenerateCatalogClick -> {
+                generateCatalog()
+            }
+
+            CatalogAction.RerollCatalogClick -> {
+                rerollCatalog()
+            }
+
+            CatalogAction.EditModifiersClick -> {
+                resetCatalogState()
+            }
+
+            is CatalogAction.ItemClick -> {
+                // Handled by Route.
+            }
+        }
     }
 
     private fun generateCatalog() {
-        val stockPercentage = _uiState.value.stockPercentage
-        val random = Random.Default
+        val currentState = _uiState.value
 
-        val result = when (stockPercentage) {
-            0 -> emptyList()
-            100 -> fullVendorList
-            else -> {
-                val multiplier = stockPercentage / 50f // 50% = x1.0, 25% = x0.5, 100% = guaranteed
-
-                fullVendorList.filter { item ->
-                    val powerLevel = item.powerLevel.coerceAtMost(maxPowerLevel)
-                    val baseChance = (maxPowerLevel + 1) - powerLevel
-
-                    val rawChance = if (baseChance <= 100) {
-                        baseChance.coerceIn(0, 100)
-                    } else {
-                        val firstDigit = baseChance.toString().first().digitToInt()
-                        val extraMultiplier = firstDigit + 1
-                        val remainder = baseChance % 100
-                        (remainder * extraMultiplier).coerceIn(0, 100)
-                    }
-
-                    val adjustedChance = (rawChance * multiplier).toInt().coerceIn(0, 100)
-
-                    random.nextInt(0, 100) < adjustedChance
-                }
-            }
-        }
-
-        val sortedItems = result.sortedWith(
-            compareBy(
-                { typeOrder.indexOf(it.type) },
-                { it.rarity.sortOrder }
+        _uiState.update {
+            it.copy(
+                catalogGenerated = true,
+                items = generateVendorCatalogUseCase(
+                    vendorItems = vendorItems,
+                    playerLevel = playerLevel,
+                    stockPercentage = currentState.stockPercentage
+                )
             )
-        )
-
-        _catalogItems.value = sortedItems
+        }
     }
 
-    fun rerollCatalog() = generateCatalog()
+    private fun rerollCatalog() {
+        val currentState = _uiState.value
 
-
-    fun setStockPercentage(percent: Int) {
-        _uiState.update { it.copy(stockPercentage = percent.coerceIn(
-            STOCK_MIN_PERCENT.toInt(), STOCK_MAX_PERCENT.toInt()
-        )) }
+        _uiState.update {
+            it.copy(
+                items = generateVendorCatalogUseCase(
+                    vendorItems = vendorItems,
+                    playerLevel = playerLevel,
+                    stockPercentage = currentState.stockPercentage
+                )
+            )
+        }
     }
 
-    fun setPriceModifier(percent: Int) {
-        _uiState.update { it.copy(priceModifierPercentage = percent.coerceIn(PRICE_MIN_PERCENT.toInt(), PRICE_MAX_PERCENT.toInt())) }
+    private fun setStockPercentage(percent: Int) {
+        _uiState.update {
+            it.copy(
+                stockPercentage = percent.coerceIn(
+                    STOCK_MIN_PERCENT,
+                    STOCK_MAX_PERCENT
+                )
+            )
+        }
     }
 
-    fun markCatalogGenerated() {
-        _uiState.update { it.copy(catalogGenerated = true) }
+    private fun setPriceModifier(percent: Int) {
+        _uiState.update {
+            it.copy(
+                priceModifierPercentage = percent.coerceIn(
+                    PRICE_MIN_PERCENT,
+                    PRICE_MAX_PERCENT
+                )
+            )
+        }
     }
 
-    fun resetCatalogState() {
-        _uiState.update { it.copy(catalogGenerated = false) }
-        _catalogItems.value = emptyList()
+    private fun resetCatalogState() {
+        _uiState.update {
+            it.copy(
+                catalogGenerated = false,
+                items = emptyList()
+            )
+        }
     }
 
-    fun getStockSteps() : Int {
-        return (STOCK_MAX_PERCENT.toInt() - STOCK_MIN_PERCENT.toInt()) / STOCK_JUMP_DISTANCE - 1
+    private companion object {
+        const val DEFAULT_PLAYER_LEVEL = 1
     }
-
-    fun getPriceSteps() : Int {
-        return (PRICE_MAX_PERCENT.toInt() - PRICE_MIN_PERCENT.toInt()) / PRICE_JUMP_DISTANCE - 1
-    }
-
-    data class CatalogUiState(
-        val catalogGenerated: Boolean = false,
-        val stockPercentage: Int = 50,
-        val priceModifierPercentage: Int = 0
-    )
-
-    companion object {
-        const val STOCK_MIN_PERCENT = 0f
-        const val STOCK_MAX_PERCENT = 100f
-        const val STOCK_JUMP_DISTANCE = 10
-
-        const val PRICE_MIN_PERCENT = -100f
-        const val PRICE_MAX_PERCENT = 300f
-        const val PRICE_JUMP_DISTANCE = 5
-    }
-
 }

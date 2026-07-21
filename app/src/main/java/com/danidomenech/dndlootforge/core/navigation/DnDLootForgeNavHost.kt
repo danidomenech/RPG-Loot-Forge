@@ -10,20 +10,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.feature.itemdetail.ItemDetailSheetContent
 import com.danidomenech.dndlootforge.feature.lootlist.LootListRoute
 import com.danidomenech.dndlootforge.feature.loottables.LootTablesRoute
 import com.danidomenech.dndlootforge.feature.mainmenu.MainMenuRoute
 import com.danidomenech.dndlootforge.feature.narrativelootlist.NarrativeLootListRoute
-import com.danidomenech.dndlootforge.feature.vendor.VendorScreen
-import com.danidomenech.dndlootforge.feature.vendor.VendorViewModel
-import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogScreen
+import com.danidomenech.dndlootforge.feature.vendor.VendorRoute
+import com.danidomenech.dndlootforge.feature.vendorcatalog.CatalogRoute
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -109,23 +109,30 @@ fun DnDLootForgeNavHost(
         }
 
         composable(AppDestination.VendorItems.route) {
-            VendorScreen(
+            VendorRoute(
                 onItemClick = onItemClick,
-                onGenerateCatalogClick = {
-                    navController.navigate(AppDestination.CatalogItems.route)
+                onGenerateCatalogClick = { playerLevel ->
+                    navController.navigate(
+                        AppDestination.CatalogItems.createRoute(playerLevel)
+                    )
                 }
             )
         }
 
-        composable(AppDestination.CatalogItems.route) { backStackEntry ->
-            val parentEntry = remember(backStackEntry) {
-                navController.getBackStackEntry(AppDestination.VendorItems.route)
-            }
+        composable(
+            route = AppDestination.CatalogItems.route,
+            arguments = listOf(
+                navArgument(AppDestination.PLAYER_LEVEL_ARG) {
+                    type = NavType.IntType
+                }
+            )
+        ) { backStackEntry ->
+            val playerLevel = backStackEntry.arguments
+                ?.getInt(AppDestination.PLAYER_LEVEL_ARG)
+                ?: 1
 
-            val vendorViewModel: VendorViewModel = hiltViewModel(parentEntry)
-
-            CatalogScreen(
-                vendorViewModel = vendorViewModel,
+            CatalogRoute(
+                playerLevel = playerLevel,
                 onItemClick = onItemClick
             )
         }
