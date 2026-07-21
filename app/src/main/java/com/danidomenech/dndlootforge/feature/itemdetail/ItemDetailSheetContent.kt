@@ -20,7 +20,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -33,11 +32,8 @@ import com.danidomenech.dndlootforge.core.design.item.text
 import com.danidomenech.dndlootforge.core.design.theme.Dimensions
 import com.danidomenech.dndlootforge.domain.model.Item
 import com.danidomenech.dndlootforge.domain.model.ItemOrigin
-import com.danidomenech.dndlootforge.domain.model.ItemRarity
-import com.danidomenech.dndlootforge.domain.model.ItemType
 import com.danidomenech.dndlootforge.core.design.theme.ItemOriginEditedColor
 import com.danidomenech.dndlootforge.core.design.theme.DnDLootForgeTheme
-import com.danidomenech.dndlootforge.domain.model.ItemId
 import com.danidomenech.dndlootforge.preview.fakeItems
 
 @Composable
@@ -181,8 +177,8 @@ private fun ItemDetailBody(
         VerticalScrollbar(
             scrollState = scrollState,
             modifier = Modifier
-                .align(Alignment.CenterEnd),
-            thumbColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.65f)
+                .align(Alignment.CenterEnd)
+                .matchParentSize()
         )
     }
 }

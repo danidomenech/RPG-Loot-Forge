@@ -61,15 +61,23 @@ fun VerticalScrollbar(
             .map { it.size }
             .average()
             .toFloat()
-            .coerceAtLeast(1f)
+
+        if (!averageItemHeightPx.isFinite() || averageItemHeightPx <= 0f) {
+            return@VerticalScrollbarThumb null
+        }
 
         val totalContentHeightPx = averageItemHeightPx * totalItemsCount
+
+        if (!totalContentHeightPx.isFinite() || totalContentHeightPx <= 0f) {
+            return@VerticalScrollbarThumb null
+        }
 
         val viewportFraction = (viewportHeightPx / totalContentHeightPx)
             .coerceIn(0f, 1f)
 
         val thumbHeightPx = (viewportHeightPx * viewportFraction)
             .coerceAtLeast(minThumbHeightPx)
+            .coerceAtMost(viewportHeightPx)
 
         val firstVisibleItemScrollOffsetPx =
             firstVisibleItem.index * averageItemHeightPx + listState.firstVisibleItemScrollOffset
@@ -80,7 +88,9 @@ fun VerticalScrollbar(
         val scrollProgress = (firstVisibleItemScrollOffsetPx / maxScrollOffsetPx)
             .coerceIn(0f, 1f)
 
-        val maxThumbOffsetPx = viewportHeightPx - thumbHeightPx
+        val maxThumbOffsetPx = (viewportHeightPx - thumbHeightPx)
+            .coerceAtLeast(0f)
+
         val thumbOffsetPx = scrollProgress * maxThumbOffsetPx
 
         ScrollbarThumbMetrics(
@@ -103,7 +113,9 @@ fun VerticalScrollbar(
     ),
     autoHide: Boolean = true
 ) {
-    if (scrollState.maxValue <= 0) return
+    val hasScrollableContent = scrollState.maxValue > 0
+
+    if (!hasScrollableContent) return
 
     VerticalScrollbarThumb(
         modifier = modifier,
@@ -117,12 +129,28 @@ fun VerticalScrollbar(
         val scrollMaxPx = scrollState.maxValue.toFloat()
         val scrollValuePx = scrollState.value.toFloat()
 
+        if (
+            !scrollMaxPx.isFinite() ||
+            !scrollValuePx.isFinite() ||
+            scrollMaxPx <= 0f ||
+            viewportHeightPx <= 0f
+        ) {
+            return@VerticalScrollbarThumb null
+        }
+
         val totalContentHeightPx = viewportHeightPx + scrollMaxPx
+
+        if (!totalContentHeightPx.isFinite() || totalContentHeightPx <= 0f) {
+            return@VerticalScrollbarThumb null
+        }
 
         val thumbHeightPx = ((viewportHeightPx / totalContentHeightPx) * viewportHeightPx)
             .coerceAtLeast(minThumbHeightPx)
+            .coerceAtMost(viewportHeightPx)
 
-        val maxThumbOffsetPx = viewportHeightPx - thumbHeightPx
+        val maxThumbOffsetPx = (viewportHeightPx - thumbHeightPx)
+            .coerceAtLeast(0f)
+
         val thumbOffsetPx = (scrollValuePx / scrollMaxPx) * maxThumbOffsetPx
 
         ScrollbarThumbMetrics(
@@ -141,7 +169,10 @@ private fun VerticalScrollbarThumb(
     paddingEnd: Dp,
     shape: Shape,
     thumbColor: Color,
-    calculateMetrics: (viewportHeightPx: Float, minThumbHeightPx: Float) -> ScrollbarThumbMetrics
+    calculateMetrics: (
+        viewportHeightPx: Float,
+        minThumbHeightPx: Float
+    ) -> ScrollbarThumbMetrics?
 ) {
     val density = LocalDensity.current
 
@@ -155,12 +186,14 @@ private fun VerticalScrollbarThumb(
 
     BoxWithConstraints(
         modifier = modifier
-            .fillMaxHeight()
             .padding(end = paddingEnd),
         contentAlignment = Alignment.TopEnd
     ) {
         val viewportHeightPx = constraints.maxHeight.toFloat()
-        if (viewportHeightPx <= 0f) return@BoxWithConstraints
+
+        if (!viewportHeightPx.isFinite() || viewportHeightPx <= 0f) {
+            return@BoxWithConstraints
+        }
 
         val minThumbHeightPx = with(density) {
             minThumbHeight.toPx()
@@ -169,20 +202,31 @@ private fun VerticalScrollbarThumb(
         val metrics = calculateMetrics(
             viewportHeightPx,
             minThumbHeightPx
-        )
+        ) ?: return@BoxWithConstraints
+
+        if (
+            !metrics.heightPx.isFinite() ||
+            !metrics.offsetPx.isFinite() ||
+            metrics.heightPx <= 0f
+        ) {
+            return@BoxWithConstraints
+        }
+
+        val thumbHeightPx = metrics.heightPx.coerceAtMost(viewportHeightPx)
+        val thumbOffsetPx = metrics.offsetPx.coerceAtLeast(0f)
 
         Box(
             modifier = Modifier
                 .offset {
                     IntOffset(
                         x = 0,
-                        y = metrics.offsetPx.roundToInt()
+                        y = thumbOffsetPx.roundToInt()
                     )
                 }
                 .width(thumbWidth)
                 .height(
                     with(density) {
-                        metrics.heightPx.toDp()
+                        thumbHeightPx.toDp()
                     }
                 )
                 .alpha(alpha)
