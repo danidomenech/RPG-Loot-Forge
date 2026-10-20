@@ -1,6 +1,8 @@
 # RPG Loot Forge
 
-Offline Android app for checking D&D-style loot tables by player level, plus quick vendor stock lists for improvisation based on level, availability chance, and discounts.
+An offline Android application designed to help Dungeon Masters manage D&D-style magic items, generate loot tables, and create randomized vendor inventories during tabletop RPG sessions.
+
+Built with Kotlin, Jetpack Compose, MVVM, Hilt, and Clean Architecture principles, with an emphasis on maintainability, separation of concerns, and modern Android development practices.
 
 ## Screenshots
 <img width="202" height="450" alt="Screenshot_20260201_171153" src="https://github.com/user-attachments/assets/3a3d69ba-0f00-4cad-8e28-7e0c6d6d60be" />
@@ -9,33 +11,75 @@ Offline Android app for checking D&D-style loot tables by player level, plus qui
 <img width="202" height="450" alt="Screenshot_20260201_171307" src="https://github.com/user-attachments/assets/d46c75e6-cbdd-4d18-acfe-3711b267caf0" />
 
 ## Features
-- Browse loot tables (A–I) based on player level
-- Generate quick vendor inventories for sessions
-- Vendor modifiers:
-  - availability chance (probability an item appears)
-  - discount modifier (positive/negative)
-- Fully offline (no server required)
+- Item collection: Browse magic items with details such as rarity, type, description, and value.
+- Loot tables: Explore weighted loot tables (A–I) based on item power level and recommended player level.
+- Narrative loot: Browse special items intended for narrative encounters and rewards.
+- Vendor inventory: Browse items available to vendors based on player level.
+- Vendor catalog generation: Generate randomized inventories with configurable stock availability and price modifiers.
+- Offline operation: All item data is available locally without requiring a server or internet connection.
 
-## How it works
-- Loot tables are selected based on the player's level.
-- Vendor lists are generated using the player's level and vendor modifiers (availability + discount), to help improvise shop inventories quickly during a session.
+## Architecture
 
-## Tech stack
+The application follows a single-Activity, Compose-first architecture with MVVM and separation into presentation, domain, and data layers.
+
+### Presentation layer
+
+Features follow a Route/Screen pattern:
+
+- Route: Collects UI state and coordinates navigation and presentation-level effects.
+- Screen: Renders UI state and exposes user interactions through actions, without directly depending on ViewModels or navigation controllers.
+- ViewModel: Manages screen state, processes state-related actions, and coordinates domain use cases.
+- UiState: Represents the data required to render a screen.
+- Action: Represents user interactions originating from the UI.
+  
+Simple navigation actions are handled directly by Routes. When navigation or another one-shot effect depends on ViewModel processing, the ViewModel can emit an event for the Route to handle.
+
+This keeps navigation outside ViewModels without requiring an event pipeline for every interaction.
+
+### Domain layer
+
+Contains domain models, reusable business rules, repository interfaces, and use cases responsible for operations such as:
+
+- Retrieving and organizing items
+- Generating weighted loot tables
+- Selecting vendor-eligible items by player level
+- Generating randomized vendor catalogs
+
+### Data layer
+
+Provides local item catalogs, data sources, repository implementations, and mappings to domain models.
+
+The project is intentionally kept in a single Gradle module, while maintaining logical separation between its architectural layers.
+
+### Navigation
+
+The application uses Jetpack Navigation Compose with NavHost, centralized destinations, and navigation arguments.
+
+Feature screens remain independent of navigation implementation details.
+
+## Tech Stack
+
 - Kotlin
-- Jetpack Compose
+- Jetpack Compose and Material 3
+- Navigation Compose (NavHost)
 - MVVM
-- Hilt
-- Coroutines + Flow (StateFlow)
+- Hilt dependency injection
+- Kotlin Coroutines and StateFlow
+- Android string resources and Compose previews
+- Getting Started
+- Clone the repository.
+- Open the project in Android Studio.
+- Sync the Gradle project.
+- Run the app configuration on an emulator or Android device.
 
-## Getting started
-1. Clone the repo
-2. Open in Android Studio
-3. Run the `app` configuration on an emulator/device
+No server configuration or API keys are required.
 
 ## Roadmap
-- Better filtering/search across items
-- More vendor presets
-- UI polish / tablet layout
+
+- Advanced item filtering and search
+- Additional vendor presets
+- UI polish and improved tablet layouts
+- Unit tests for domain use cases
 
 ## License
 MIT
