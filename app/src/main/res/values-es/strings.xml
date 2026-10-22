@@ -76,6 +76,13 @@
     <string name="reroll_catalog">Repetir catálogo</string>
     <string name="edit_modifiers">Editar</string>
 
+    <string name="no_items_found">No hay objetos que coincidan con los filtros seleccionados</string>
+
+    <string name="filter_sheet_filters">Filtros</string>
+    <string name="filter_sheet_rarity">Rareza</string>
+    <string name="filter_sheet_clear_filters">Limpiar filtros</string>
+    <string name="filter_sheet_show_items_count">Muestra %1$d objetos</string>
+
 
     <!--    ALL ITEMS    -->
     <string name="healing_potion">Poción de curación</string>

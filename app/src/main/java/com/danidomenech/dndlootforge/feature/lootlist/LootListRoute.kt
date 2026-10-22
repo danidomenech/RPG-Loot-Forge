@@ -15,11 +15,11 @@ fun LootListRoute(
 
     LootListScreen(
         uiState = uiState,
+        getMatchingCount = viewModel::getMatchingCount,
         onAction = { action ->
             when (action) {
-                is LootListAction.ItemClick -> {
-                    onItemClick(action.item, null)
-                }
+                is LootListAction.ItemClick -> onItemClick(action.item, null)
+                else -> viewModel.onAction(action)
             }
         }
     )

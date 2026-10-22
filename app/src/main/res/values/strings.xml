@@ -76,6 +76,13 @@
     <string name="reroll_catalog">Reroll catalog</string>
     <string name="edit_modifiers">Edit</string>
 
+    <string name="no_items_found">No items match the selected filters</string>
+
+    <string name="filter_sheet_filters">Filters</string>
+    <string name="filter_sheet_rarity">Rarity</string>
+    <string name="filter_sheet_clear_filters">Clear filters</string>
+    <string name="filter_sheet_show_items_count">Show %1$d items</string>
+
 
     <!--    ALL ITEMS    -->
     <string name="healing_potion">Potion of Healing</string>
